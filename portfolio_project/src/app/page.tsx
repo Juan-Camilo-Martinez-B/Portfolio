@@ -1,16 +1,16 @@
 // src/app/page.tsx
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import Sidebar from "@/components/Sidebar";
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
 import AboutMe from "@/components/AboutMe";
-import Projects from "@/components/Projects";
-import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import CursorEffect from "@/components/CursorEffect";
+import Hero from "@/components/Hero";
+import Navbar from "@/components/Navbar";
+import Projects from "@/components/Projects";
+import Sidebar from "@/components/Sidebar";
+import Skills from "@/components/Skills";
 import StormBackground from "@/components/StormBackground";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const [active, setActive] = useState("hero");
@@ -40,22 +40,22 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-hidden">
-      {/* Contenedor centrado */}
-      <div className="relative z-10 flex justify-center items-center w-full pt-8 pb-32">
-        <div className="flex gap-6 w-full max-w-[1200px] h-[85vh] px-4">
+    <div className="relative w-screen h-screen bg-black text-white overflow-hidden flex flex-col">
+      {/* Contenedor principal con padding-bottom igual a la altura de la navbar */}
+      <div className="relative z-10 flex justify-center items-start w-full h-full p-4 pb-[140px]">
+        <div className="flex gap-6 w-full max-w-[1200px] h-full">
           {/* Sidebar */}
-          <aside className="w-[320px] hidden md:block">
+          <aside className="w-[320px] hidden md:block h-full">
             <div className="h-full bg-gray-800 border border-orange-500 rounded-xl shadow-lg p-6 overflow-hidden">
               <Sidebar active={active} />
             </div>
           </aside>
 
           {/* Recuadro principal */}
-          <main className="flex-1">
+          <main className="flex-1 h-full">
             <div
               id="scroll-container"
-              className="h-full bg-gray-800 border border-orange-500 rounded-xl shadow-lg flex flex-col overflow-y-scroll no-scrollbar"
+              className="h-full bg-gray-800 border border-orange-500 rounded-xl shadow-lg flex flex-col overflow-y-auto no-scrollbar"
             >
               <section
                 id="hero"
@@ -111,7 +111,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Navbar */}
+      {/* Navbar fixed abajo */}
       <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-20">
         <div className="bg-gray-800 border border-orange-500 rounded-xl px-4 py-3 shadow-lg">
           <Navbar active={active} setActive={setActive} />
