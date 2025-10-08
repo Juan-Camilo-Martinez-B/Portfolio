@@ -4,26 +4,30 @@ import { useEffect, useRef } from "react";
 
 export default function StormBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
+
     const context = canvas.getContext("2d");
     if (!context) return;
-    const ctx = context as CanvasRenderingContext2D;
 
-    let width = window.innerWidth;
-    let height = window.innerHeight;
+    const ctx = context;
+
+    let width = container.clientWidth;
+    let height = container.clientHeight;
     canvas.width = width;
     canvas.height = height;
 
-    const handleResize = () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
+    const resizeObserver = new ResizeObserver(() => {
+      width = container.clientWidth;
+      height = container.clientHeight;
       canvas.width = width;
       canvas.height = height;
-    };
-    window.addEventListener("resize", handleResize);
+    });
+    resizeObserver.observe(container);
 
     // --- Nubes ---
     let clouds: { x: number; y: number; r: number; speed: number }[] = [];
@@ -32,7 +36,7 @@ export default function StormBackground() {
     for (let i = 0; i < numClouds; i++) {
       clouds.push({
         x: Math.random() * width,
-        y: Math.random() * height * 0.6, // nubes solo en la parte superior
+        y: Math.random() * height,
         r: 150 + Math.random() * 200,
         speed: 0.2 + Math.random() * 0.4,
       });
@@ -102,12 +106,9 @@ export default function StormBackground() {
       });
     }
 
-    // --- Rayos cada 3 segundos ---
     const lightningInterval = setInterval(() => {
       if (lightning.length < 10) {
-        // número aleatorio de rayos entre 1 y 3 cada ciclo
         const numRays = Math.floor(Math.random() * 3) + 1;
-
         for (let i = 0; i < numRays; i++) {
           const startX = Math.random() * width;
           const startY = Math.random() * (height * 0.3);
@@ -133,15 +134,14 @@ export default function StormBackground() {
     animate();
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      resizeObserver.disconnect();
       clearInterval(lightningInterval);
     };
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full z-0"
-    />
+    <div ref={containerRef} className="absolute inset-0 w-full h-full z-0">
+      <canvas ref={canvasRef} className="w-full h-full" />
+    </div>
   );
 }

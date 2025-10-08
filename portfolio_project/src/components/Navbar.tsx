@@ -23,12 +23,12 @@ export default function Navbar({ active, setActive }: NavbarProps) {
   ];
 
   return (
-    <nav className="flex gap-3 px-4 py-2 font-audiowide">
+    <nav className="flex flex-wrap justify-center gap-2 sm:gap-3 px-2 sm:px-4 py-1 sm:py-2 font-audiowide text-sm sm:text-base">
       {navItems.map((item) => (
         <button
           key={item.id}
           onClick={() => handleClick(item.id)}
-          className={`px-4 py-2 rounded transition-colors duration-200 cursor-pointer
+          className={`px-3 sm:px-4 py-1 sm:py-2 rounded transition-colors duration-200 cursor-pointer
             ${
               active === item.id
                 ? "bg-orange-500 text-white"
@@ -40,10 +40,10 @@ export default function Navbar({ active, setActive }: NavbarProps) {
       ))}
 
       {/* Botones extra */}
-      <button className="bg-black border border-orange-500 px-4 py-2 rounded hover:bg-orange-600 transition-colors cursor-pointer">
+      <button className="bg-black border border-orange-500 px-3 sm:px-4 py-1 sm:py-2 rounded hover:bg-orange-600 transition-colors cursor-pointer">
         EN/ES
       </button>
-      <button className="bg-black border border-orange-500 px-4 py-2 rounded hover:bg-orange-600 transition-colors cursor-pointer">
+      <button className="bg-black border border-orange-500 px-3 sm:px-4 py-1 sm:py-2 rounded hover:bg-orange-600 transition-colors cursor-pointer">
         ☀️/🌙
       </button>
     </nav>
