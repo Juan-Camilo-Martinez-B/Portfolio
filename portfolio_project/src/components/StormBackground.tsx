@@ -30,7 +30,7 @@ export default function StormBackground() {
     resizeObserver.observe(container);
 
     // --- Nubes ---
-    let clouds: { x: number; y: number; r: number; speed: number }[] = [];
+    const clouds: { x: number; y: number; r: number; speed: number }[] = [];
     const numClouds = 40;
 
     for (let i = 0; i < numClouds; i++) {
@@ -43,7 +43,7 @@ export default function StormBackground() {
     }
 
     type Lightning = { x: number; y: number; angle: number; life: number };
-    let lightning: Lightning[] = [];
+    const lightning: Lightning[] = [];
 
     function drawClouds() {
       clouds.forEach((c) => {

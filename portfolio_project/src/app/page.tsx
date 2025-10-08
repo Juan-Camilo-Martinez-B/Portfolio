@@ -15,7 +15,8 @@ export default function Home() {
   const [active, setActive] = useState("hero");
 
   const sectionsRef = useRef<Record<string, HTMLElement | null>>({});
-
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
