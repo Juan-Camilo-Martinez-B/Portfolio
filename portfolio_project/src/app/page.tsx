@@ -1,15 +1,15 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import Sidebar from "@/components/Sidebar";
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
 import AboutMe from "@/components/AboutMe";
-import Projects from "@/components/Projects";
-import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import CursorEffect from "@/components/CursorEffect";
+import Hero from "@/components/Hero";
+import Navbar from "@/components/Navbar";
+import Projects from "@/components/Projects";
+import Sidebar from "@/components/Sidebar";
+import Skills from "@/components/Skills";
 import StormBackground from "@/components/StormBackground";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const [active, setActive] = useState("hero");
@@ -119,6 +119,7 @@ export default function Home() {
       {/* Efecto del cursor */}
       <CursorEffect />
       {/* Fondo animado */}
+        
       <StormBackground />
 
       {/* ocultar scrollbar */}

@@ -31,7 +31,7 @@ export default function StormBackground() {
 
     // --- Nubes ---
     const clouds: { x: number; y: number; r: number; speed: number }[] = [];
-    const numClouds = 40;
+    const numClouds = 50;
 
     for (let i = 0; i < numClouds; i++) {
       clouds.push({
