@@ -8,14 +8,14 @@ import Navbar from "@/components/Navbar";
 import Projects from "@/components/Projects";
 import Sidebar from "@/components/Sidebar";
 import Skills from "@/components/Skills";
-import StormBackground from "@/components/StormBackground";
+import Lightning from "@/components/StormBackground";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const [active, setActive] = useState("hero");
 
   const sectionsRef = useRef<Record<string, HTMLElement | null>>({});
-  
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -119,9 +119,8 @@ export default function Home() {
       {/* Efecto del cursor */}
       <CursorEffect />
       {/* Fondo animado */}
-        
-      <StormBackground />
 
+      <Lightning/>
       {/* ocultar scrollbar */}
       <style jsx global>{`
         .no-scrollbar::-webkit-scrollbar {
