@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import AboutMe from "@/components/AboutMe";
 import Contact from "@/components/Contact";
 import CursorEffect from "@/components/CursorEffect";
@@ -10,12 +10,14 @@ import Projects from "@/components/Projects";
 import Sidebar from "@/components/Sidebar";
 import Skills from "@/components/Skills";
 import Lightning from "@/components/StormBackground";
+import DynamicModal from "@/components/DynamicModal";
 import Section from "@/components/ui/Section";
 import Card from "@/components/ui/Card";
 import { useResponsiveIntersectionObserver } from "@/hooks/useResponsiveIntersectionObserver";
 
 export default function Home() {
   const { activeSection, setActiveSection, setSectionRef } = useResponsiveIntersectionObserver();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Debug solo en consola
   React.useEffect(() => {
@@ -23,6 +25,14 @@ export default function Home() {
       console.log('Active section:', activeSection);
     }
   }, [activeSection]);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="relative min-h-screen bg-black text-white overflow-hidden flex flex-col">
@@ -52,7 +62,7 @@ export default function Home() {
               id="about"
               ref={setSectionRef("about")}
             >
-              <AboutMe />
+              <AboutMe onOpenModal={handleOpenModal} />
             </Section>
 
             <Section
@@ -91,6 +101,13 @@ export default function Home() {
       <CursorEffect />
       {/* Fondo animado */}
       <Lightning/>
+      
+      {/* Modal dinámico - renderizado fuera del contenedor principal */}
+      <DynamicModal 
+        isOpen={isModalOpen} 
+        onClose={handleCloseModal} 
+      />
+      
       {/* ocultar scrollbar */}
       <style jsx global>{`
         .no-scrollbar::-webkit-scrollbar {

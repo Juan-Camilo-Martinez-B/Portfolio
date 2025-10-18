@@ -27,11 +27,35 @@ export interface PortfolioData {
   };
   about: {
     title: string;
+    image: {
+      placeholder: string;
+      alt: string;
+    };
+    texts: {
+      left: string;
+      right: string;
+    };
     description: string;
-    sections: Array<{
+    button: {
+      text: string;
+      action: string;
+    };
+    modal: {
       title: string;
-      items: string[];
-    }>;
+      sections: {
+        references: {
+          title: string;
+        };
+        myWorld: {
+          title: string;
+        };
+      };
+      images: Array<{
+        id: number;
+        placeholder: string;
+        description: string;
+      }>;
+    };
   };
   projects: Array<{
     id: string;

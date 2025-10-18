@@ -30,25 +30,62 @@
   },
   "about": {
     "title": "Sobre mí",
-    "description": "Soy un apasionado por la tecnología y el desarrollo de software. Me gusta resolver problemas mediante soluciones creativas y funcionales, siempre buscando aprender nuevas herramientas y metodologías.",
-    "sections": [
-      {
-        "title": "Experiencia",
-        "items": [
-          "Desarrollo web full-stack",
-          "Arquitectura de aplicaciones escalables",
-          "Optimización de rendimiento"
-        ]
+    "image": {
+      "placeholder": "Imagen",
+      "alt": "Juan Camilo Martinez Bedoya"
+    },
+    "texts": {
+      "left": "Soy Juan Camilo\nMartinez Bedoya,\ningeniero de software\nabierto a nuevos retos y\nsoluciones diversas.",
+      "right": "Además de la\ntecnología, disfruto los\ndeportes, los\nvideojuegos y la música,\npasiones que alimentan\nmi creatividad e\ninspiración."
+    },
+    "description": "Como ingeniero puedo trabajar en diferentes áreas\ndel software, en general me especializo en el\ndesarrollo técnico y creativo de proyectos digitales,\ntrabajando en sistemas prácticos y haciendo uso de\ndiferentes herramientas de programación",
+    "button": {
+      "text": "Entra en mi mundo",
+      "action": "openModal"
+    },
+    "modal": {
+      "title": "Mi Mundo",
+      "sections": {
+        "references": {
+          "title": "Referencias"
+        },
+        "myWorld": {
+          "title": "Lo que amo hacer"
+        }
       },
-      {
-        "title": "Filosofía",
-        "items": [
-          "Código limpio y mantenible",
-          "Aprendizaje continuo",
-          "Colaboración efectiva"
-        ]
-      }
-    ]
+      "images": [
+        {
+          "id": 1,
+          "placeholder": "Imagen 1",
+          "description": "Siempre cumple lo que promete en un proyecto."
+        },
+        {
+          "id": 2,
+          "placeholder": "Imagen 2", 
+          "description": "Es alguien que nunca se rinde."
+        },
+        {
+          "id": 3,
+          "placeholder": "Imagen 3",
+          "description": "Es detallista en todo lo que le apasiona."
+        },
+        {
+          "id": 4,
+          "placeholder": "Imagen 4",
+          "description": "Su compromiso marca la diferencia."
+        },
+        {
+          "id": 5,
+          "placeholder": "Imagen 5",
+          "description": "Innovación constante en cada proyecto."
+        },
+        {
+          "id": 6,
+          "placeholder": "Imagen 6",
+          "description": "Colaboración efectiva con equipos."
+        }
+      ]
+    }
   },
   "projects": [
     {
