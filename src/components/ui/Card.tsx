@@ -6,7 +6,7 @@ interface CardProps {
   className?: string;
   variant?: 'default' | 'bordered' | 'elevated';
   id?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 const Card: React.FC<CardProps> = ({

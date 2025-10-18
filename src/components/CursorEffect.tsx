@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 export default function CursorEffect() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const mouse = useRef({ x: 0, y: 0 });
-  const trail: { x: number; y: number }[] = [];
+  const trail = useRef<{ x: number; y: number }[]>([]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -30,15 +30,15 @@ export default function CursorEffect() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // guardar posiciones recientes
-      trail.push({ x: mouse.current.x, y: mouse.current.y });
-      if (trail.length > 20) trail.shift(); // longitud del rastro
+      trail.current.push({ x: mouse.current.x, y: mouse.current.y });
+      if (trail.current.length > 20) trail.current.shift(); // longitud del rastro
 
       // dibujar rastro suave
       ctx.beginPath();
-      for (let i = 0; i < trail.length - 1; i++) {
-        const p1 = trail[i];
-        const p2 = trail[i + 1];
-        ctx.strokeStyle = `rgba(249, 115, 22, ${(i + 1) / trail.length})`; // naranja con fade
+      for (let i = 0; i < trail.current.length - 1; i++) {
+        const p1 = trail.current[i];
+        const p2 = trail.current[i + 1];
+        ctx.strokeStyle = `rgba(249, 115, 22, ${(i + 1) / trail.current.length})`; // naranja con fade
         ctx.lineWidth = 2;
         ctx.shadowColor = "#f97316";
         ctx.shadowBlur = 8;

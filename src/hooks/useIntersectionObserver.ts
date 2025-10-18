@@ -94,7 +94,7 @@ export const useIntersectionObserver = ({
         }
       });
     }
-  }, [sectionsRef.current]);
+  }, []);
 
   const setSectionRef = useCallback((id: string) => (el: HTMLElement | null) => {
     sectionsRef.current[id] = el;

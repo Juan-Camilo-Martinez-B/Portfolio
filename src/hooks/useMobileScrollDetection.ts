@@ -10,7 +10,7 @@ export const useMobileScrollDetection = ({
   sections
 }: UseMobileScrollDetectionProps) => {
   const [isScrolling, setIsScrolling] = useState(false);
-  const scrollTimeoutRef = useRef<NodeJS.Timeout>();
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null); // ✅ corregido
   const lastScrollY = useRef(0);
   const scrollDirection = useRef<'up' | 'down'>('down');
 
@@ -32,12 +32,10 @@ export const useMobileScrollDetection = ({
 
       const sectionRect = section.getBoundingClientRect();
       const sectionTop = sectionRect.top - containerTop;
-      const sectionCenter = sectionTop + (sectionRect.height / 2);
+      const sectionCenter = sectionTop + sectionRect.height / 2;
       const containerCenter = containerHeight / 2;
 
-      // Calcular la distancia desde el centro del contenedor
       const distance = Math.abs(sectionCenter - containerCenter);
-
       if (distance < minDistance) {
         minDistance = distance;
         currentSection = sectionId;
@@ -53,33 +51,25 @@ export const useMobileScrollDetection = ({
       setIsScrolling(true);
     }
 
-    // Detectar dirección del scroll
     const currentScrollY = window.scrollY;
-    if (currentScrollY > lastScrollY.current) {
-      scrollDirection.current = 'down';
-    } else {
-      scrollDirection.current = 'up';
-    }
+    scrollDirection.current = currentScrollY > lastScrollY.current ? 'down' : 'up';
     lastScrollY.current = currentScrollY;
 
-    // Limpiar timeout anterior
     if (scrollTimeoutRef.current) {
       clearTimeout(scrollTimeoutRef.current);
     }
 
-    // Detectar sección actual después de que termine el scroll
     scrollTimeoutRef.current = setTimeout(() => {
       setIsScrolling(false);
       const currentSection = detectCurrentSection();
       if (currentSection) {
         onSectionChange(currentSection);
       }
-    }, 150); // Delay para evitar cambios muy frecuentes
+    }, 150);
   }, [isScrolling, detectCurrentSection, onSectionChange]);
 
   // Función para manejar scroll táctil en móvil
   const handleTouchEnd = useCallback(() => {
-    // Pequeño delay para que termine la animación de scroll
     setTimeout(() => {
       const currentSection = detectCurrentSection();
       if (currentSection) {
@@ -92,18 +82,15 @@ export const useMobileScrollDetection = ({
     const scrollContainer = document.getElementById('scroll-container');
     if (!scrollContainer) return;
 
-    // Event listeners para diferentes tipos de scroll
     scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
     scrollContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
-
-    // También escuchar scroll en la ventana para casos edge
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       scrollContainer.removeEventListener('scroll', handleScroll);
       scrollContainer.removeEventListener('touchend', handleTouchEnd);
       window.removeEventListener('scroll', handleScroll);
-      
+
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
