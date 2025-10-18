@@ -131,6 +131,7 @@ export default function Home() {
           scrollbar-width: none;
         }
       `}</style>
+      
     </div>
   );
 }
