@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Audiowide, Orbitron } from "next/font/google";
 import "./globals.css";
+import portfolioData from "@/data/portfolio.json";
 
 const audiowide = Audiowide({
   weight: "400",
@@ -15,8 +16,22 @@ const orbitron = Orbitron({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Portfolio con animaciones y rayos",
+  title: portfolioData.seo.title,
+  description: portfolioData.seo.description,
+  keywords: portfolioData.seo.keywords,
+  authors: [{ name: portfolioData.seo.author }],
+  openGraph: {
+    title: portfolioData.seo.title,
+    description: portfolioData.seo.description,
+    url: portfolioData.seo.url,
+    siteName: portfolioData.personalInfo.name,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: portfolioData.seo.title,
+    description: portfolioData.seo.description,
+  },
 };
 
 export default function RootLayout({

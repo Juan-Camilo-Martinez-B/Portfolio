@@ -1,0 +1,218 @@
+{
+  "personalInfo": {
+    "name": "Juan Camilo Martínez",
+    "title": "Ingeniero de Software",
+    "description": "Ingeniero de software que cree en la innovación como motor para construir un futuro más tecnológico y lleno de posibilidades.",
+    "email": "correo@ejemplo.com",
+    "phone": "+57 300 123 4567",
+    "location": "Colombia",
+    "avatar": "/images/avatar.jpg",
+    "social": {
+      "github": "https://github.com/juancamilo",
+      "linkedin": "https://linkedin.com/in/juancamilo",
+      "twitter": "https://twitter.com/juancamilo",
+      "instagram": "https://instagram.com/juancamilo"
+    }
+  },
+  "hero": {
+    "title": "Soy Juan Camilo Martínez",
+    "subtitle": "Ingeniero de software que cree en la innovación como motor para construir un futuro más tecnológico y lleno de posibilidades.",
+    "specializations": [
+      {
+        "title": "Especialización",
+        "description": "Desarrollo web moderno con React, Next.js y TypeScript"
+      },
+      {
+        "title": "Enfoque",
+        "description": "Soluciones escalables y experiencias de usuario excepcionales"
+      }
+    ]
+  },
+  "about": {
+    "title": "Sobre mí",
+    "description": "Soy un apasionado por la tecnología y el desarrollo de software. Me gusta resolver problemas mediante soluciones creativas y funcionales, siempre buscando aprender nuevas herramientas y metodologías.",
+    "sections": [
+      {
+        "title": "Experiencia",
+        "items": [
+          "Desarrollo web full-stack",
+          "Arquitectura de aplicaciones escalables",
+          "Optimización de rendimiento"
+        ]
+      },
+      {
+        "title": "Filosofía",
+        "items": [
+          "Código limpio y mantenible",
+          "Aprendizaje continuo",
+          "Colaboración efectiva"
+        ]
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": "project-1",
+      "title": "E-Commerce Platform",
+      "description": "Plataforma de comercio electrónico completa construida con Next.js, TypeScript y Stripe para pagos.",
+      "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Stripe", "MongoDB"],
+      "githubUrl": "https://github.com/juancamilo/ecommerce-platform",
+      "liveUrl": "https://ecommerce-demo.vercel.app",
+      "imageUrl": "/images/projects/ecommerce.jpg",
+      "featured": true
+    },
+    {
+      "id": "project-2",
+      "title": "Task Management API",
+      "description": "API RESTful robusta para gestión de tareas construida con Node.js, Express y autenticación JWT.",
+      "technologies": ["Node.js", "Express", "MongoDB", "JWT", "Redis"],
+      "githubUrl": "https://github.com/juancamilo/task-api",
+      "liveUrl": "https://task-api-demo.herokuapp.com",
+      "imageUrl": "/images/projects/task-api.jpg",
+      "featured": true
+    },
+    {
+      "id": "project-3",
+      "title": "Analytics Dashboard",
+      "description": "Dashboard interactivo con visualizaciones de datos en tiempo real y métricas avanzadas.",
+      "technologies": ["React", "D3.js", "Chart.js", "Material-UI", "WebSocket"],
+      "githubUrl": "https://github.com/juancamilo/analytics-dashboard",
+      "liveUrl": "https://analytics-demo.netlify.app",
+      "imageUrl": "/images/projects/dashboard.jpg",
+      "featured": false
+    },
+    {
+      "id": "project-4",
+      "title": "Portfolio Website",
+      "description": "Sitio web personal con efectos visuales avanzados y diseño responsive.",
+      "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "WebGL", "Framer Motion"],
+      "githubUrl": "https://github.com/juancamilo/portfolio",
+      "liveUrl": "https://juancamilo.dev",
+      "imageUrl": "/images/projects/portfolio.jpg",
+      "featured": true
+    }
+  ],
+  "skills": {
+    "frontend": [
+      { "name": "React", "level": "expert", "years": 4 },
+      { "name": "Next.js", "level": "advanced", "years": 3 },
+      { "name": "TypeScript", "level": "advanced", "years": 3 },
+      { "name": "Tailwind CSS", "level": "advanced", "years": 2 },
+      { "name": "JavaScript", "level": "expert", "years": 5 }
+    ],
+    "backend": [
+      { "name": "Node.js", "level": "intermediate", "years": 2 },
+      { "name": "Express", "level": "intermediate", "years": 2 },
+      { "name": "MongoDB", "level": "intermediate", "years": 2 },
+      { "name": "PostgreSQL", "level": "beginner", "years": 1 }
+    ],
+    "tools": [
+      { "name": "Git/GitHub", "level": "advanced", "years": 4 },
+      { "name": "Docker", "level": "intermediate", "years": 1 },
+      { "name": "AWS", "level": "beginner", "years": 1 },
+      { "name": "Figma", "level": "intermediate", "years": 2 }
+    ],
+    "languages": [
+      { "name": "JavaScript", "level": "expert", "years": 5 },
+      { "name": "TypeScript", "level": "advanced", "years": 3 },
+      { "name": "Python", "level": "intermediate", "years": 2 },
+      { "name": "Java", "level": "beginner", "years": 1 }
+    ]
+  },
+  "experience": [
+    {
+      "id": "exp-1",
+      "title": "Desarrollador Frontend Senior",
+      "company": "TechCorp Solutions",
+      "period": "2022 - Presente",
+      "description": "Desarrollo de aplicaciones web modernas con React y Next.js, liderando proyectos de gran escala.",
+      "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+      "achievements": [
+        "Mejoré el rendimiento de la aplicación en un 40%",
+        "Implementé sistema de diseño consistente",
+        "Mentor de desarrolladores junior"
+      ]
+    },
+    {
+      "id": "exp-2",
+      "title": "Desarrollador Full Stack",
+      "company": "StartupXYZ",
+      "period": "2021 - 2022",
+      "description": "Desarrollo de aplicaciones web completas desde el frontend hasta el backend.",
+      "technologies": ["React", "Node.js", "MongoDB", "Express"],
+      "achievements": [
+        "Desarrollé 3 aplicaciones web desde cero",
+        "Implementé sistema de autenticación seguro",
+        "Optimicé consultas de base de datos"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "id": "edu-1",
+      "degree": "Ingeniería de Sistemas",
+      "institution": "Universidad Nacional de Colombia",
+      "period": "2018 - 2022",
+      "description": "Especialización en desarrollo de software y arquitectura de sistemas."
+    },
+    {
+      "id": "edu-2",
+      "degree": "Certificación AWS Cloud Practitioner",
+      "institution": "Amazon Web Services",
+      "period": "2023",
+      "description": "Fundamentos de computación en la nube y servicios AWS."
+    }
+  ],
+  "contact": {
+    "title": "Contacto",
+    "description": "¿Tienes un proyecto en mente? Me encantaría escuchar sobre él. Estoy siempre abierto a nuevas oportunidades y colaboraciones.",
+    "responseTime": "Tiempo de respuesta típico: 24-48 horas",
+    "form": {
+      "enabled": true,
+      "fields": [
+        { "name": "name", "label": "Nombre", "type": "text", "required": true },
+        { "name": "email", "label": "Email", "type": "email", "required": true },
+        { "name": "subject", "label": "Asunto", "type": "text", "required": true },
+        { "name": "message", "label": "Mensaje", "type": "textarea", "required": true }
+      ]
+    }
+  },
+  "navigation": [
+    { "id": "hero", "label": "Hero" },
+    { "id": "about", "label": "Sobre mí" },
+    { "id": "projects", "label": "Proyectos" },
+    { "id": "skills", "label": "Skills" },
+    { "id": "contact", "label": "Contacto" }
+  ],
+  "sidebar": {
+    "texts": {
+      "hero": "Transformo la incertidumbre en soluciones creativas y funcionales.",
+      "about": "Disfruto vivir experiencias que me den otras perspectivas de mis metas",
+      "projects": "Desarrollo iniciativas más simples para problemas reales. Creo alternativas de uso para experiencias de la vida cotidiana, basándome en métodos ya realizados para ofrecer otras opciones a los usuarios.",
+      "skills": "Siempre aprendiendo, siempre mejorando",
+      "contact": "No dudes en hablarme, tu proyecto puede ser mi próxima obsesión. Recuerda que las buenas ideas empiezan con un mensaje."
+    }
+  },
+  "theme": {
+    "colors": {
+      "primary": "#f97316",
+      "secondary": "#1f2937",
+      "background": "#000000",
+      "surface": "#1f2937",
+      "text": "#ffffff",
+      "textSecondary": "#d1d5db",
+      "textMuted": "#9ca3af"
+    },
+    "fonts": {
+      "primary": "Audiowide",
+      "secondary": "Orbitron"
+    }
+  },
+  "seo": {
+    "title": "Juan Camilo Martínez - Ingeniero de Software",
+    "description": "Portfolio de Juan Camilo Martínez, ingeniero de software especializado en desarrollo web moderno con React, Next.js y TypeScript.",
+    "keywords": ["desarrollador", "software", "react", "nextjs", "typescript", "frontend", "portfolio"],
+    "author": "Juan Camilo Martínez",
+    "url": "https://juancamilo.dev"
+  }
+}

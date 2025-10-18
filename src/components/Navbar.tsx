@@ -1,51 +1,46 @@
 "use client";
 
+import React from 'react';
+import { useNavigationData } from '@/hooks/usePortfolioData';
+import { scrollToSection } from '@/lib/utils';
+import Button from '@/components/ui/Button';
+
 interface NavbarProps {
   active: string;
   setActive: (id: string) => void;
 }
 
-export default function Navbar({ active, setActive }: NavbarProps) {
+const Navbar: React.FC<NavbarProps> = ({ active, setActive }) => {
+  const navigationItems = useNavigationData();
+
   const handleClick = (id: string) => {
     setActive(id);
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
+    scrollToSection(id);
   };
 
-  const navItems = [
-    { id: "hero", label: "Hero" },
-    { id: "about", label: "Sobre mí" },
-    { id: "projects", label: "Proyectos" },
-    { id: "skills", label: "Skills" },
-    { id: "contact", label: "Contacto" },
-  ];
-
   return (
-    <nav className="flex flex-wrap justify-center gap-2 sm:gap-3 px-2 sm:px-4 py-1 sm:py-2 font-audiowide text-sm sm:text-base">
-      {navItems.map((item) => (
-        <button
+    <nav className="flex flex-wrap justify-center gap-2 sm:gap-3 px-2 sm:px-4 py-1 sm:py-2">
+      {navigationItems.map((item) => (
+        <Button
           key={item.id}
+          variant={active === item.id ? 'primary' : 'outline'}
+          size="sm"
           onClick={() => handleClick(item.id)}
-          className={`px-3 sm:px-4 py-1 sm:py-2 rounded transition-colors duration-200 cursor-pointer
-            ${
-              active === item.id
-                ? "bg-orange-500 text-white"
-                : "bg-black border border-orange-500 text-white hover:bg-orange-600"
-            }`}
+          className="text-sm sm:text-base"
         >
           {item.label}
-        </button>
+        </Button>
       ))}
 
-      {/* Botones extra */}
-      <button className="bg-black border border-orange-500 px-3 sm:px-4 py-1 sm:py-2 rounded hover:bg-orange-600 transition-colors cursor-pointer">
+      {/* Botones de utilidad */}
+      <Button variant="outline" size="sm" className="text-sm sm:text-base">
         EN/ES
-      </button>
-      <button className="bg-black border border-orange-500 px-3 sm:px-4 py-1 sm:py-2 rounded hover:bg-orange-600 transition-colors cursor-pointer">
+      </Button>
+      <Button variant="outline" size="sm" className="text-sm sm:text-base">
         ☀️/🌙
-      </button>
+      </Button>
     </nav>
   );
-}
+};
+
+export default Navbar;
