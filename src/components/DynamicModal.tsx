@@ -13,6 +13,7 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0, width: 0, height: 0 });
 
   // Scroll infinito vertical automático
   useEffect(() => {
@@ -40,6 +41,33 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
     window.addEventListener('resize', checkIsDesktop);
     return () => window.removeEventListener('resize', checkIsDesktop);
   }, []);
+
+  // Calcular posición del modal basada en el contenedor principal
+  useEffect(() => {
+    if (!isOpen || !isDesktop) return;
+
+    const calculatePosition = () => {
+      const mainContainer = document.querySelector('#scroll-container');
+      if (mainContainer) {
+        const rect = mainContainer.getBoundingClientRect();
+        setModalPosition({
+          top: rect.top,
+          left: rect.right + (-145), // 8px de separación - más cerca
+          width: 320,
+          height: rect.height
+        });
+      }
+    };
+
+    calculatePosition();
+    window.addEventListener('resize', calculatePosition);
+    window.addEventListener('scroll', calculatePosition);
+    
+    return () => {
+      window.removeEventListener('resize', calculatePosition);
+      window.removeEventListener('scroll', calculatePosition);
+    };
+  }, [isOpen, isDesktop]);
 
   // Notificar cambio de contenido para desktop
   useEffect(() => {
@@ -224,10 +252,13 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
   // Renderizado para desktop (sidebar) - altura reducida
   return (
     <div 
-      className="fixed top-8 sm:top-12 h-[80vh] sm:h-[69vh] w-[320px] bg-gray-800 border-2 border-orange-500 rounded-xl shadow-2xl transform transition-all duration-500 ease-in-out ml-67"
+      className="fixed bg-gray-800 border-2 border-orange-500 rounded-xl shadow-2xl overflow-hidden transform transition-all duration-500 ease-in-out"
       style={{ 
         zIndex: 9999999,
-        left: isOpen ? 'calc(50% + 160px + 12px)' : 'calc(100% + 12px)', // Mismo espaciado que el sidebar izquierdo
+        top: `${modalPosition.top}px`,
+        left: `${modalPosition.left}px`,
+        width: `${modalPosition.width}px`,
+        height: `${modalPosition.height}px`,
         transform: isOpen ? 'translateX(0)' : 'translateX(100%)'
       }}
     >
