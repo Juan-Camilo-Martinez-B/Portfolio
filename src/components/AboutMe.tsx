@@ -1,6 +1,6 @@
-import React from 'react';
 import Button from '@/components/ui/Button';
 import { useAboutData } from '@/hooks/usePortfolioData';
+import React from 'react';
 
 interface AboutMeProps {
   onOpenModal: () => void;

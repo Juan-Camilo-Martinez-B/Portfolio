@@ -1,23 +1,24 @@
 "use client";
 
-import React, { useState } from "react";
 import AboutMe from "@/components/AboutMe";
 import Contact from "@/components/Contact";
 import CursorEffect from "@/components/CursorEffect";
+import DynamicModal from "@/components/DynamicModal";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Projects from "@/components/Projects";
 import Sidebar from "@/components/Sidebar";
 import Skills from "@/components/Skills";
 import Lightning from "@/components/StormBackground";
-import DynamicModal from "@/components/DynamicModal";
-import Section from "@/components/ui/Section";
 import Card from "@/components/ui/Card";
+import Section from "@/components/ui/Section";
 import { useResponsiveIntersectionObserver } from "@/hooks/useResponsiveIntersectionObserver";
+import React, { useState } from "react";
 
 export default function Home() {
   const { activeSection, setActiveSection, setSectionRef } = useResponsiveIntersectionObserver();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isContentShifted, setIsContentShifted] = useState(false);
 
   // Debug solo en consola
   React.useEffect(() => {
@@ -34,10 +35,18 @@ export default function Home() {
     setIsModalOpen(false);
   };
 
+  const handleContentShift = (shifted: boolean) => {
+    setIsContentShifted(shifted);
+  };
+
   return (
     <div className="relative min-h-screen bg-black text-white overflow-hidden flex flex-col">
       {/* Contenedor principal */}
-      <div className="relative z-10 flex flex-col md:flex-row justify-center items-start w-full pt-8 sm:pt-12 pb-20 sm:pb-25 px-3 sm:px-4 gap-3 sm:gap-4 max-w-[1200px] mx-auto h-[90vh] sm:h-[85vh]">
+      <div 
+        className={`relative z-10 flex flex-col md:flex-row justify-center items-start w-full pt-8 sm:pt-12 pb-20 sm:pb-25 px-3 sm:px-4 gap-3 sm:gap-4 max-w-[1200px] mx-auto h-[90vh] sm:h-[85vh] transition-all duration-500 ease-in-out ${
+          isContentShifted ? 'lg:transform lg:-translate-x-40' : ''
+        }`}
+      >
         {/* Sidebar */}
         <aside className="w-full md:w-[320px] h-[100px] sm:h-[120px] md:h-full flex-shrink-0">
           <Card className="h-full p-2 sm:p-3 overflow-auto md:overflow-hidden">
@@ -105,7 +114,8 @@ export default function Home() {
       {/* Modal dinámico - renderizado fuera del contenedor principal */}
       <DynamicModal 
         isOpen={isModalOpen} 
-        onClose={handleCloseModal} 
+        onClose={handleCloseModal}
+        onContentShift={handleContentShift}
       />
       
       {/* ocultar scrollbar */}
