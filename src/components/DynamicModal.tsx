@@ -52,7 +52,7 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
         const rect = mainContainer.getBoundingClientRect();
         setModalPosition({
           top: rect.top,
-          left: rect.right + (-145), // 8px de separación - más cerca
+          left: rect.right - 145, // 8px de separación - más cerca
           width: 320,
           height: rect.height
         });

@@ -7,11 +7,12 @@ export interface NavItem {
 export interface Project {
   id: string;
   title: string;
-  description: string;
-  technologies: string[];
+  shortDescription: string;
+  fullDescription: string;
+  imageUrl: string;
+  technologies: Array<{ name: string; icon: string }>;
   githubUrl?: string;
   liveUrl?: string;
-  imageUrl?: string;
 }
 
 export interface Skill {

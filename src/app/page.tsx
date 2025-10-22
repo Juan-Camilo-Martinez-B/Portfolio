@@ -6,6 +6,7 @@ import CursorEffect from "@/components/CursorEffect";
 import DynamicModal from "@/components/DynamicModal";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import ProjectDetailsModal from "@/components/ProjectDetailsModal";
 import Projects from "@/components/Projects";
 import Sidebar from "@/components/Sidebar";
 import Skills from "@/components/Skills";
@@ -15,10 +16,23 @@ import Section from "@/components/ui/Section";
 import { useResponsiveIntersectionObserver } from "@/hooks/useResponsiveIntersectionObserver";
 import React, { useState } from "react";
 
+interface Project {
+  id: string;
+  title: string;
+  shortDescription: string;
+  fullDescription: string;
+  imageUrl: string;
+  technologies: Array<{ name: string; icon: string }>;
+  githubUrl?: string;
+  liveUrl?: string;
+}
+
 export default function Home() {
   const { activeSection, setActiveSection, setSectionRef } = useResponsiveIntersectionObserver();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isContentShifted, setIsContentShifted] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isAboutModalShifted, setIsAboutModalShifted] = useState(false);
+  const [isProjectModalShifted, setIsProjectModalShifted] = useState(false);
 
   // Debug solo en consola
   React.useEffect(() => {
@@ -35,9 +49,24 @@ export default function Home() {
     setIsModalOpen(false);
   };
 
-  const handleContentShift = (shifted: boolean) => {
-    setIsContentShifted(shifted);
+  const handleModalContentShift = (shifted: boolean) => {
+    setIsAboutModalShifted(shifted);
   };
+
+  const handleProjectSelect = (project: Project) => {
+    setSelectedProject(project);
+  };
+
+  const handleCloseProjectModal = () => {
+    setSelectedProject(null);
+  };
+
+  const handleProjectModalContentShift = (shifted: boolean) => {
+    setIsProjectModalShifted(shifted);
+  };
+
+  // Calcular si el contenido debe estar desplazado (cualquiera de los dos modales abierto)
+  const isContentShifted = isAboutModalShifted || isProjectModalShifted;
 
   return (
     <div className="relative min-h-screen bg-black text-white overflow-hidden flex flex-col">
@@ -78,7 +107,7 @@ export default function Home() {
               id="projects"
               ref={setSectionRef("projects")}
             >
-              <Projects />
+              <Projects onProjectSelect={handleProjectSelect} />
             </Section>
 
             <Section
@@ -115,7 +144,15 @@ export default function Home() {
       <DynamicModal 
         isOpen={isModalOpen} 
         onClose={handleCloseModal}
-        onContentShift={handleContentShift}
+        onContentShift={handleModalContentShift}
+      />
+
+      {/* Modal de detalles de proyecto - renderizado fuera del contenedor principal */}
+      <ProjectDetailsModal
+        isOpen={selectedProject !== null}
+        project={selectedProject}
+        onClose={handleCloseProjectModal}
+        onContentShift={handleProjectModalContentShift}
       />
       
       {/* ocultar scrollbar */}

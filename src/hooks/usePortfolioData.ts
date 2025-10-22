@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
 import portfolioData from '@/data/portfolio.json';
+import { useEffect, useState } from 'react';
 
 export interface PortfolioData {
   personalInfo: {
@@ -60,12 +60,12 @@ export interface PortfolioData {
   projects: Array<{
     id: string;
     title: string;
-    description: string;
-    technologies: string[];
+    shortDescription: string;
+    fullDescription: string;
+    imageUrl: string;
+    technologies: Array<{ name: string; icon: string }>;
     githubUrl?: string;
     liveUrl?: string;
-    imageUrl?: string;
-    featured: boolean;
   }>;
   skills: {
     frontend: Array<{

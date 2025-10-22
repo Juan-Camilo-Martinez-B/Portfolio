@@ -90,43 +90,59 @@
   "projects": [
     {
       "id": "project-1",
-      "title": "E-Commerce Platform",
-      "description": "Plataforma de comercio electrónico completa construida con Next.js, TypeScript y Stripe para pagos.",
-      "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Stripe", "MongoDB"],
-      "githubUrl": "https://github.com/juancamilo/ecommerce-platform",
-      "liveUrl": "https://ecommerce-demo.vercel.app",
-      "imageUrl": "/images/projects/ecommerce.jpg",
-      "featured": true
+      "title": "Sistema de control de acceso",
+      "shortDescription": "Control de acceso para edificios y conjuntos residenciales",
+      "fullDescription": "Sistema que controla el acceso a un conjunto de rutas ya establecidas, permitiendo entrada y salida de personas del conjunto lugar",
+      "imageUrl": "/images/projects/access-control.jpg",
+      "technologies": [
+        { "name": "Python", "icon": "🐍" },
+        { "name": "React", "icon": "⚛️" },
+        { "name": "Node.js", "icon": "🟢" }
+      ],
+      "githubUrl": "https://github.com/juancamilo/access-control",
+      "liveUrl": "https://access-control-demo.vercel.app"
     },
     {
       "id": "project-2",
-      "title": "Task Management API",
-      "description": "API RESTful robusta para gestión de tareas construida con Node.js, Express y autenticación JWT.",
-      "technologies": ["Node.js", "Express", "MongoDB", "JWT", "Redis"],
-      "githubUrl": "https://github.com/juancamilo/task-api",
-      "liveUrl": "https://task-api-demo.herokuapp.com",
-      "imageUrl": "/images/projects/task-api.jpg",
-      "featured": true
+      "title": "Verificación",
+      "shortDescription": "Aplicación de escaneo de documentos y verificación",
+      "fullDescription": "Sistema de verificación de documentos mediante escaneo y reconocimiento óptico de caracteres para validación de identidad",
+      "imageUrl": "/images/projects/verification.jpg",
+      "technologies": [
+        { "name": "Python", "icon": "🐍" },
+        { "name": "TensorFlow", "icon": "🧠" },
+        { "name": "OpenCV", "icon": "👁️" }
+      ],
+      "githubUrl": "https://github.com/juancamilo/verification",
+      "liveUrl": "https://verification-demo.vercel.app"
     },
     {
       "id": "project-3",
-      "title": "Analytics Dashboard",
-      "description": "Dashboard interactivo con visualizaciones de datos en tiempo real y métricas avanzadas.",
-      "technologies": ["React", "D3.js", "Chart.js", "Material-UI", "WebSocket"],
-      "githubUrl": "https://github.com/juancamilo/analytics-dashboard",
-      "liveUrl": "https://analytics-demo.netlify.app",
-      "imageUrl": "/images/projects/dashboard.jpg",
-      "featured": false
+      "title": "Reproductor de música",
+      "shortDescription": "Aplicación de reproductor de música",
+      "fullDescription": "Reproductor de música moderno con interfaz intuitiva y funciones avanzadas de gestión de biblioteca musical",
+      "imageUrl": "/images/projects/music-player.jpg",
+      "technologies": [
+        { "name": "JavaScript", "icon": "📜" },
+        { "name": "React", "icon": "⚛️" },
+        { "name": "Web Audio API", "icon": "🎵" }
+      ],
+      "githubUrl": "https://github.com/juancamilo/music-player",
+      "liveUrl": "https://music-player-demo.vercel.app"
     },
     {
       "id": "project-4",
-      "title": "Portfolio Website",
-      "description": "Sitio web personal con efectos visuales avanzados y diseño responsive.",
-      "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "WebGL", "Framer Motion"],
-      "githubUrl": "https://github.com/juancamilo/portfolio",
-      "liveUrl": "https://juancamilo.dev",
-      "imageUrl": "/images/projects/portfolio.jpg",
-      "featured": true
+      "title": "Clima",
+      "shortDescription": "Servicio de búsqueda de clima por ubicación",
+      "fullDescription": "Aplicación de pronóstico del clima que permite búsqueda por ubicación y muestra información meteorológica detallada en tiempo real",
+      "imageUrl": "/images/projects/weather.jpg",
+      "technologies": [
+        { "name": "React", "icon": "⚛️" },
+        { "name": "API REST", "icon": "🔌" },
+        { "name": "TypeScript", "icon": "💙" }
+      ],
+      "githubUrl": "https://github.com/juancamilo/weather-app",
+      "liveUrl": "https://weather-app-demo.vercel.app"
     }
   ],
   "skills": {
