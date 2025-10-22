@@ -112,6 +112,40 @@ body {
   animation: fadeInUp 0.6s ease-out;
 }
 
+/* Animación de scroll infinito hacia la izquierda */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Animación de scroll infinito hacia la derecha */
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Animación de rotación lenta */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
 /* Responsive utilities */
 @media (max-width: 640px) {
   .mobile-padding {

@@ -70,23 +70,19 @@ export interface PortfolioData {
   skills: {
     frontend: Array<{
       name: string;
-      level: 'beginner' | 'intermediate' | 'advanced' | 'expert';
-      years: number;
+      icon: string;
     }>;
     backend: Array<{
       name: string;
-      level: 'beginner' | 'intermediate' | 'advanced' | 'expert';
-      years: number;
-    }>;
-    tools: Array<{
-      name: string;
-      level: 'beginner' | 'intermediate' | 'advanced' | 'expert';
-      years: number;
+      icon: string;
     }>;
     languages: Array<{
       name: string;
-      level: 'beginner' | 'intermediate' | 'advanced' | 'expert';
-      years: number;
+      icon: string;
+    }>;
+    tools: Array<{
+      name: string;
+      icon: string;
     }>;
   };
   experience: Array<{

@@ -1,5 +1,5 @@
 import { useAboutData } from '@/hooks/usePortfolioData';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface DynamicModalProps {
   isOpen: boolean;
@@ -13,22 +13,31 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
   const [isScrolling, setIsScrolling] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0, width: 0, height: 0 });
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   // Scroll infinito horizontal automático
   useEffect(() => {
-    if (!isOpen || !isScrolling) return;
+    if (!isOpen || !isScrolling || !scrollContainerRef.current) return;
 
     const scrollSpeed = 2; // Velocidad del scroll horizontal (más rápido)
     const interval = setInterval(() => {
-      setScrollPosition((prev) => {
-        // Calcular ancho total del contenido
-        const contentWidth = aboutData.modal.images.length * 320; // Ancho estimado del contenido
-        return prev >= contentWidth ? 0 : prev + scrollSpeed;
-      });
+      if (scrollContainerRef.current) {
+        const container = scrollContainerRef.current;
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        
+        if (container.scrollLeft >= maxScroll) {
+          // Reiniciar al inicio cuando llega al final
+          container.scrollLeft = 0;
+        } else {
+          container.scrollLeft += scrollSpeed;
+        }
+        
+        setScrollPosition(container.scrollLeft);
+      }
     }, 20); // Intervalo más corto para scroll más rápido
 
     return () => clearInterval(interval);
-  }, [isOpen, isScrolling, aboutData.modal.images.length]);
+  }, [isOpen, isScrolling]);
 
   // Detectar si es desktop
   useEffect(() => {
@@ -129,16 +138,14 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
 
           {/* Contenido con títulos verticales y scroll horizontal */}
           <div 
+            ref={scrollContainerRef}
             className="relative h-80 md:h-96 overflow-x-auto overflow-y-hidden bg-gray-800 no-scrollbar"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onTouchStart={handleMouseEnter}
             onTouchEnd={handleMouseLeave}
           >
-            <div
-              className="flex h-full transition-transform duration-75 ease-linear"
-              style={{ transform: `translateX(-${scrollPosition}px)` }}
-            >
+            <div className="flex h-full">
               {/* Duplicar imágenes para scroll infinito */}
               {[...aboutData.modal.images, ...aboutData.modal.images].map((image, index) => (
                 <div

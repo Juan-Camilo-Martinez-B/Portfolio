@@ -147,29 +147,32 @@
   ],
   "skills": {
     "frontend": [
-      { "name": "React", "level": "expert", "years": 4 },
-      { "name": "Next.js", "level": "advanced", "years": 3 },
-      { "name": "TypeScript", "level": "advanced", "years": 3 },
-      { "name": "Tailwind CSS", "level": "advanced", "years": 2 },
-      { "name": "JavaScript", "level": "expert", "years": 5 }
+      { "name": "React", "icon": "⚛️" },
+      { "name": "Next.js", "icon": "▲" },
+      { "name": "TypeScript", "icon": "💙" },
+      { "name": "Tailwind CSS", "icon": "🎨" },
+      { "name": "JavaScript", "icon": "📜" },
+      { "name": "Angular", "icon": "🅰️" }
     ],
     "backend": [
-      { "name": "Node.js", "level": "intermediate", "years": 2 },
-      { "name": "Express", "level": "intermediate", "years": 2 },
-      { "name": "MongoDB", "level": "intermediate", "years": 2 },
-      { "name": "PostgreSQL", "level": "beginner", "years": 1 }
-    ],
-    "tools": [
-      { "name": "Git/GitHub", "level": "advanced", "years": 4 },
-      { "name": "Docker", "level": "intermediate", "years": 1 },
-      { "name": "AWS", "level": "beginner", "years": 1 },
-      { "name": "Figma", "level": "intermediate", "years": 2 }
+      { "name": "Node.js", "icon": "🟢" },
+      { "name": "Spring Boot", "icon": "🍃" },
+      { "name": "MongoDB", "icon": "🍀" },
+      { "name": "PostgreSQL", "icon": "🐘" },
+      { "name": "C#", "icon": "♯" }
     ],
     "languages": [
-      { "name": "JavaScript", "level": "expert", "years": 5 },
-      { "name": "TypeScript", "level": "advanced", "years": 3 },
-      { "name": "Python", "level": "intermediate", "years": 2 },
-      { "name": "Java", "level": "beginner", "years": 1 }
+      { "name": "JavaScript", "icon": "📜" },
+      { "name": "TypeScript", "icon": "💙" },
+      { "name": "Python", "icon": "🐍" },
+      { "name": "Java", "icon": "☕" },
+      { "name": "C#", "icon": "♯" }
+    ],
+    "tools": [
+      { "name": "Git/GitHub", "icon": "🔧" },
+      { "name": "AWS", "icon": "☁️" },
+      { "name": "Figma", "icon": "🎯" },
+      { "name": "Visual Paradigm", "icon": "📐" }
     ]
   },
   "experience": [

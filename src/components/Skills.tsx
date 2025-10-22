@@ -1,28 +1,66 @@
-import React from 'react';
+'use client';
 import { useSkillsData } from '@/hooks/usePortfolioData';
+import React, { useState } from 'react';
+import {
+    FaAngular,
+    FaAws,
+    FaFigma,
+    FaGithub,
+    FaJava,
+    FaNode,
+    FaPython,
+    FaReact
+} from 'react-icons/fa';
+import {
+    SiDotnet,
+    SiJavascript,
+    SiMongodb,
+    SiNextdotjs,
+    SiPostgresql,
+    SiSpringboot,
+    SiTailwindcss,
+    SiTypescript
+} from 'react-icons/si';
+import { TbBrandVisualStudio } from 'react-icons/tb';
+
+interface Skill {
+  name: string;
+  icon: string;
+}
+
+// Mapeo de nombres de skills a componentes de iconos
+const skillIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  // Frontend
+  'React': FaReact,
+  'Next.js': SiNextdotjs,
+  'TypeScript': SiTypescript,
+  'Tailwind CSS': SiTailwindcss,
+  'JavaScript': SiJavascript,
+  'Angular': FaAngular,
+  // Backend
+  'Node.js': FaNode,
+  'Spring Boot': SiSpringboot,
+  'MongoDB': SiMongodb,
+  'PostgreSQL': SiPostgresql,
+  'C#': SiDotnet,
+  // Languages
+  'Python': FaPython,
+  'Java': FaJava,
+  // Tools
+  'Git/GitHub': FaGithub,
+  'AWS': FaAws,
+  'Figma': FaFigma,
+  'Visual Paradigm': TbBrandVisualStudio,
+};
 
 const Skills: React.FC = () => {
   const skillsData = useSkillsData();
-
-  const getLevelColor = (level: string) => {
-    switch (level) {
-      case 'expert': return 'bg-green-500';
-      case 'advanced': return 'bg-blue-500';
-      case 'intermediate': return 'bg-yellow-500';
-      case 'beginner': return 'bg-gray-500';
-      default: return 'bg-gray-500';
-    }
-  };
-
-  const getLevelText = (level: string) => {
-    switch (level) {
-      case 'expert': return 'Experto';
-      case 'advanced': return 'Avanzado';
-      case 'intermediate': return 'Intermedio';
-      case 'beginner': return 'Principiante';
-      default: return 'Principiante';
-    }
-  };
+  
+  // Estados independientes para cada sección
+  const [isScrollingFrontend, setIsScrollingFrontend] = useState(true);
+  const [isScrollingBackend, setIsScrollingBackend] = useState(true);
+  const [isScrollingLanguages, setIsScrollingLanguages] = useState(true);
+  const [isScrollingTools, setIsScrollingTools] = useState(true);
 
   const categoryLabels = {
     frontend: 'Frontend',
@@ -31,52 +69,124 @@ const Skills: React.FC = () => {
     tools: 'Herramientas',
   };
 
+  const renderSkillCarousel = (
+    skills: Skill[], 
+    isScrolling: boolean, 
+    setIsScrolling: (value: boolean) => void,
+    direction: 'left' | 'right'
+  ) => (
+    <div
+      className="relative overflow-hidden h-32"
+      onMouseEnter={() => setIsScrolling(false)}
+      onMouseLeave={() => setIsScrolling(true)}
+      onTouchStart={() => setIsScrolling(false)}
+      onTouchEnd={() => setIsScrolling(true)}
+    >
+      <div
+        className="flex gap-6 py-4 absolute"
+        style={{
+          animation: direction === 'left' 
+            ? 'scrollLeft 30s linear infinite' 
+            : 'scrollRight 30s linear infinite',
+          animationPlayState: isScrolling ? 'running' : 'paused'
+        }}
+      >
+        {/* Duplicar iconos para scroll infinito */}
+        {[...skills, ...skills, ...skills, ...skills].map((skill, index) => {
+          const IconComponent = skillIcons[skill.name];
+          
+          return (
+            <div
+              key={`${skill.name}-${index}`}
+              className="flex-shrink-0 flex flex-col items-center justify-center space-y-2 group"
+            >
+              {/* Icono circular animado con efectos futuristas */}
+              <div className="relative w-20 h-20">
+                {/* Anillo exterior que gira */}
+                <div className="absolute inset-0 rounded-full border-[3px] border-orange-500/40 animate-spin-slow" />
+                
+                {/* Icono principal */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 border-[3px] border-orange-500 flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-[360deg] group-hover:border-orange-400 group-hover:shadow-xl group-hover:shadow-orange-500/60 group-hover:from-orange-900/20 group-hover:to-gray-900">
+                  {IconComponent ? (
+                    <IconComponent className="text-4xl text-orange-500 filter group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500" />
+                  ) : (
+                    <span className="text-4xl filter group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500">{skill.icon}</span>
+                  )}
+                </div>
+                
+                {/* Pulso de energía */}
+                <div className="absolute inset-0 rounded-full bg-orange-500/20 blur-md opacity-0 group-hover:opacity-100 group-hover:animate-pulse" />
+              </div>
+              
+              {/* Nombre de la skill con efecto neón */}
+              <span className="text-white font-orbitron text-xs text-center w-24 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
+                {skill.name}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+
   return (
-    <div className="space-y-6">
-      <h2 className="text-3xl font-semibold text-orange-500 font-audiowide">
+    <div className="space-y-8">
+      <h2 className="text-3xl font-semibold text-orange-500 font-audiowide text-center">
         Skills
       </h2>
       
-      <div className="space-y-6">
-        {Object.entries(skillsData).map(([category, skills]) => (
-          <div key={category} className="space-y-3">
-            <h3 className="text-xl font-semibold text-orange-500 font-audiowide">
-              {categoryLabels[category as keyof typeof categoryLabels]}
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {skills.map((skill) => (
-                <div
-                  key={skill.name}
-                  className="border border-orange-500 p-3 rounded-lg space-y-2"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-300 font-orbitron font-medium text-sm">
-                      {skill.name}
-                    </span>
-                    <div className="flex items-center gap-1">
-                      <span className="text-xs text-gray-400 font-orbitron">
-                        {getLevelText(skill.level)}
-                      </span>
-                      <span className="text-xs text-orange-500 font-orbitron">
-                        {skill.years}a
-                      </span>
-                    </div>
-                  </div>
-                  <div className="w-full bg-gray-700 rounded-full h-1.5">
-                    <div
-                      className={`h-1.5 rounded-full ${getLevelColor(skill.level)}`}
-                      style={{
-                        width: skill.level === 'expert' ? '100%' :
-                               skill.level === 'advanced' ? '80%' :
-                               skill.level === 'intermediate' ? '60%' : '40%'
-                      }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
+      <div className="space-y-8">
+        {/* Frontend - Izquierda */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold text-orange-500 font-audiowide text-center">
+            {categoryLabels.frontend}
+          </h3>
+          {renderSkillCarousel(
+            skillsData.frontend as Skill[], 
+            isScrollingFrontend, 
+            setIsScrollingFrontend,
+            'left'
+          )}
+        </div>
+
+        {/* Backend - Derecha */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold text-orange-500 font-audiowide text-center">
+            {categoryLabels.backend}
+          </h3>
+          {renderSkillCarousel(
+            skillsData.backend as Skill[], 
+            isScrollingBackend, 
+            setIsScrollingBackend,
+            'right'
+          )}
+        </div>
+
+        {/* Languages - Izquierda */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold text-orange-500 font-audiowide text-center">
+            {categoryLabels.languages}
+          </h3>
+          {renderSkillCarousel(
+            skillsData.languages as Skill[], 
+            isScrollingLanguages, 
+            setIsScrollingLanguages,
+            'left'
+          )}
+        </div>
+
+        {/* Tools - Derecha */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold text-orange-500 font-audiowide text-center">
+            {categoryLabels.tools}
+          </h3>
+          {renderSkillCarousel(
+            skillsData.tools as Skill[], 
+            isScrollingTools, 
+            setIsScrollingTools,
+            'right'
+          )}
+        </div>
       </div>
     </div>
   );
