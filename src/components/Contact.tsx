@@ -2,6 +2,7 @@
 import Button from '@/components/ui/Button';
 import { useContactData, usePersonalInfo } from '@/hooks/usePortfolioData';
 import React, { useState } from 'react';
+import { FaInstagram, FaFacebook, FaLinkedin, FaGithub } from 'react-icons/fa';
 
 const Contact: React.FC = () => {
   const contactData = useContactData();
@@ -69,7 +70,7 @@ const Contact: React.FC = () => {
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-600 to-pink-500 border-2 border-orange-500 flex items-center justify-center hover:scale-110 transition-transform"
               >
-                <span className="text-white text-xl">📷</span>
+                <FaInstagram className="text-white text-xl" />
               </a>
 
               {/* Facebook */}
@@ -79,7 +80,7 @@ const Contact: React.FC = () => {
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-blue-600 border-2 border-orange-500 flex items-center justify-center hover:scale-110 transition-transform"
               >
-                <span className="text-white text-xl">f</span>
+                <FaFacebook className="text-white text-xl" />
               </a>
 
               {/* LinkedIn */}
@@ -89,7 +90,7 @@ const Contact: React.FC = () => {
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-blue-700 border-2 border-orange-500 flex items-center justify-center hover:scale-110 transition-transform"
               >
-                <span className="text-white text-xl">in</span>
+                <FaLinkedin className="text-white text-xl" />
               </a>
 
               {/* GitHub */}
@@ -99,17 +100,7 @@ const Contact: React.FC = () => {
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-gray-800 border-2 border-orange-500 flex items-center justify-center hover:scale-110 transition-transform"
               >
-                <span className="text-white text-xl">⚫</span>
-              </a>
-
-              {/* Otra red (Triangle) */}
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-700 border-2 border-orange-500 flex items-center justify-center hover:scale-110 transition-transform"
-              >
-                <span className="text-orange-500 text-xl">▲</span>
+                <FaGithub className="text-white text-xl" />
               </a>
             </div>
           </div>
