@@ -8,7 +8,7 @@ interface LightningProps {
 }
 
 const Lightning: React.FC<LightningProps> = ({
-  hue = 30, // Naranja (~30°)
+  hue = 24, // Naranja #f97316 (~24°)
   speed = 1.5,
   intensity = 1.2,
   size = 1.2,
@@ -96,23 +96,34 @@ const Lightning: React.FC<LightningProps> = ({
           uv.x *= iResolution.x / iResolution.y;
 
           vec3 finalColor = vec3(0.0);
-          vec3 baseColor = hsv2rgb(vec3(uHue / 360.0, 0.9, 1.0));
+          vec3 baseColor = hsv2rgb(vec3(uHue / 360.0, 0.91, 0.98));
 
-          // Tres posiciones de rayos
-          float offsets[3];
-          offsets[0] = -1.3;
-          offsets[1] = 0.0;
-          offsets[2] = 1.3;
-
-          for (int i = 0; i < 3; i++) {
-              vec2 pos = uv;
-              pos.x += offsets[i];
-              pos += 1.5 * fbm(pos * uSize + 0.6 * iTime * uSpeed) - 0.75;
-
-              float dist = abs(pos.x);
-              float brightness = pow(0.03 / (dist + 0.02), 1.5) * uIntensity;
-              finalColor += baseColor * brightness;
-          }
+          // Tres rayos con diferentes patrones de animación
+          
+          // Rayo 1 - Izquierda (movimiento rápido y errático)
+          vec2 pos1 = uv;
+          pos1.x += -1.3;
+          pos1 += 1.8 * fbm(pos1 * uSize * 1.3 + 0.8 * iTime * uSpeed) - 0.9;
+          float dist1 = abs(pos1.x);
+          float brightness1 = pow(0.03 / (dist1 + 0.02), 1.5) * uIntensity * 1.1;
+          finalColor += baseColor * brightness1;
+          
+          // Rayo 2 - Centro (movimiento lento y suave)
+          vec2 pos2 = uv;
+          pos2.x += 0.0;
+          pos2 += 1.2 * fbm(pos2 * uSize * 0.9 + 0.4 * iTime * uSpeed + 5.0) - 0.6;
+          float dist2 = abs(pos2.x);
+          float brightness2 = pow(0.03 / (dist2 + 0.02), 1.5) * uIntensity * 0.9;
+          finalColor += baseColor * brightness2;
+          
+          // Rayo 3 - Derecha (movimiento medio con pulsos)
+          vec2 pos3 = uv;
+          pos3.x += 1.3;
+          float pulse = sin(iTime * uSpeed * 2.0) * 0.3 + 1.0;
+          pos3 += 1.5 * fbm(pos3 * uSize * 1.1 + 0.6 * iTime * uSpeed + 10.0) - 0.75;
+          float dist3 = abs(pos3.x);
+          float brightness3 = pow(0.03 / (dist3 + 0.02), 1.5) * uIntensity * pulse;
+          finalColor += baseColor * brightness3;
 
           fragColor = vec4(finalColor, 1.0);
       }
