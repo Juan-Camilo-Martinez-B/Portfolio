@@ -15,18 +15,13 @@
     }
   },
   "hero": {
-    "title": "Soy Juan Camilo Martínez",
-    "subtitle": "Ingeniero de software que cree en la innovación como motor para construir un futuro más tecnológico y lleno de posibilidades.",
-    "specializations": [
-      {
-        "title": "Especialización",
-        "description": "Desarrollo web moderno con React, Next.js y TypeScript"
-      },
-      {
-        "title": "Enfoque",
-        "description": "Soluciones escalables y experiencias de usuario excepcionales"
-      }
-    ]
+    "image": "/images/avatar.jpg",
+    "name": "Soy Juan Camilo Martinez.",
+    "description": "Soy ingeniero de software y creo firmemente en la innovación como motor para construir un futuro más tecnológico y lleno de posibilidades.",
+    "cvButton": {
+      "text": "CV",
+      "url": "/cv/juan-camilo-martinez.pdf"
+    }
   },
   "about": {
     "title": "Sobre mí",

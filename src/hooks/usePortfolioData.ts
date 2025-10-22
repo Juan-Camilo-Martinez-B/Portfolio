@@ -18,12 +18,13 @@ export interface PortfolioData {
     };
   };
   hero: {
-    title: string;
-    subtitle: string;
-    specializations: Array<{
-      title: string;
-      description: string;
-    }>;
+    image: string;
+    name: string;
+    description: string;
+    cvButton: {
+      text: string;
+      url: string;
+    };
   };
   about: {
     title: string;
