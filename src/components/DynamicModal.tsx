@@ -1,5 +1,4 @@
 import { useAboutData } from '@/hooks/usePortfolioData';
-import { cn } from '@/lib/utils';
 import React, { useEffect, useState } from 'react';
 
 interface DynamicModalProps {
@@ -15,18 +14,18 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
   const [isDesktop, setIsDesktop] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0, width: 0, height: 0 });
 
-  // Scroll infinito vertical automático
+  // Scroll infinito horizontal automático
   useEffect(() => {
     if (!isOpen || !isScrolling) return;
 
-    const scrollSpeed = 0.5; // Velocidad del scroll vertical
+    const scrollSpeed = 2; // Velocidad del scroll horizontal (más rápido)
     const interval = setInterval(() => {
       setScrollPosition((prev) => {
-        // Calcular altura total del contenido (aproximadamente 600px por sección)
-        const contentHeight = aboutData.modal.images.length * 100 + 200; // Altura estimada del contenido
-        return prev >= contentHeight ? 0 : prev + scrollSpeed;
+        // Calcular ancho total del contenido
+        const contentWidth = aboutData.modal.images.length * 320; // Ancho estimado del contenido
+        return prev >= contentWidth ? 0 : prev + scrollSpeed;
       });
-    }, 50); // Intervalo para scroll suave
+    }, 20); // Intervalo más corto para scroll más rápido
 
     return () => clearInterval(interval);
   }, [isOpen, isScrolling, aboutData.modal.images.length]);
@@ -130,9 +129,11 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
 
           {/* Contenido con títulos verticales y scroll horizontal */}
           <div 
-            className="relative h-80 md:h-96 overflow-hidden bg-gray-800"
+            className="relative h-80 md:h-96 overflow-x-auto overflow-y-hidden bg-gray-800 no-scrollbar"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onTouchStart={handleMouseEnter}
+            onTouchEnd={handleMouseLeave}
           >
             <div
               className="flex h-full transition-transform duration-75 ease-linear"
@@ -207,23 +208,6 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
                   </div>
                 </div>
               ))}
-            </div>
-
-            {/* Indicador de scroll */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
-              <div className="flex space-x-2">
-                {aboutData.modal.images.map((_, index) => (
-                  <div
-                    key={index}
-                    className={cn(
-                      "w-2 h-2 rounded-full transition-colors duration-300",
-                      Math.floor(scrollPosition / 250) % aboutData.modal.images.length === index
-                        ? "bg-orange-500"
-                        : "bg-gray-500"
-                    )}
-                  />
-                ))}
-              </div>
             </div>
           </div>
 
