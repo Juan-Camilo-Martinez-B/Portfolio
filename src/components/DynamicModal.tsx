@@ -15,18 +15,24 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0, width: 0, height: 0 });
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // Scroll infinito horizontal automático
+  // Scroll automático (horizontal para mobile, vertical para desktop)
   useEffect(() => {
-    if (!isOpen || !isScrolling || !scrollContainerRef.current) return;
+    if (!isOpen || !isScrolling) return;
 
-    const scrollSpeed = 2; // Velocidad del scroll horizontal (más rápido)
+    const scrollSpeed = 2;
     const interval = setInterval(() => {
-      if (scrollContainerRef.current) {
+      if (isDesktop) {
+        // Scroll vertical para desktop
+        setScrollPosition((prev) => {
+          const maxScroll = 500; // Aproximado para el contenido
+          return prev >= maxScroll ? 0 : prev + scrollSpeed;
+        });
+      } else if (scrollContainerRef.current) {
+        // Scroll horizontal para mobile
         const container = scrollContainerRef.current;
         const maxScroll = container.scrollWidth - container.clientWidth;
         
         if (container.scrollLeft >= maxScroll) {
-          // Reiniciar al inicio cuando llega al final
           container.scrollLeft = 0;
         } else {
           container.scrollLeft += scrollSpeed;
@@ -34,10 +40,10 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
         
         setScrollPosition(container.scrollLeft);
       }
-    }, 20); // Intervalo más corto para scroll más rápido
+    }, 20);
 
     return () => clearInterval(interval);
-  }, [isOpen, isScrolling]);
+  }, [isOpen, isScrolling, isDesktop]);
 
   // Detectar si es desktop
   useEffect(() => {
@@ -282,7 +288,7 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             ref={(el) => {
-              if (el) {
+              if (el && isScrolling) {
                 el.scrollTop = scrollPosition;
               }
             }}
