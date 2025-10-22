@@ -28,19 +28,18 @@ const AboutMe: React.FC<AboutMeProps> = ({ onOpenModal }) => {
         </div>
 
         {/* Contenedor de textos izquierdo y derecho */}
-        <div className="w-full max-w-4xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="w-full max-w-4xl flex flex-col md:flex-row items-start justify-between gap-8 md:gap-12">
           {/* Texto izquierdo */}
-          <div className="text-center md:text-left md:w-1/3">
+          <div className="text-center md:text-left md:w-1/3 w-full">
+            <div className="hidden md:block w-full h-px bg-orange-500 mb-4"></div>
             <p className="text-white font-orbitron text-sm md:text-base leading-relaxed whitespace-pre-line">
               {aboutData.texts.left}
             </p>
           </div>
 
-          {/* Divisor vertical (visible en desktop) */}
-          <div className="hidden md:block w-px h-16 bg-orange-500"></div>
-
           {/* Texto derecho */}
-          <div className="text-center md:text-left md:w-1/3">
+          <div className="text-center md:text-left md:w-1/3 w-full">
+            <div className="hidden md:block w-full h-px bg-orange-500 mb-4"></div>
             <p className="text-white font-orbitron text-sm md:text-base leading-relaxed whitespace-pre-line">
               {aboutData.texts.right}
             </p>
