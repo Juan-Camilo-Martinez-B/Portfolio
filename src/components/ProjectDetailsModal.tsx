@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { FaPython, FaHtml5, FaAngular, FaBootstrap } from 'react-icons/fa';
-import { SiDjango, SiPostgresql, SiJavascript, SiCloudinary, SiTypescript, SiSass } from 'react-icons/si';
+import { FaAngular, FaBootstrap, FaHtml5, FaPython } from 'react-icons/fa';
+import { SiCloudinary, SiDjango, SiJavascript, SiPostgresql, SiSass, SiTypescript } from 'react-icons/si';
 
 interface Technology {
   name: string;
@@ -110,13 +110,13 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
           onClick={onClose}
         />
         
-        {/* Modal */}
+        {/* Modal - Ahora todo el contenido tiene scroll */}
         <div 
-          className="relative w-full max-w-2xl max-h-full bg-gray-800 border-2 border-orange-500 rounded-xl overflow-hidden shadow-2xl flex flex-col"
+          className="relative w-full max-w-2xl max-h-full bg-gray-800 border-2 border-orange-500 rounded-xl shadow-2xl overflow-y-auto no-scrollbar"
           style={{ zIndex: 9999999 }}
         >
           {/* Header con título */}
-          <div className="flex justify-between items-center p-5 border-b border-orange-500 bg-gray-900 flex-shrink-0">
+          <div className="sticky top-0 flex justify-between items-center p-5 border-b border-orange-500 bg-gray-900 z-10">
             <h2 className="text-xl font-audiowide text-orange-500">
               {project.title}
             </h2>
@@ -128,8 +128,8 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
             </button>
           </div>
 
-          {/* Contenido con scroll */}
-          <div className="flex-1 overflow-y-auto no-scrollbar p-6 space-y-8">
+          {/* Contenido */}
+          <div className="p-6 space-y-8">
             {/* Descripción */}
             <div>
               <h3 className="text-lg font-audiowide text-orange-500 mb-4">
@@ -192,7 +192,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
   // Renderizado para desktop (sidebar)
   return (
     <div 
-      className="fixed bg-gray-800 border-2 border-orange-500 rounded-xl shadow-2xl overflow-hidden transform transition-all duration-500 ease-in-out"
+      className="fixed bg-gray-800 border-2 border-orange-500 rounded-xl shadow-2xl transform transition-all duration-500 ease-in-out overflow-y-auto no-scrollbar"
       style={{ 
         zIndex: 9999999,
         top: `${modalPosition.top}px`,
@@ -202,90 +202,86 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
         transform: isOpen ? 'translateX(0)' : 'translateX(100%)'
       }}
     >
-      <div className="h-full flex flex-col">
-        {/* Header con imagen y título del proyecto */}
-        <div className="p-6 pb-4">
-          <div className="flex justify-end mb-4">
-            <button
-              onClick={onClose}
-              className="text-white hover:text-orange-500 transition-colors text-xl font-bold"
-            >
-              ×
-            </button>
-          </div>
-          
-          {/* Imagen del proyecto */}
-          <div className="w-full h-80 bg-gray-700 rounded-lg overflow-hidden mb-4 border-2 border-orange-500">
-            <img 
-              src={project.imageUrl} 
-              alt={project.title}
-              className="w-full h-full object-cover"
-            />
-          </div>
+      {/* Botón de cerrar sticky */}
+      <div className="sticky top-0 flex justify-end p-4 bg-gray-800 z-10">
+        <button
+          onClick={onClose}
+          className="text-white hover:text-orange-500 transition-colors text-xl font-bold"
+        >
+          ×
+        </button>
+      </div>
 
-          {/* Título del proyecto */}
-          <h2 className="text-lg font-audiowide text-orange-500 text-center">
-            {project.title}
-          </h2>
+      {/* Todo el contenido scrolleable */}
+      <div className="px-6 pb-6 space-y-4">
+        {/* Imagen del proyecto */}
+        <div className="w-full h-80 bg-gray-700 rounded-lg overflow-hidden border-2 border-orange-500">
+          <img 
+            src={project.imageUrl} 
+            alt={project.title}
+            className="w-full h-full object-cover"
+          />
         </div>
 
+        {/* Título del proyecto */}
+        <h2 className="text-lg font-audiowide text-orange-500 text-center">
+          {project.title}
+        </h2>
+
         {/* Línea separadora horizontal */}
-        <div className="h-[2px] bg-orange-500 mx-6" />
+        <div className="h-[2px] bg-orange-500" />
 
-        {/* Contenido */}
-        <div className="flex-1 overflow-y-auto no-scrollbar px-6 py-6 space-y-6">
-          {/* Descripción */}
-          <div>
-            <h3 className="text-base font-audiowide text-orange-500 mb-3">
-              Descripción
-            </h3>
-            <p className="text-gray-300 font-orbitron text-sm leading-relaxed">
-              {project.fullDescription}
-            </p>
-          </div>
+        {/* Descripción */}
+        <div>
+          <h3 className="text-base font-audiowide text-orange-500 mb-3">
+            Descripción
+          </h3>
+          <p className="text-gray-300 font-orbitron text-sm leading-relaxed">
+            {project.fullDescription}
+          </p>
+        </div>
 
-          {/* Línea separadora */}
-          <div className="w-full h-[1px] bg-orange-500" />
+        {/* Línea separadora */}
+        <div className="w-full h-[1px] bg-orange-500" />
 
-          {/* Stack */}
-          <div>
-            <h3 className="text-base font-audiowide text-orange-500 mb-4 text-center">
-              Stack
-            </h3>
-            <div className="flex justify-center gap-4 flex-wrap">
-              {project.technologies.map((tech) => {
-                const IconComponent = techIcons[tech.name];
-                return (
-                  <div
-                    key={tech.name}
-                    className="flex flex-col items-center justify-center space-y-1 group"
-                  >
-                    {/* Icono circular animado con efectos futuristas */}
-                    <div className="relative w-12 h-12">
-                      {/* Anillo exterior que gira */}
-                      <div className="absolute inset-0 rounded-full border-[2px] border-orange-500/40 animate-spin-slow" />
-                      
-                      {/* Icono principal */}
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 border-[2px] border-orange-500 flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-[360deg] group-hover:border-orange-400 group-hover:shadow-xl group-hover:shadow-orange-500/60 group-hover:from-orange-900/20 group-hover:to-gray-900">
-                        {IconComponent ? (
-                          <IconComponent className="text-xl text-orange-500 filter group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500" />
-                        ) : (
-                          <span className="text-xl filter group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500">{tech.icon}</span>
-                        )}
-                      </div>
-                      
-                      {/* Pulso de energía */}
-                      <div className="absolute inset-0 rounded-full bg-orange-500/20 blur-md opacity-0 group-hover:opacity-100 group-hover:animate-pulse" />
+        {/* Stack */}
+        <div>
+          <h3 className="text-base font-audiowide text-orange-500 mb-4 text-center">
+            Stack
+          </h3>
+          <div className="flex justify-center gap-4 flex-wrap">
+            {project.technologies.map((tech) => {
+              const IconComponent = techIcons[tech.name];
+              return (
+                <div
+                  key={tech.name}
+                  className="flex flex-col items-center justify-center space-y-1 group"
+                >
+                  {/* Icono circular animado con efectos futuristas */}
+                  <div className="relative w-12 h-12">
+                    {/* Anillo exterior que gira */}
+                    <div className="absolute inset-0 rounded-full border-[2px] border-orange-500/40 animate-spin-slow" />
+                    
+                    {/* Icono principal */}
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 border-[2px] border-orange-500 flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-[360deg] group-hover:border-orange-400 group-hover:shadow-xl group-hover:shadow-orange-500/60 group-hover:from-orange-900/20 group-hover:to-gray-900">
+                      {IconComponent ? (
+                        <IconComponent className="text-xl text-orange-500 filter group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500" />
+                      ) : (
+                        <span className="text-xl filter group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500">{tech.icon}</span>
+                      )}
                     </div>
                     
-                    {/* Nombre de la tecnología con efecto neón */}
-                    <span className="text-white font-orbitron text-[10px] text-center w-16 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
-                      {tech.name}
-                    </span>
+                    {/* Pulso de energía */}
+                    <div className="absolute inset-0 rounded-full bg-orange-500/20 blur-md opacity-0 group-hover:opacity-100 group-hover:animate-pulse" />
                   </div>
-                );
-              })}
-            </div>
+                  
+                  {/* Nombre de la tecnología con efecto neón */}
+                  <span className="text-white font-orbitron text-[10px] text-center w-16 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
+                    {tech.name}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
