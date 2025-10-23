@@ -10,7 +10,7 @@
     "social": {
       "github": "https://github.com/Juan-Camilo-Martinez-B",
       "linkedin": "https://www.linkedin.com/in/juan-camilo-martínez-bedoya-559568393",
-      "instagram": "https://instagram.com/juancamilo",
+      "instagram": "https://www.instagram.com/juan_camilo_m_b",
       "facebook": "https://facebook.com/juancamilo"
     }
   },
@@ -219,6 +219,7 @@
     "description": "¿Tienes un proyecto en mente? Me encantaría escuchar sobre él. Estoy siempre abierto a nuevas oportunidades y colaboraciones.",
     "responseTime": "Tiempo de respuesta típico: 24-48 horas",
     "contactInfo": {
+      "title": "Información de contacto",
       "location": {
         "label": "Ubicación",
         "value": "Pasto-Nariño",
@@ -234,6 +235,7 @@
       }
     },
     "form": {
+      "title": "Contáctame",
       "enabled": true,
       "fields": [
         { "name": "name", "label": "Tu nombre", "type": "text", "required": true },
@@ -242,7 +244,12 @@
         { "name": "message", "label": "Cuéntame más", "type": "textarea", "required": true }
       ],
       "submitButton": {
-        "text": "Envía propuesta"
+        "text": "Envía propuesta",
+        "loadingText": "Enviando..."
+      },
+      "messages": {
+        "success": "✅ ¡Mensaje enviado con éxito! Te responderé pronto.",
+        "error": "❌ Error al enviar el mensaje. Por favor, intenta nuevamente."
       }
     }
   },

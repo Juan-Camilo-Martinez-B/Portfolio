@@ -108,6 +108,7 @@ export interface PortfolioData {
     description: string;
     responseTime: string;
     contactInfo: {
+      title: string;
       location: {
         label: string;
         value: string;
@@ -123,6 +124,7 @@ export interface PortfolioData {
       };
     };
     form: {
+      title: string;
       enabled: boolean;
       fields: Array<{
         name: string;
@@ -132,6 +134,11 @@ export interface PortfolioData {
       }>;
       submitButton: {
         text: string;
+        loadingText: string;
+      };
+      messages: {
+        success: string;
+        error: string;
       };
     };
   };

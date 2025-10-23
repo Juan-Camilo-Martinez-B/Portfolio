@@ -88,7 +88,7 @@ const Contact: React.FC = () => {
         {/* Información de contacto */}
         <div className="bg-black border-2 border-orange-500 rounded-xl p-6">
           <h2 className="text-xl font-audiowide text-center mb-6 bg-orange-500 text-black py-2 rounded-lg">
-            Información de contacto
+            {contactData.contactInfo.title}
           </h2>
 
           <div className="space-y-4">
@@ -169,7 +169,7 @@ const Contact: React.FC = () => {
         {/* Formulario de contacto */}
         <div className="bg-black border-2 border-orange-500 rounded-xl p-6">
           <h2 className="text-xl font-audiowide text-center mb-6 bg-orange-500 text-black py-2 rounded-lg">
-            Contáctame
+            {contactData.form.title}
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -242,7 +242,7 @@ const Contact: React.FC = () => {
                 className="px-8 py-3 font-audiowide"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Enviando...' : contactData.form.submitButton.text}
+                {isSubmitting ? contactData.form.submitButton.loadingText : contactData.form.submitButton.text}
               </Button>
             </div>
 
@@ -250,7 +250,7 @@ const Contact: React.FC = () => {
             {submitStatus === 'success' && (
               <div className="mt-4 p-4 bg-green-500/20 border-2 border-green-500 rounded-lg">
                 <p className="text-green-400 font-orbitron text-sm text-center">
-                  ✅ ¡Mensaje enviado con éxito! Te responderé pronto.
+                  {contactData.form.messages.success}
                 </p>
               </div>
             )}
@@ -258,7 +258,7 @@ const Contact: React.FC = () => {
             {submitStatus === 'error' && (
               <div className="mt-4 p-4 bg-red-500/20 border-2 border-red-500 rounded-lg">
                 <p className="text-red-400 font-orbitron text-sm text-center">
-                  ❌ Error al enviar el mensaje. Por favor, intenta nuevamente.
+                  {contactData.form.messages.error}
                 </p>
               </div>
             )}
