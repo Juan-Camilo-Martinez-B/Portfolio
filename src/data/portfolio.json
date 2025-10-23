@@ -125,22 +125,23 @@
         { "name": "HTML5", "icon": "html5" },
         { "name": "Cloudinary", "icon": "cloudinary" }
       ],
-      "githubUrl": "https://github.com/juancamilo/music-player",
+      "githubUrl": "https://github.com/Juan-Camilo-Martinez-B/MP3.git",
       "liveUrl": "https://mp3-f8on.onrender.com"
     },
     {
       "id": "project-4",
-      "title": "Clima",
-      "shortDescription": "Servicio de búsqueda de clima por ubicación",
-      "fullDescription": "Aplicación de pronóstico del clima que permite búsqueda por ubicación y muestra información meteorológica detallada en tiempo real",
-      "imageUrl": "/images/projects/weather.jpg",
+      "title": "ClimaGlobal",
+      "shortDescription": "Aplicación web meteorológica de nivel empresarial con Angular 19",
+      "fullDescription": "ClimaGlobal es una aplicación web meteorológica desarrollada con Angular 19 que permite consultar el clima en tiempo real de más de 200,000 ciudades alrededor del mundo. Destaca por su arquitectura profesional implementando 9 patrones de diseño clásicos y estructuras de datos eficientes. Incluye un sistema único de animaciones SVG dinámicas que genera hasta 350 partículas en tiempo real con efectos de lluvia, nieve y tormenta ultra realistas a 60 FPS constantes. Cuenta con caché inteligente que reduce peticiones HTTP en 60%, tipado fuerte al 100% con TypeScript, y un diseño visual moderno con glassmorphism, gradientes vibrantes y más de 30 microinteracciones fluidas. La aplicación implementa OnPush Change Detection, Lazy Loading y GPU-accelerated animations para un rendimiento óptimo.",
+      "imageUrl": "/images/projects/weather.png",
       "technologies": [
-        { "name": "React", "icon": "⚛️" },
-        { "name": "API REST", "icon": "🔌" },
-        { "name": "TypeScript", "icon": "💙" }
+        { "name": "Angular", "icon": "angular" },
+        { "name": "TypeScript", "icon": "typescript" },
+        { "name": "SCSS", "icon": "scss" },
+        { "name": "Bootstrap", "icon": "bootstrap" }
       ],
-      "githubUrl": "https://github.com/juancamilo/weather-app",
-      "liveUrl": "https://weather-app-demo.vercel.app"
+      "githubUrl": "https://github.com/Juan-Camilo-Martinez-B/Clima.git",
+      "liveUrl": "https://clima-one-ebon.vercel.app/home"
     }
   ],
   "skills": {

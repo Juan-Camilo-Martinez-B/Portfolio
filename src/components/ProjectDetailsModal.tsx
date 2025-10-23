@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { FaPython, FaHtml5 } from 'react-icons/fa';
-import { SiDjango, SiPostgresql, SiJavascript, SiCloudinary } from 'react-icons/si';
+import { FaPython, FaHtml5, FaAngular, FaBootstrap } from 'react-icons/fa';
+import { SiDjango, SiPostgresql, SiJavascript, SiCloudinary, SiTypescript, SiSass } from 'react-icons/si';
 
 interface Technology {
   name: string;
@@ -15,6 +15,10 @@ const techIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   'JavaScript': SiJavascript,
   'HTML5': FaHtml5,
   'Cloudinary': SiCloudinary,
+  'Angular': FaAngular,
+  'TypeScript': SiTypescript,
+  'SCSS': SiSass,
+  'Bootstrap': FaBootstrap,
 };
 
 interface Project {
