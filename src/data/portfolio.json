@@ -3,15 +3,15 @@
     "name": "Juan Camilo Martínez",
     "title": "Ingeniero de Software",
     "description": "Ingeniero de software que cree en la innovación como motor para construir un futuro más tecnológico y lleno de posibilidades.",
-    "email": "correo@ejemplo.com",
+    "email": "martinez.b.juan.camilo@gmail.com",
     "phone": "+57 300 123 4567",
-    "location": "Colombia",
+    "location": "Pasto-Nariño",
     "avatar": "/images/avatar.jpg",
     "social": {
-      "github": "https://github.com/juancamilo",
-      "linkedin": "https://linkedin.com/in/juancamilo",
-      "twitter": "https://twitter.com/juancamilo",
-      "instagram": "https://instagram.com/juancamilo"
+      "github": "https://github.com/Juan-Camilo-Martinez-B",
+      "linkedin": "https://www.linkedin.com/in/juan-camilo-martínez-bedoya-559568393",
+      "instagram": "https://instagram.com/juancamilo",
+      "facebook": "https://facebook.com/juancamilo"
     }
   },
   "hero": {
@@ -218,14 +218,32 @@
     "title": "Contacto",
     "description": "¿Tienes un proyecto en mente? Me encantaría escuchar sobre él. Estoy siempre abierto a nuevas oportunidades y colaboraciones.",
     "responseTime": "Tiempo de respuesta típico: 24-48 horas",
+    "contactInfo": {
+      "location": {
+        "label": "Ubicación",
+        "value": "Pasto-Nariño",
+        "icon": "flag-colombia"
+      },
+      "email": {
+        "label": "Email",
+        "value": "martinez.b.juan.camilo@gmail.com"
+      },
+      "availability": {
+        "label": "Disponibilidad",
+        "value": "Post horario laboral en días hábiles"
+      }
+    },
     "form": {
       "enabled": true,
       "fields": [
-        { "name": "name", "label": "Nombre", "type": "text", "required": true },
+        { "name": "name", "label": "Tu nombre", "type": "text", "required": true },
         { "name": "email", "label": "Email", "type": "email", "required": true },
-        { "name": "subject", "label": "Asunto", "type": "text", "required": true },
-        { "name": "message", "label": "Mensaje", "type": "textarea", "required": true }
-      ]
+        { "name": "projectType", "label": "Tipo de proyecto", "type": "text", "required": true },
+        { "name": "message", "label": "Cuéntame más", "type": "textarea", "required": true }
+      ],
+      "submitButton": {
+        "text": "Envía propuesta"
+      }
     }
   },
   "navigation": [

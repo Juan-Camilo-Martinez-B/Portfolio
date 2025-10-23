@@ -3,6 +3,8 @@ import Button from '@/components/ui/Button';
 import { useContactData, usePersonalInfo } from '@/hooks/usePortfolioData';
 import React, { useState } from 'react';
 import { FaInstagram, FaFacebook, FaLinkedin, FaGithub } from 'react-icons/fa';
+import { ReactCountryFlag } from 'react-country-flag';
+import emailjs from '@emailjs/browser';
 
 const Contact: React.FC = () => {
   const contactData = useContactData();
@@ -13,6 +15,8 @@ const Contact: React.FC = () => {
     projectType: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -22,10 +26,58 @@ const Contact: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí se manejaría el envío del formulario
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // Configurar EmailJS con las variables de entorno
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
+
+      // Preparar los parámetros del template
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        project_type: formData.projectType,
+        message: formData.message,
+      };
+
+      // Enviar el email
+      await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
+
+      // Éxito
+      setSubmitStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        projectType: '',
+        message: ''
+      });
+
+      // Limpiar mensaje de éxito después de 5 segundos
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 5000);
+
+    } catch (error) {
+      console.error('Error al enviar el email:', error);
+      setSubmitStatus('error');
+
+      // Limpiar mensaje de error después de 5 segundos
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -41,23 +93,31 @@ const Contact: React.FC = () => {
 
           <div className="space-y-4">
             {/* Ubicación */}
-            <div className="bg-gray-700 rounded-lg px-4 py-3">
+            <div className="bg-gray-700 rounded-lg px-4 py-3 flex items-center gap-3">
+              <ReactCountryFlag 
+                countryCode="CO" 
+                svg 
+                style={{
+                  fontSize: '2em',
+                  lineHeight: '2em',
+                }}
+              />
               <p className="text-white font-orbitron text-sm">
-                Ubicación
+                {contactData.contactInfo.location.value}
               </p>
             </div>
 
             {/* Email */}
             <div className="bg-gray-700 rounded-lg px-4 py-3">
               <p className="text-white font-orbitron text-sm">
-                Email
+                {contactData.contactInfo.email.value}
               </p>
             </div>
 
             {/* Disponibilidad */}
             <div className="bg-gray-700 rounded-lg px-4 py-3">
               <p className="text-white font-orbitron text-sm">
-                Disponibilidad
+                {contactData.contactInfo.availability.value}
               </p>
             </div>
 
@@ -75,7 +135,7 @@ const Contact: React.FC = () => {
 
               {/* Facebook */}
               <a
-                href="#"
+                href={personalInfo.social.facebook || '#'}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-blue-600 border-2 border-orange-500 flex items-center justify-center hover:scale-110 transition-transform"
@@ -117,29 +177,29 @@ const Contact: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-white font-orbitron text-sm mb-2">
-                  Tu nombre
+                  {contactData.form.fields[0].label}
                 </label>
                 <input
-                  type="text"
-                  name="name"
+                  type={contactData.form.fields[0].type}
+                  name={contactData.form.fields[0].name}
                   value={formData.name}
                   onChange={handleInputChange}
                   className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 font-orbitron text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  required
+                  required={contactData.form.fields[0].required}
                 />
               </div>
 
               <div>
                 <label className="block text-white font-orbitron text-sm mb-2">
-                  Email
+                  {contactData.form.fields[1].label}
                 </label>
                 <input
-                  type="email"
-                  name="email"
+                  type={contactData.form.fields[1].type}
+                  name={contactData.form.fields[1].name}
                   value={formData.email}
                   onChange={handleInputChange}
                   className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 font-orbitron text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  required
+                  required={contactData.form.fields[1].required}
                 />
               </div>
             </div>
@@ -147,30 +207,30 @@ const Contact: React.FC = () => {
             {/* Tipo de proyecto */}
             <div>
               <label className="block text-white font-orbitron text-sm mb-2">
-                Tipo de proyecto
+                {contactData.form.fields[2].label}
               </label>
               <input
-                type="text"
-                name="projectType"
+                type={contactData.form.fields[2].type}
+                name={contactData.form.fields[2].name}
                 value={formData.projectType}
                 onChange={handleInputChange}
                 className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 font-orbitron text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
-                required
+                required={contactData.form.fields[2].required}
               />
             </div>
 
             {/* Cuéntame más */}
             <div>
               <label className="block text-white font-orbitron text-sm mb-2">
-                Cuéntame más
+                {contactData.form.fields[3].label}
               </label>
               <textarea
-                name="message"
+                name={contactData.form.fields[3].name}
                 value={formData.message}
                 onChange={handleInputChange}
                 rows={4}
                 className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 font-orbitron text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none"
-                required
+                required={contactData.form.fields[3].required}
               />
             </div>
 
@@ -180,10 +240,28 @@ const Contact: React.FC = () => {
                 type="submit"
                 variant="primary"
                 className="px-8 py-3 font-audiowide"
+                disabled={isSubmitting}
               >
-                Envía propuesta
+                {isSubmitting ? 'Enviando...' : contactData.form.submitButton.text}
               </Button>
             </div>
+
+            {/* Mensajes de feedback */}
+            {submitStatus === 'success' && (
+              <div className="mt-4 p-4 bg-green-500/20 border-2 border-green-500 rounded-lg">
+                <p className="text-green-400 font-orbitron text-sm text-center">
+                  ✅ ¡Mensaje enviado con éxito! Te responderé pronto.
+                </p>
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="mt-4 p-4 bg-red-500/20 border-2 border-red-500 rounded-lg">
+                <p className="text-red-400 font-orbitron text-sm text-center">
+                  ❌ Error al enviar el mensaje. Por favor, intenta nuevamente.
+                </p>
+              </div>
+            )}
           </form>
         </div>
 

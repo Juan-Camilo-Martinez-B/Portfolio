@@ -15,6 +15,7 @@ export interface PortfolioData {
       linkedin: string;
       twitter?: string;
       instagram?: string;
+      facebook?: string;
     };
   };
   hero: {
@@ -106,6 +107,21 @@ export interface PortfolioData {
     title: string;
     description: string;
     responseTime: string;
+    contactInfo: {
+      location: {
+        label: string;
+        value: string;
+        icon: string;
+      };
+      email: {
+        label: string;
+        value: string;
+      };
+      availability: {
+        label: string;
+        value: string;
+      };
+    };
     form: {
       enabled: boolean;
       fields: Array<{
@@ -114,6 +130,9 @@ export interface PortfolioData {
         type: string;
         required: boolean;
       }>;
+      submitButton: {
+        text: string;
+      };
     };
   };
   navigation: Array<{

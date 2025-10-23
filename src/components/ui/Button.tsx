@@ -12,9 +12,10 @@ const Button: React.FC<ButtonProps> = ({
   size = 'md',
   className,
   children,
+  disabled,
   ...props
 }) => {
-  const baseClasses = 'font-audiowide rounded transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-black';
+  const baseClasses = 'font-audiowide rounded transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-black';
   
   const variants = {
     primary: 'bg-orange-500 text-white hover:bg-orange-600',
@@ -29,14 +30,20 @@ const Button: React.FC<ButtonProps> = ({
     lg: 'px-6 py-3 text-lg',
   };
 
+  const disabledClasses = disabled 
+    ? 'opacity-50 cursor-not-allowed' 
+    : 'cursor-pointer';
+
   return (
     <button
       className={cn(
         baseClasses,
         variants[variant],
         sizes[size],
+        disabledClasses,
         className
       )}
+      disabled={disabled}
       {...props}
     >
       {children}
