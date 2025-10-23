@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FaAngular, FaBootstrap, FaHtml5, FaPython } from 'react-icons/fa';
 import { SiCloudinary, SiDjango, SiJavascript, SiPostgresql, SiSass, SiTypescript } from 'react-icons/si';
+import Image from 'next/image';
 
 interface Technology {
   name: string;
@@ -215,11 +216,12 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
       {/* Todo el contenido scrolleable */}
       <div className="px-6 pb-6 space-y-4">
         {/* Imagen del proyecto */}
-        <div className="w-full h-80 bg-gray-700 rounded-lg overflow-hidden border-2 border-orange-500">
-          <img 
+        <div className="w-full h-80 bg-gray-700 rounded-lg overflow-hidden border-2 border-orange-500 relative">
+          <Image 
             src={project.imageUrl} 
             alt={project.title}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
         </div>
 

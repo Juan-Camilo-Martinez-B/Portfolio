@@ -83,12 +83,13 @@ const Contact: React.FC = () => {
         setSubmitStatus('idle');
       }, 5000);
 
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const emailError = error as { message?: string; text?: string; status?: number };
       console.error('❌ Error al enviar el email:', error);
       console.error('Error completo:', JSON.stringify(error, null, 2));
-      console.error('Error message:', error?.message);
-      console.error('Error text:', error?.text);
-      console.error('Error status:', error?.status);
+      console.error('Error message:', emailError?.message);
+      console.error('Error text:', emailError?.text);
+      console.error('Error status:', emailError?.status);
       setSubmitStatus('error');
 
       // Limpiar mensaje de error después de 5 segundos

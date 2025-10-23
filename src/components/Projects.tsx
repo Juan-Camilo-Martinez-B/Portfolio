@@ -2,6 +2,7 @@
 import Button from '@/components/ui/Button';
 import { useProjectsData, useProjectsSectionData } from '@/hooks/usePortfolioData';
 import React from 'react';
+import Image from 'next/image';
 
 interface Project {
   id: string;
@@ -43,10 +44,11 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
           >
             {/* Imagen del proyecto */}
             <div className="w-full h-48 bg-gray-700 flex items-center justify-center overflow-hidden relative group">
-              <img 
+              <Image 
                 src={project.imageUrl} 
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
               {/* Overlay oscuro al hover */}
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

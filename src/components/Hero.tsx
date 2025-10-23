@@ -1,6 +1,5 @@
 import React from 'react';
 import { useHeroData } from '@/hooks/usePortfolioData';
-import Image from 'next/image';
 import Button from '@/components/ui/Button';
 
 const Hero: React.FC = () => {
