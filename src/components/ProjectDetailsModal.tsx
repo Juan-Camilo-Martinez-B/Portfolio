@@ -1,9 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import { FaPython, FaHtml5 } from 'react-icons/fa';
+import { SiDjango, SiPostgresql, SiJavascript, SiCloudinary } from 'react-icons/si';
 
 interface Technology {
   name: string;
   icon: string;
 }
+
+// Mapeo de nombres de tecnologías a componentes de iconos
+const techIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  'Django': SiDjango,
+  'Python': FaPython,
+  'PostgreSQL': SiPostgresql,
+  'JavaScript': SiJavascript,
+  'HTML5': FaHtml5,
+  'Cloudinary': SiCloudinary,
+};
 
 interface Project {
   id: string;
@@ -129,19 +141,42 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
 
             {/* Stack */}
             <div>
-              <h3 className="text-lg font-audiowide text-orange-500 mb-6">
+              <h3 className="text-lg font-audiowide text-orange-500 mb-6 text-center">
                 Stack
               </h3>
-              <div className="flex justify-center gap-6">
-                {project.technologies.map((tech) => (
-                  <div
-                    key={tech.name}
-                    className="w-16 h-16 rounded-full bg-gray-700 border-2 border-orange-500 flex items-center justify-center"
-                    title={tech.name}
-                  >
-                    <span className="text-3xl">{tech.icon}</span>
-                  </div>
-                ))}
+              <div className="flex justify-center gap-6 flex-wrap">
+                {project.technologies.map((tech) => {
+                  const IconComponent = techIcons[tech.name];
+                  return (
+                    <div
+                      key={tech.name}
+                      className="flex flex-col items-center justify-center space-y-2 group"
+                    >
+                      {/* Icono circular animado con efectos futuristas */}
+                      <div className="relative w-16 h-16">
+                        {/* Anillo exterior que gira */}
+                        <div className="absolute inset-0 rounded-full border-[2px] border-orange-500/40 animate-spin-slow" />
+                        
+                        {/* Icono principal */}
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 border-[2px] border-orange-500 flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-[360deg] group-hover:border-orange-400 group-hover:shadow-xl group-hover:shadow-orange-500/60 group-hover:from-orange-900/20 group-hover:to-gray-900">
+                          {IconComponent ? (
+                            <IconComponent className="text-3xl text-orange-500 filter group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500" />
+                          ) : (
+                            <span className="text-3xl filter group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500">{tech.icon}</span>
+                          )}
+                        </div>
+                        
+                        {/* Pulso de energía */}
+                        <div className="absolute inset-0 rounded-full bg-orange-500/20 blur-md opacity-0 group-hover:opacity-100 group-hover:animate-pulse" />
+                      </div>
+                      
+                      {/* Nombre de la tecnología con efecto neón */}
+                      <span className="text-white font-orbitron text-xs text-center w-20 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
+                        {tech.name}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -176,12 +211,12 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
           </div>
           
           {/* Imagen del proyecto */}
-          <div className="w-full h-32 bg-gray-700 rounded-lg flex items-center justify-center mb-4 border-2 border-orange-500">
-            <div className="w-full h-full rounded-lg bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center">
-              <span className="text-gray-400 text-sm font-orbitron">
-                {project.imageUrl.split('/').pop()?.replace('.jpg', '')}
-              </span>
-            </div>
+          <div className="w-full h-80 bg-gray-700 rounded-lg overflow-hidden mb-4 border-2 border-orange-500">
+            <img 
+              src={project.imageUrl} 
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
           </div>
 
           {/* Título del proyecto */}
@@ -210,19 +245,42 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
 
           {/* Stack */}
           <div>
-            <h3 className="text-base font-audiowide text-orange-500 mb-4">
+            <h3 className="text-base font-audiowide text-orange-500 mb-4 text-center">
               Stack
             </h3>
-            <div className="flex justify-center gap-4">
-              {project.technologies.map((tech) => (
-                <div
-                  key={tech.name}
-                  className="w-12 h-12 rounded-full bg-gray-700 border-2 border-orange-500 flex items-center justify-center"
-                  title={tech.name}
-                >
-                  <span className="text-2xl">{tech.icon}</span>
-                </div>
-              ))}
+            <div className="flex justify-center gap-4 flex-wrap">
+              {project.technologies.map((tech) => {
+                const IconComponent = techIcons[tech.name];
+                return (
+                  <div
+                    key={tech.name}
+                    className="flex flex-col items-center justify-center space-y-1 group"
+                  >
+                    {/* Icono circular animado con efectos futuristas */}
+                    <div className="relative w-12 h-12">
+                      {/* Anillo exterior que gira */}
+                      <div className="absolute inset-0 rounded-full border-[2px] border-orange-500/40 animate-spin-slow" />
+                      
+                      {/* Icono principal */}
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 border-[2px] border-orange-500 flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-[360deg] group-hover:border-orange-400 group-hover:shadow-xl group-hover:shadow-orange-500/60 group-hover:from-orange-900/20 group-hover:to-gray-900">
+                        {IconComponent ? (
+                          <IconComponent className="text-xl text-orange-500 filter group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500" />
+                        ) : (
+                          <span className="text-xl filter group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500">{tech.icon}</span>
+                        )}
+                      </div>
+                      
+                      {/* Pulso de energía */}
+                      <div className="absolute inset-0 rounded-full bg-orange-500/20 blur-md opacity-0 group-hover:opacity-100 group-hover:animate-pulse" />
+                    </div>
+                    
+                    {/* Nombre de la tecnología con efecto neón */}
+                    <span className="text-white font-orbitron text-[10px] text-center w-16 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
+                      {tech.name}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

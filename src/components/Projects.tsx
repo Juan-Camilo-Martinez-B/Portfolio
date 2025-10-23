@@ -41,12 +41,14 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
             className="bg-gray-800 border-2 border-orange-500 rounded-xl overflow-hidden"
           >
             {/* Imagen del proyecto */}
-            <div className="w-full h-48 bg-gray-700 flex items-center justify-center">
-              <div className="w-full h-full bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center">
-                <span className="text-gray-400 text-sm font-orbitron">
-                  {project.imageUrl.split('/').pop()?.replace('.jpg', '')}
-                </span>
-              </div>
+            <div className="w-full h-48 bg-gray-700 flex items-center justify-center overflow-hidden relative group">
+              <img 
+                src={project.imageUrl} 
+                alt={project.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              {/* Overlay oscuro al hover */}
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
 
             {/* Contenido */}

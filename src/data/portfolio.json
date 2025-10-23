@@ -113,17 +113,20 @@
     },
     {
       "id": "project-3",
-      "title": "Reproductor de música",
-      "shortDescription": "Aplicación de reproductor de música",
-      "fullDescription": "Reproductor de música moderno con interfaz intuitiva y funciones avanzadas de gestión de biblioteca musical",
-      "imageUrl": "/images/projects/music-player.jpg",
+      "title": "MP3 Player Web",
+      "shortDescription": "Aplicación web moderna de reproductor de música con gestión de playlists",
+      "fullDescription": "MP3 Player Web es una aplicación web moderna que permite gestionar y reproducir tu biblioteca musical de forma intuitiva. Cuenta con descarga de canciones desde YouTube con conversión automática a MP3 (en modo local), sistema completo de playlists personalizadas con función de mezcla aleatoria y reordenamiento por arrastre. El reproductor incluye controles completos, barra de progreso interactiva, control de volumen y reproducción continua con transición automática entre canciones. Toda la música se almacena en la nube para acceso global. La aplicación opera en dos modos: desarrollo con todas las funciones habilitadas, y demostración con 25 canciones pre-cargadas.",
+      "imageUrl": "/images/projects/mp3-player.png",
       "technologies": [
-        { "name": "JavaScript", "icon": "📜" },
-        { "name": "React", "icon": "⚛️" },
-        { "name": "Web Audio API", "icon": "🎵" }
+        { "name": "Django", "icon": "django" },
+        { "name": "Python", "icon": "python" },
+        { "name": "PostgreSQL", "icon": "postgresql" },
+        { "name": "JavaScript", "icon": "javascript" },
+        { "name": "HTML5", "icon": "html5" },
+        { "name": "Cloudinary", "icon": "cloudinary" }
       ],
       "githubUrl": "https://github.com/juancamilo/music-player",
-      "liveUrl": "https://music-player-demo.vercel.app"
+      "liveUrl": "https://mp3-f8on.onrender.com"
     },
     {
       "id": "project-4",
