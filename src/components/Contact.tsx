@@ -1,10 +1,10 @@
 'use client';
 import Button from '@/components/ui/Button';
 import { useContactData, usePersonalInfo } from '@/hooks/usePortfolioData';
-import React, { useState } from 'react';
-import { FaInstagram, FaFacebook, FaLinkedin, FaGithub } from 'react-icons/fa';
-import { ReactCountryFlag } from 'react-country-flag';
 import emailjs from '@emailjs/browser';
+import React, { useState } from 'react';
+import { ReactCountryFlag } from 'react-country-flag';
+import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 const Contact: React.FC = () => {
   const contactData = useContactData();
@@ -33,9 +33,22 @@ const Contact: React.FC = () => {
 
     try {
       // Configurar EmailJS con las variables de entorno
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      console.log('🔍 Debug - Credenciales:');
+      console.log('Service ID:', serviceId);
+      console.log('Template ID:', templateId);
+      console.log('Public Key:', publicKey ? publicKey.substring(0, 5) + '...' : 'undefined');
+
+      // Validar que las variables de entorno existan
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS credentials are not configured');
+      }
+
+      // Inicializar EmailJS con la public key
+      emailjs.init(publicKey);
 
       // Preparar los parámetros del template
       const templateParams = {
@@ -45,13 +58,16 @@ const Contact: React.FC = () => {
         message: formData.message,
       };
 
+      console.log('📧 Enviando email con params:', templateParams);
+
       // Enviar el email
-      await emailjs.send(
+      const response = await emailjs.send(
         serviceId,
         templateId,
-        templateParams,
-        publicKey
+        templateParams
       );
+
+      console.log('✅ Email enviado exitosamente:', response);
 
       // Éxito
       setSubmitStatus('success');
@@ -67,8 +83,12 @@ const Contact: React.FC = () => {
         setSubmitStatus('idle');
       }, 5000);
 
-    } catch (error) {
-      console.error('Error al enviar el email:', error);
+    } catch (error: any) {
+      console.error('❌ Error al enviar el email:', error);
+      console.error('Error completo:', JSON.stringify(error, null, 2));
+      console.error('Error message:', error?.message);
+      console.error('Error text:', error?.text);
+      console.error('Error status:', error?.status);
       setSubmitStatus('error');
 
       // Limpiar mensaje de error después de 5 segundos
