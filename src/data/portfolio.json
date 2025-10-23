@@ -82,6 +82,13 @@
       ]
     }
   },
+  "projectsSection": {
+    "title": "Proyectos",
+    "buttons": {
+      "details": "Detalles",
+      "live": "Despliegue"
+    }
+  },
   "projects": [
     {
       "id": "project-1",
@@ -131,7 +138,7 @@
     {
       "id": "project-4",
       "title": "ClimaGlobal",
-      "shortDescription": "Aplicación web meteorológica de nivel empresarial con Angular 19",
+      "shortDescription": "Aplicación web meteorológica con Angular 19",
       "fullDescription": "ClimaGlobal es una aplicación web meteorológica desarrollada con Angular 19 que permite consultar el clima en tiempo real de más de 200,000 ciudades alrededor del mundo. Destaca por su arquitectura profesional implementando 9 patrones de diseño clásicos y estructuras de datos eficientes. Incluye un sistema único de animaciones SVG dinámicas que genera hasta 350 partículas en tiempo real con efectos de lluvia, nieve y tormenta ultra realistas a 60 FPS constantes. Cuenta con caché inteligente que reduce peticiones HTTP en 60%, tipado fuerte al 100% con TypeScript, y un diseño visual moderno con glassmorphism, gradientes vibrantes y más de 30 microinteracciones fluidas. La aplicación implementa OnPush Change Detection, Lazy Loading y GPU-accelerated animations para un rendimiento óptimo.",
       "imageUrl": "/images/projects/weather.png",
       "technologies": [

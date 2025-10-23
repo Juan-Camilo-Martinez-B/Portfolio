@@ -59,6 +59,13 @@ export interface PortfolioData {
       }>;
     };
   };
+  projectsSection: {
+    title: string;
+    buttons: {
+      details: string;
+      live: string;
+    };
+  };
   projects: Array<{
     id: string;
     title: string;
@@ -187,6 +194,11 @@ export const useHeroData = () => {
 export const useAboutData = () => {
   const data = usePortfolioData();
   return data.about;
+};
+
+export const useProjectsSectionData = () => {
+  const data = usePortfolioData();
+  return data.projectsSection;
 };
 
 export const useProjectsData = () => {

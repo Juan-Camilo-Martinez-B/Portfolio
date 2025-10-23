@@ -1,6 +1,6 @@
 'use client';
 import Button from '@/components/ui/Button';
-import { useProjectsData } from '@/hooks/usePortfolioData';
+import { useProjectsData, useProjectsSectionData } from '@/hooks/usePortfolioData';
 import React from 'react';
 
 interface Project {
@@ -19,6 +19,7 @@ interface ProjectsProps {
 }
 
 const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
+  const projectsSection = useProjectsSectionData();
   const projects = useProjectsData();
 
   const handleDetailsClick = (project: Project) => {
@@ -29,8 +30,8 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-3xl font-semibold text-orange-500 font-audiowide">
-        Proyectos
+      <h2 className="text-3xl font-semibold text-orange-500 font-audiowide text-center">
+        {projectsSection.title}
       </h2>
       
       {/* Grid de proyectos */}
@@ -69,7 +70,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                   onClick={() => handleDetailsClick(project)}
                   className="flex-1"
                 >
-                  Detalles
+                  {projectsSection.buttons.details}
                 </Button>
                 <Button
                   variant="outline"
@@ -77,7 +78,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                   onClick={() => window.open(project.liveUrl, '_blank')}
                   className="flex-1"
                 >
-                  Despliegue
+                  {projectsSection.buttons.live}
                 </Button>
               </div>
             </div>
