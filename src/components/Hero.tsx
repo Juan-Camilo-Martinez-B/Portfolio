@@ -1,6 +1,6 @@
-import React from 'react';
-import { useHeroData } from '@/hooks/usePortfolioData';
 import Button from '@/components/ui/Button';
+import { useHeroData } from '@/hooks/usePortfolioData';
+import React from 'react';
 
 const Hero: React.FC = () => {
   const heroData = useHeroData();
@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
       </h1>
       
       {/* Descripción */}
-      <p className="text-base sm:text-lg md:text-xl text-gray-300 font-audiowide text-center leading-relaxed max-w-2xl px-4">
+      <p className="text-base sm:text-lg md:text-xl text-white font-audiowide text-center leading-relaxed max-w-2xl px-4">
         {heroData.description}
       </p>
       

@@ -1,11 +1,11 @@
 'use client';
 import Button from '@/components/ui/Button';
 import { useProjectsData, useProjectsSectionData } from '@/hooks/usePortfolioData';
-import React from 'react';
 import Image from 'next/image';
+import React from 'react';
+import { BsCloudSunFill } from 'react-icons/bs';
 import { FaGithub } from 'react-icons/fa';
 import { HiLockClosed, HiMusicalNote } from 'react-icons/hi2';
-import { BsCloudSunFill } from 'react-icons/bs';
 
 interface Project {
   id: string;
