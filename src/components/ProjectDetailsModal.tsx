@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { FaAngular, FaBootstrap, FaHtml5, FaJava, FaPython, FaReact } from 'react-icons/fa';
-import { SiApachemaven, SiCloudinary, SiDjango, SiJavascript, SiMongodb, SiNextdotjs, SiPostgresql, SiRailway, SiSass, SiSpring, SiTailwindcss, SiTypescript, SiVercel } from 'react-icons/si';
-import { HiLockClosed, HiMusicalNote } from 'react-icons/hi2';
-import { BsCloudSunFill } from 'react-icons/bs';
 import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
+import { BsCloudSunFill } from 'react-icons/bs';
+import { FaAngular, FaBootstrap, FaHtml5, FaJava, FaPython, FaReact } from 'react-icons/fa';
+import { HiLockClosed, HiMusicalNote } from 'react-icons/hi2';
+import { SiApachemaven, SiCloudinary, SiDjango, SiJavascript, SiMongodb, SiNextdotjs, SiPostgresql, SiRailway, SiSass, SiSpring, SiTailwindcss, SiTypescript, SiVercel } from 'react-icons/si';
 
 interface Technology {
   name: string;
@@ -147,7 +147,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
               <h3 className="text-lg font-orbitron text-orange-500 mb-4">
                 Descripción
               </h3>
-              <p className="text-gray-300 font-audiowide text-base leading-relaxed">
+              <p className="text-white font-audiowide text-base leading-relaxed">
                 {project.fullDescription}
               </p>
             </div>
@@ -286,7 +286,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
           <h3 className="text-base font-orbitron text-orange-500 mb-3">
             Descripción
           </h3>
-          <p className="text-gray-300 font-audiowide text-sm leading-relaxed">
+          <p className="text-white font-audiowide text-sm leading-relaxed">
             {project.fullDescription}
           </p>
         </div>

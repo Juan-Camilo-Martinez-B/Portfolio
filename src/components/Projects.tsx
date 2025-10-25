@@ -160,7 +160,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                 )}
               </div>
               
-              <p className="text-gray-300 font-audiowide text-sm leading-relaxed">
+              <p className="text-white font-audiowide text-sm leading-relaxed">
                 {project.shortDescription}
               </p>
 
