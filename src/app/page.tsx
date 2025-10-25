@@ -69,10 +69,10 @@ export default function Home() {
   const isContentShifted = isAboutModalShifted || isProjectModalShifted;
 
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-hidden flex flex-col">
+    <div className="fixed inset-0 bg-black text-white overflow-hidden flex flex-col">
       {/* Contenedor principal */}
       <div 
-        className={`relative z-10 flex flex-col md:flex-row justify-center items-start w-full pt-8 sm:pt-12 pb-20 sm:pb-25 px-3 sm:px-4 gap-3 sm:gap-4 max-w-[1200px] mx-auto h-[90vh] sm:h-[85vh] transition-all duration-500 ease-in-out ${
+        className={`relative z-10 flex flex-col md:flex-row justify-center items-start w-full pt-2 sm:pt-12 pb-20 sm:pb-25 px-3 sm:px-4 gap-3 sm:gap-4 max-w-[1200px] mx-auto h-[calc(100vh-5rem)] sm:h-[85vh] transition-all duration-500 ease-in-out ${
           isContentShifted ? 'lg:transform lg:-translate-x-40' : ''
         }`}
       >
@@ -137,8 +137,10 @@ export default function Home() {
 
       {/* Efecto del cursor */}
       <CursorEffect />
-      {/* Fondo animado */}
-      <Lightning/>
+      {/* Fondo animado - Fixed */}
+      <div className="fixed inset-0 z-0">
+        <Lightning/>
+      </div>
       
       {/* Modal dinámico - renderizado fuera del contenedor principal */}
       <DynamicModal 
