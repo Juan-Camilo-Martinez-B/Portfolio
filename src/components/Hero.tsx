@@ -15,12 +15,12 @@ const Hero: React.FC = () => {
       </div>
       
       {/* Nombre */}
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-audiowide text-center leading-tight">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-orbitron text-center leading-tight">
         {heroData.name}
       </h1>
       
       {/* Descripción */}
-      <p className="text-base sm:text-lg md:text-xl text-gray-300 font-orbitron text-center leading-relaxed max-w-2xl px-4">
+      <p className="text-base sm:text-lg md:text-xl text-gray-300 font-audiowide text-center leading-relaxed max-w-2xl px-4">
         {heroData.description}
       </p>
       
@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
       <div className="pt-4 flex justify-center">
         <Button 
           onClick={() => window.open(heroData.cvButton.url, '_blank')}
-          className="px-8 py-3 text-lg font-audiowide"
+          className="px-8 py-3 text-lg font-orbitron"
         >
           {heroData.cvButton.text}
         </Button>

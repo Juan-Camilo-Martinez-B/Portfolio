@@ -195,7 +195,7 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
                     {/* Descripción arriba (solo para imágenes pares) */}
                     {image.id % 2 === 0 && (
                       <div className="max-w-32">
-                        <p className="text-white font-orbitron text-xs md:text-sm leading-relaxed text-center">
+                        <p className="text-white font-audiowide text-xs md:text-sm leading-relaxed text-center">
                           {image.description}
                         </p>
                       </div>
@@ -204,7 +204,7 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
                     {/* Imagen circular */}
                     <div className="w-32 md:w-40 h-32 md:h-40 border-2 border-orange-500 rounded-full bg-white flex items-center justify-center">
                       <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-100 to-gray-300 flex items-center justify-center">
-                        <span className="text-gray-600 text-xs font-orbitron">
+                        <span className="text-gray-600 text-xs font-audiowide">
                           {image.placeholder}
                         </span>
                       </div>
@@ -213,7 +213,7 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
                     {/* Descripción abajo (solo para imágenes impares) */}
                     {image.id % 2 === 1 && (
                       <div className="max-w-32">
-                        <p className="text-white font-orbitron text-xs md:text-sm leading-relaxed text-center">
+                        <p className="text-white font-audiowide text-xs md:text-sm leading-relaxed text-center">
                           {image.description}
                         </p>
                       </div>
@@ -229,13 +229,13 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
             <div className="flex justify-center space-x-4">
               <button
                 onClick={() => setIsScrolling(!isScrolling)}
-                className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-audiowide text-sm"
+                className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-orbitron text-sm"
               >
                 {isScrolling ? "Pausar" : "Reproducir"}
               </button>
               <button
                 onClick={() => setScrollPosition(0)}
-                className="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors font-audiowide text-sm"
+                className="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors font-orbitron text-sm"
               >
                 Reiniciar
               </button>
@@ -304,12 +304,12 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
                     <div key={image.id} className="flex items-center space-x-6">
                       <div className="w-20 h-20 border-2 border-orange-500 rounded-full bg-white flex items-center justify-center flex-shrink-0">
                         <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-100 to-gray-300 flex items-center justify-center">
-                          <span className="text-gray-600 text-base font-orbitron">
+                          <span className="text-gray-600 text-base font-audiowide">
                             {image.placeholder}
                           </span>
                         </div>
                       </div>
-                      <p className="text-white font-orbitron text-base leading-relaxed">
+                      <p className="text-white font-audiowide text-base leading-relaxed">
                         {image.description}
                       </p>
                     </div>
@@ -330,12 +330,12 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
                     <div key={image.id} className="flex items-center space-x-6">
                       <div className="w-20 h-20 border-2 border-orange-500 rounded-full bg-white flex items-center justify-center flex-shrink-0">
                         <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-100 to-gray-300 flex items-center justify-center">
-                          <span className="text-gray-600 text-base font-orbitron">
+                          <span className="text-gray-600 text-base font-audiowide">
                             {image.placeholder}
                           </span>
                         </div>
                       </div>
-                      <p className="text-white font-orbitron text-base leading-relaxed">
+                      <p className="text-white font-audiowide text-base leading-relaxed">
                         {image.description}
                       </p>
                     </div>
@@ -350,13 +350,13 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
             <div className="flex justify-center space-x-2">
               <button
                 onClick={() => setIsScrolling(!isScrolling)}
-                className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-audiowide text-sm"
+                className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-orbitron text-sm"
               >
                 {isScrolling ? "Pausar" : "Reproducir"}
               </button>
               <button
                 onClick={() => setScrollPosition(0)}
-                className="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors font-audiowide text-sm"
+                className="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors font-orbitron text-sm"
               >
                 Reiniciar
               </button>

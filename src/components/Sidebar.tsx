@@ -15,7 +15,7 @@ const Sidebar: React.FC<SidebarProps> = ({ active }) => {
       <div className="flex flex-row items-center gap-4 sm:hidden h-full">
         {/* Texto */}
         <div className="flex-1 flex items-center justify-center">
-          <p className="text-gray-300 font-orbitron text-sm leading-relaxed text-left">
+          <p className="text-gray-300 font-audiowide text-sm leading-relaxed text-left">
             {sidebarData.texts[active]}
           </p>
         </div>
@@ -41,7 +41,7 @@ const Sidebar: React.FC<SidebarProps> = ({ active }) => {
 
         {/* Texto */}
         <div className="flex-1 flex items-center">
-          <p className="text-gray-300 font-orbitron text-base leading-relaxed">
+          <p className="text-gray-300 font-audiowide text-base leading-relaxed">
             {sidebarData.texts[active]}
           </p>
         </div>

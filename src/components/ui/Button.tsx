@@ -15,7 +15,7 @@ const Button: React.FC<ButtonProps> = ({
   disabled,
   ...props
 }) => {
-  const baseClasses = 'font-audiowide rounded transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-black';
+  const baseClasses = 'font-orbitron rounded transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-black';
   
   const variants = {
     primary: 'bg-orange-500 text-white hover:bg-orange-600',

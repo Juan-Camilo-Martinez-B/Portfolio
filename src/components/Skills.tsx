@@ -119,7 +119,7 @@ const Skills: React.FC = () => {
               </div>
               
               {/* Nombre de la skill con efecto neón */}
-              <span className="text-white font-orbitron text-xs text-center w-24 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
+              <span className="text-white font-audiowide text-xs text-center w-24 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
                 {skill.name}
               </span>
             </div>
@@ -131,14 +131,14 @@ const Skills: React.FC = () => {
 
   return (
     <div className="space-y-8">
-      <h2 className="text-3xl font-semibold text-orange-500 font-audiowide text-center">
+      <h2 className="text-3xl font-semibold text-orange-500 font-orbitron text-center">
         Skills
       </h2>
       
       <div className="space-y-8">
         {/* Frontend - Izquierda */}
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-orange-500 font-audiowide text-center">
+          <h3 className="text-xl font-semibold text-orange-500 font-orbitron text-center">
             {categoryLabels.frontend}
           </h3>
           {renderSkillCarousel(
@@ -151,7 +151,7 @@ const Skills: React.FC = () => {
 
         {/* Backend - Derecha */}
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-orange-500 font-audiowide text-center">
+          <h3 className="text-xl font-semibold text-orange-500 font-orbitron text-center">
             {categoryLabels.backend}
           </h3>
           {renderSkillCarousel(
@@ -164,7 +164,7 @@ const Skills: React.FC = () => {
 
         {/* Languages - Izquierda */}
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-orange-500 font-audiowide text-center">
+          <h3 className="text-xl font-semibold text-orange-500 font-orbitron text-center">
             {categoryLabels.languages}
           </h3>
           {renderSkillCarousel(
@@ -177,7 +177,7 @@ const Skills: React.FC = () => {
 
         {/* Tools - Derecha */}
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-orange-500 font-audiowide text-center">
+          <h3 className="text-xl font-semibold text-orange-500 font-orbitron text-center">
             {categoryLabels.tools}
           </h3>
           {renderSkillCarousel(

@@ -129,7 +129,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
         >
           {/* Header con título */}
           <div className="sticky top-0 flex justify-between items-center p-5 border-b border-orange-500 bg-gray-900 z-10">
-            <h2 className="text-xl font-audiowide text-orange-500">
+            <h2 className="text-xl font-orbitron text-orange-500">
               {project.title}
             </h2>
             <button
@@ -144,10 +144,10 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
           <div className="p-6 space-y-8">
             {/* Descripción */}
             <div>
-              <h3 className="text-lg font-audiowide text-orange-500 mb-4">
+              <h3 className="text-lg font-orbitron text-orange-500 mb-4">
                 Descripción
               </h3>
-              <p className="text-gray-300 font-orbitron text-base leading-relaxed">
+              <p className="text-gray-300 font-audiowide text-base leading-relaxed">
                 {project.fullDescription}
               </p>
             </div>
@@ -157,7 +157,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
 
             {/* Stack */}
             <div>
-              <h3 className="text-lg font-audiowide text-orange-500 mb-6 text-center">
+              <h3 className="text-lg font-orbitron text-orange-500 mb-6 text-center">
                 Stack
               </h3>
               <div className="flex justify-center gap-6 flex-wrap">
@@ -187,7 +187,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
                       </div>
                       
                       {/* Nombre de la tecnología con efecto neón */}
-                      <span className="text-white font-orbitron text-xs text-center w-20 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
+                      <span className="text-white font-audiowide text-xs text-center w-20 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
                         {tech.name}
                       </span>
                     </div>
@@ -274,7 +274,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
         </div>
 
         {/* Título del proyecto */}
-        <h2 className="text-lg font-audiowide text-orange-500 text-center">
+        <h2 className="text-lg font-orbitron text-orange-500 text-center">
           {project.title}
         </h2>
 
@@ -283,10 +283,10 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
 
         {/* Descripción */}
         <div>
-          <h3 className="text-base font-audiowide text-orange-500 mb-3">
+          <h3 className="text-base font-orbitron text-orange-500 mb-3">
             Descripción
           </h3>
-          <p className="text-gray-300 font-orbitron text-sm leading-relaxed">
+          <p className="text-gray-300 font-audiowide text-sm leading-relaxed">
             {project.fullDescription}
           </p>
         </div>
@@ -296,7 +296,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
 
         {/* Stack */}
         <div>
-          <h3 className="text-base font-audiowide text-orange-500 mb-4 text-center">
+          <h3 className="text-base font-orbitron text-orange-500 mb-4 text-center">
             Stack
           </h3>
           <div className="flex justify-center gap-4 flex-wrap">
@@ -326,7 +326,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
                   </div>
                   
                   {/* Nombre de la tecnología con efecto neón */}
-                  <span className="text-white font-orbitron text-[10px] text-center w-16 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
+                  <span className="text-white font-audiowide text-[10px] text-center w-16 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
                     {tech.name}
                   </span>
                 </div>

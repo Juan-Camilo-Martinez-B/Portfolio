@@ -108,7 +108,7 @@ const Contact: React.FC = () => {
         
         {/* Información de contacto */}
         <div className="bg-black border-2 border-orange-500 rounded-xl p-6">
-          <h2 className="text-xl font-audiowide text-center mb-6 bg-orange-500 text-black py-2 rounded-lg">
+          <h2 className="text-xl font-orbitron text-center mb-6 bg-orange-500 text-black py-2 rounded-lg">
             {contactData.contactInfo.title}
           </h2>
 
@@ -123,21 +123,21 @@ const Contact: React.FC = () => {
                   lineHeight: '2em',
                 }}
               />
-              <p className="text-white font-orbitron text-sm">
+              <p className="text-white font-audiowide text-sm">
                 {contactData.contactInfo.location.value}
               </p>
             </div>
 
             {/* Email */}
             <div className="bg-gray-700 rounded-lg px-4 py-3">
-              <p className="text-white font-orbitron text-sm">
+              <p className="text-white font-audiowide text-sm">
                 {contactData.contactInfo.email.value}
               </p>
             </div>
 
             {/* Disponibilidad */}
             <div className="bg-gray-700 rounded-lg px-4 py-3">
-              <p className="text-white font-orbitron text-sm">
+              <p className="text-white font-audiowide text-sm">
                 {contactData.contactInfo.availability.value}
               </p>
             </div>
@@ -189,7 +189,7 @@ const Contact: React.FC = () => {
 
         {/* Formulario de contacto */}
         <div className="bg-black border-2 border-orange-500 rounded-xl p-6">
-          <h2 className="text-xl font-audiowide text-center mb-6 bg-orange-500 text-black py-2 rounded-lg">
+          <h2 className="text-xl font-orbitron text-center mb-6 bg-orange-500 text-black py-2 rounded-lg">
             {contactData.form.title}
           </h2>
 
@@ -197,7 +197,7 @@ const Contact: React.FC = () => {
             {/* Tu nombre y Email en fila */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-white font-orbitron text-sm mb-2">
+                <label className="block text-white font-audiowide text-sm mb-2">
                   {contactData.form.fields[0].label}
                 </label>
                 <input
@@ -205,13 +205,13 @@ const Contact: React.FC = () => {
                   name={contactData.form.fields[0].name}
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 font-orbitron text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
                   required={contactData.form.fields[0].required}
                 />
               </div>
 
               <div>
-                <label className="block text-white font-orbitron text-sm mb-2">
+                <label className="block text-white font-audiowide text-sm mb-2">
                   {contactData.form.fields[1].label}
                 </label>
                 <input
@@ -219,7 +219,7 @@ const Contact: React.FC = () => {
                   name={contactData.form.fields[1].name}
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 font-orbitron text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
                   required={contactData.form.fields[1].required}
                 />
               </div>
@@ -227,7 +227,7 @@ const Contact: React.FC = () => {
 
             {/* Tipo de proyecto */}
             <div>
-              <label className="block text-white font-orbitron text-sm mb-2">
+              <label className="block text-white font-audiowide text-sm mb-2">
                 {contactData.form.fields[2].label}
               </label>
               <input
@@ -235,14 +235,14 @@ const Contact: React.FC = () => {
                 name={contactData.form.fields[2].name}
                 value={formData.projectType}
                 onChange={handleInputChange}
-                className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 font-orbitron text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
                 required={contactData.form.fields[2].required}
               />
             </div>
 
             {/* Cuéntame más */}
             <div>
-              <label className="block text-white font-orbitron text-sm mb-2">
+              <label className="block text-white font-audiowide text-sm mb-2">
                 {contactData.form.fields[3].label}
               </label>
               <textarea
@@ -250,7 +250,7 @@ const Contact: React.FC = () => {
                 value={formData.message}
                 onChange={handleInputChange}
                 rows={4}
-                className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 font-orbitron text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none"
+                className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none"
                 required={contactData.form.fields[3].required}
               />
             </div>
@@ -260,7 +260,7 @@ const Contact: React.FC = () => {
               <Button
                 type="submit"
                 variant="primary"
-                className="px-8 py-3 font-audiowide"
+                className="px-8 py-3 font-orbitron"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? contactData.form.submitButton.loadingText : contactData.form.submitButton.text}
@@ -270,7 +270,7 @@ const Contact: React.FC = () => {
             {/* Mensajes de feedback */}
             {submitStatus === 'success' && (
               <div className="mt-4 p-4 bg-green-500/20 border-2 border-green-500 rounded-lg">
-                <p className="text-green-400 font-orbitron text-sm text-center">
+                <p className="text-green-400 font-audiowide text-sm text-center">
                   {contactData.form.messages.success}
                 </p>
               </div>
@@ -278,7 +278,7 @@ const Contact: React.FC = () => {
 
             {submitStatus === 'error' && (
               <div className="mt-4 p-4 bg-red-500/20 border-2 border-red-500 rounded-lg">
-                <p className="text-red-400 font-orbitron text-sm text-center">
+                <p className="text-red-400 font-audiowide text-sm text-center">
                   {contactData.form.messages.error}
                 </p>
               </div>

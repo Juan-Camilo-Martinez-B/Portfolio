@@ -35,7 +35,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-3xl font-semibold text-orange-500 font-audiowide text-center">
+      <h2 className="text-3xl font-semibold text-orange-500 font-orbitron text-center">
         {projectsSection.title}
       </h2>
       
@@ -129,7 +129,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
                   
                   {/* Indicador de vista previa */}
-                  <div className="absolute top-2 right-2 bg-orange-500 text-white text-xs font-audiowide px-2 py-1 rounded-md shadow-lg">
+                  <div className="absolute top-2 right-2 bg-orange-500 text-white text-xs font-orbitron px-2 py-1 rounded-md shadow-lg">
                     Vista Previa
                   </div>
                 </div>
@@ -144,7 +144,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
             {/* Contenido */}
             <div className="p-5 space-y-4">
               <div className="flex items-center justify-between gap-2">
-                <h3 className="text-xl font-semibold text-orange-500 font-audiowide">
+                <h3 className="text-xl font-semibold text-orange-500 font-orbitron">
                   {project.title}
                 </h3>
                 {project.githubUrl && (
@@ -160,7 +160,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                 )}
               </div>
               
-              <p className="text-gray-300 font-orbitron text-sm leading-relaxed">
+              <p className="text-gray-300 font-audiowide text-sm leading-relaxed">
                 {project.shortDescription}
               </p>
 

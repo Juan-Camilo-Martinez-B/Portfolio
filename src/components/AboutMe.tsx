@@ -21,7 +21,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ onOpenModal }) => {
         <div className="w-32 h-32 md:w-40 md:h-40 border-2 border-orange-500 rounded-full bg-gray-700 flex items-center justify-center mb-4">
           {/* Espacio para imagen */}
           <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center">
-            <span className="text-gray-400 text-xs font-orbitron">
+            <span className="text-gray-400 text-xs font-audiowide">
               {aboutData.image.placeholder}
             </span>
           </div>
@@ -32,7 +32,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ onOpenModal }) => {
           {/* Texto izquierdo */}
           <div className="text-center md:text-left md:w-1/3 w-full">
             <div className="hidden md:block w-full h-px bg-orange-500 mb-4"></div>
-            <p className="text-white font-orbitron text-sm md:text-base leading-relaxed whitespace-pre-line">
+            <p className="text-white font-audiowide text-sm md:text-base leading-relaxed whitespace-pre-line">
               {aboutData.texts.left}
             </p>
           </div>
@@ -40,7 +40,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ onOpenModal }) => {
           {/* Texto derecho */}
           <div className="text-center md:text-left md:w-1/3 w-full">
             <div className="hidden md:block w-full h-px bg-orange-500 mb-4"></div>
-            <p className="text-white font-orbitron text-sm md:text-base leading-relaxed whitespace-pre-line">
+            <p className="text-white font-audiowide text-sm md:text-base leading-relaxed whitespace-pre-line">
               {aboutData.texts.right}
             </p>
           </div>
@@ -51,7 +51,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ onOpenModal }) => {
 
         {/* Texto principal centrado */}
         <div className="w-full max-w-3xl text-center">
-          <p className="text-white font-orbitron text-sm md:text-base leading-relaxed mb-6 whitespace-pre-line">
+          <p className="text-white font-audiowide text-sm md:text-base leading-relaxed mb-6 whitespace-pre-line">
             {aboutData.description}
           </p>
           
@@ -59,7 +59,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ onOpenModal }) => {
           <Button 
             variant="primary" 
             size="lg"
-            className="font-audiowide"
+            className="font-orbitron"
             onClick={handleButtonClick}
           >
             {aboutData.button.text}
