@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { FaAngular, FaBootstrap, FaHtml5, FaPython } from 'react-icons/fa';
-import { SiCloudinary, SiDjango, SiJavascript, SiPostgresql, SiSass, SiTypescript } from 'react-icons/si';
+import { FaAngular, FaBootstrap, FaHtml5, FaJava, FaPython, FaReact } from 'react-icons/fa';
+import { SiApachemaven, SiCloudinary, SiDjango, SiJavascript, SiMongodb, SiNextdotjs, SiPostgresql, SiRailway, SiSass, SiSpring, SiTailwindcss, SiTypescript, SiVercel } from 'react-icons/si';
+import { HiLockClosed, HiMusicalNote } from 'react-icons/hi2';
+import { BsCloudSunFill } from 'react-icons/bs';
 import Image from 'next/image';
 
 interface Technology {
@@ -20,6 +22,15 @@ const techIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   'TypeScript': SiTypescript,
   'SCSS': SiSass,
   'Bootstrap': FaBootstrap,
+  'Java': FaJava,
+  'Spring Boot': SiSpring,
+  'MongoDB': SiMongodb,
+  'Next.js': SiNextdotjs,
+  'React': FaReact,
+  'Tailwind CSS': SiTailwindcss,
+  'Maven': SiApachemaven,
+  'Railway': SiRailway,
+  'Vercel': SiVercel,
 };
 
 interface Project {
@@ -216,13 +227,50 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
       {/* Todo el contenido scrolleable */}
       <div className="px-6 pb-6 space-y-4">
         {/* Imagen del proyecto */}
-        <div className="w-full h-80 bg-gray-700 rounded-lg overflow-hidden border-2 border-orange-500 relative">
-          <Image 
-            src={project.imageUrl} 
-            alt={project.title}
-            fill
-            className="object-cover"
-          />
+        <div className="w-full h-80 bg-gray-700 rounded-lg overflow-hidden border-2 border-orange-500 relative flex items-center justify-center">
+          {project.imageUrl === 'icon:lock' ? (
+            <div className="relative">
+              {/* Icono principal con gradiente azul a blanco */}
+              <HiLockClosed className="text-9xl text-blue-500 drop-shadow-[0_0_40px_rgba(59,130,246,1)]" />
+              {/* Resplandor adicional blanco */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+              </div>
+            </div>
+          ) : project.imageUrl === 'icon:music' ? (
+            <div className="relative">
+              {/* Icono principal con color verde */}
+              <HiMusicalNote className="text-9xl text-green-500 drop-shadow-[0_0_40px_rgba(34,197,94,1)]" />
+              {/* Resplandor adicional verde */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-40 h-40 bg-green-400/10 rounded-full blur-3xl"></div>
+              </div>
+            </div>
+          ) : project.imageUrl === 'icon:weather' ? (
+            <div className="relative">
+              {/* Icono de nube con sol */}
+              <BsCloudSunFill className="text-9xl text-white drop-shadow-[0_0_40px_rgba(255,255,255,0.8)]"
+                style={{
+                  filter: 'drop-shadow(0 0 25px rgba(250, 204, 21, 1))'
+                }}
+              />
+              {/* Resplandor amarillo del sol */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-44 h-44 bg-yellow-400/20 rounded-full blur-3xl"></div>
+              </div>
+              {/* Resplandor blanco de la nube */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+              </div>
+            </div>
+          ) : (
+            <Image 
+              src={project.imageUrl} 
+              alt={project.title}
+              fill
+              className="object-cover"
+            />
+          )}
         </div>
 
         {/* Título del proyecto */}

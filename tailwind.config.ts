@@ -40,6 +40,7 @@ const config: Config = {
       },
       animation: {
         'fade-in-up': 'fadeInUp 0.6s ease-out',
+        'fadeIn': 'fadeIn 0.3s ease-in',
         'glow': 'glow 2s ease-in-out infinite alternate',
         'spin-slow': 'spin 3s linear infinite',
       },
@@ -52,6 +53,14 @@ const config: Config = {
           '100%': {
             opacity: '1',
             transform: 'translateY(0)',
+          },
+        },
+        fadeIn: {
+          '0%': {
+            opacity: '0',
+          },
+          '100%': {
+            opacity: '1',
           },
         },
         glow: {

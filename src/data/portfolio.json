@@ -92,17 +92,24 @@
   "projects": [
     {
       "id": "project-1",
-      "title": "Sistema de control de acceso",
-      "shortDescription": "Control de acceso para edificios y conjuntos residenciales",
-      "fullDescription": "Sistema que controla el acceso a un conjunto de rutas ya establecidas, permitiendo entrada y salida de personas del conjunto lugar",
-      "imageUrl": "/images/projects/access-control.jpg",
+      "title": "Control Plus",
+      "shortDescription": "Sistema integral de control de acceso mediante códigos QR para conjuntos residenciales",
+      "fullDescription": "ControlPlus es un sistema integral de control de acceso diseñado para conjuntos residenciales, edificios y espacios que requieren gestión de entradas mediante códigos QR. La aplicación permite registrar diferentes tipos de usuarios (residentes, visitantes, empleados y administradores), cada uno con niveles de permiso específicos que determinan a qué puertas o áreas pueden acceder. El sistema implementa un flujo de registro seguro con verificación de correo electrónico, generación automática de códigos QR únicos para cada usuario, y validación de acceso en tiempo real. Los usuarios reciben su código QR por correo electrónico después de verificar su cuenta, y pueden utilizarlo escaneándolo desde un archivo o ingresando el token directamente. La arquitectura del proyecto está completamente separada entre frontend y backend, siguiendo buenas prácticas de desarrollo y arquitectura limpia, lo que facilita el mantenimiento, escalabilidad y futuras expansiones del sistema.",
+      "imageUrl": "icon:lock",
       "technologies": [
-        { "name": "Python", "icon": "🐍" },
+        { "name": "Java", "icon": "☕" },
+        { "name": "Spring Boot", "icon": "🍃" },
+        { "name": "MongoDB", "icon": "🍀" },
+        { "name": "Next.js", "icon": "▲" },
         { "name": "React", "icon": "⚛️" },
-        { "name": "Node.js", "icon": "🟢" }
+        { "name": "TypeScript", "icon": "💙" },
+        { "name": "Tailwind CSS", "icon": "🎨" },
+        { "name": "Maven", "icon": "📦" },
+        { "name": "Railway", "icon": "🚂" },
+        { "name": "Vercel", "icon": "▲" }
       ],
-      "githubUrl": "https://github.com/juancamilo/access-control",
-      "liveUrl": "https://access-control-demo.vercel.app"
+      "githubUrl": "https://github.com/Juan-Camilo-Martinez-B/Control_Plus",
+      "liveUrl": "https://control-plus-beta.vercel.app"
     },
     {
       "id": "project-2",
@@ -123,7 +130,7 @@
       "title": "MP3 Player Web",
       "shortDescription": "Aplicación web moderna de reproductor de música con gestión de playlists",
       "fullDescription": "MP3 Player Web es una aplicación web moderna que permite gestionar y reproducir tu biblioteca musical de forma intuitiva. Cuenta con descarga de canciones desde YouTube con conversión automática a MP3 (en modo local), sistema completo de playlists personalizadas con función de mezcla aleatoria y reordenamiento por arrastre. El reproductor incluye controles completos, barra de progreso interactiva, control de volumen y reproducción continua con transición automática entre canciones. Toda la música se almacena en la nube para acceso global. La aplicación opera en dos modos: desarrollo con todas las funciones habilitadas, y demostración con 25 canciones pre-cargadas.",
-      "imageUrl": "/images/projects/mp3-player.png",
+      "imageUrl": "icon:music",
       "technologies": [
         { "name": "Django", "icon": "django" },
         { "name": "Python", "icon": "python" },
@@ -140,7 +147,7 @@
       "title": "ClimaGlobal",
       "shortDescription": "Aplicación web meteorológica con Angular 19",
       "fullDescription": "ClimaGlobal es una aplicación web meteorológica desarrollada con Angular 19 que permite consultar el clima en tiempo real de más de 200,000 ciudades alrededor del mundo. Destaca por su arquitectura profesional implementando 9 patrones de diseño clásicos y estructuras de datos eficientes. Incluye un sistema único de animaciones SVG dinámicas que genera hasta 350 partículas en tiempo real con efectos de lluvia, nieve y tormenta ultra realistas a 60 FPS constantes. Cuenta con caché inteligente que reduce peticiones HTTP en 60%, tipado fuerte al 100% con TypeScript, y un diseño visual moderno con glassmorphism, gradientes vibrantes y más de 30 microinteracciones fluidas. La aplicación implementa OnPush Change Detection, Lazy Loading y GPU-accelerated animations para un rendimiento óptimo.",
-      "imageUrl": "/images/projects/weather.png",
+      "imageUrl": "icon:weather",
       "technologies": [
         { "name": "Angular", "icon": "angular" },
         { "name": "TypeScript", "icon": "typescript" },
