@@ -202,7 +202,7 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
                     )}
 
                     {/* Imagen circular */}
-                    <div className="w-32 md:w-40 h-32 md:h-40 border-2 border-orange-500 rounded-full bg-white flex items-center justify-center">
+                    <div className="w-44 md:w-52 h-44 md:h-52 border-2 border-orange-500 rounded-full bg-white flex items-center justify-center">
                       <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-100 to-gray-300 flex items-center justify-center">
                         <span className="text-gray-600 text-xs font-audiowide">
                           {image.placeholder}
@@ -302,7 +302,7 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
                 <div className="space-y-8">
                   {aboutData.modal.images.slice(0, 3).map((image) => (
                     <div key={image.id} className="flex items-center space-x-6">
-                      <div className="w-20 h-20 border-2 border-orange-500 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                      <div className="w-28 h-28 border-2 border-orange-500 rounded-full bg-white flex items-center justify-center flex-shrink-0">
                         <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-100 to-gray-300 flex items-center justify-center">
                           <span className="text-gray-600 text-base font-audiowide">
                             {image.placeholder}
@@ -326,9 +326,12 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
                   {aboutData.modal.sections.myWorld.title}
                 </h3>
                 <div className="space-y-8">
-                  {aboutData.modal.images.slice(3).map((image) => (
-                    <div key={image.id} className="flex items-center space-x-6">
-                      <div className="w-20 h-20 border-2 border-orange-500 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                  {aboutData.modal.images.slice(3).map((image, index) => (
+                    <div 
+                      key={image.id} 
+                      className={`flex items-center ${index % 2 === 0 ? 'space-x-6' : 'space-x-6 flex-row-reverse'}`}
+                    >
+                      <div className="w-28 h-28 border-2 border-orange-500 rounded-full bg-white flex items-center justify-center flex-shrink-0">
                         <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-100 to-gray-300 flex items-center justify-center">
                           <span className="text-gray-600 text-base font-audiowide">
                             {image.placeholder}
