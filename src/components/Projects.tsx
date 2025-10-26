@@ -6,6 +6,7 @@ import React from 'react';
 import { BsCloudSunFill } from 'react-icons/bs';
 import { FaGithub } from 'react-icons/fa';
 import { HiLockClosed, HiMusicalNote } from 'react-icons/hi2';
+import { IoFitness } from 'react-icons/io5';
 
 interface Project {
   id: string;
@@ -78,6 +79,24 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                     {/* Resplandor adicional */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="w-32 h-32 bg-green-400/20 rounded-full blur-2xl animate-pulse"></div>
+                    </div>
+                  </div>
+                </div>
+              ) : project.imageUrl === 'icon:fitness' ? (
+                /* Icono de fitness para Fitness Tracker */
+                <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
+                  hoveredProject === project.id ? 'opacity-0 scale-110' : 'opacity-100 group-hover:scale-105'
+                }`}>
+                  <div className="relative">
+                    {/* Icono principal con gradiente naranja/rojo */}
+                    <IoFitness className="text-9xl text-orange-500 drop-shadow-[0_0_30px_rgba(249,115,22,0.8)]" />
+                    {/* Resplandor adicional */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-32 h-32 bg-orange-400/20 rounded-full blur-2xl animate-pulse"></div>
+                    </div>
+                    {/* Resplandor secundario rojo */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-36 h-36 bg-red-400/10 rounded-full blur-3xl"></div>
                     </div>
                   </div>
                 </div>

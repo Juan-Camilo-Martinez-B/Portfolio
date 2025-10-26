@@ -113,17 +113,23 @@
     },
     {
       "id": "project-2",
-      "title": "Verificación",
-      "shortDescription": "Aplicación de escaneo de documentos y verificación",
-      "fullDescription": "Sistema de verificación de documentos mediante escaneo y reconocimiento óptico de caracteres para validación de identidad",
-      "imageUrl": "/images/projects/verification.jpg",
+      "title": "Fitness Tracker",
+      "shortDescription": "Aplicación web de seguimiento de actividades físicas con mapas interactivos y análisis en tiempo real",
+      "fullDescription": "Fitness Tracker es una aplicación web profesional de seguimiento de actividades físicas en tiempo real que permite registrar, monitorear y analizar entrenamientos de carrera, ciclismo y caminata. Integra mapas interactivos con OpenStreetMap y Leaflet para visualización de rutas, incluye planificación automática de rutas usando OSRM desde la ubicación actual, y ofrece seguimiento GPS continuo con cálculo de métricas en tiempo real (distancia, velocidad, calorías, pace). Cuenta con un dashboard de estadísticas diarias, exportación de actividades en formato GPX estándar, persistencia local de datos con Zustand y localStorage, y un diseño responsive mobile-first con modo oscuro completo. La aplicación utiliza Next.js 16 con App Router, React 19, TypeScript y Tailwind CSS, ofreciendo una experiencia de usuario profesional con animaciones fluidas mediante Framer Motion y notificaciones toast elegantes.",
+      "imageUrl": "icon:fitness",
       "technologies": [
-        { "name": "Python", "icon": "🐍" },
-        { "name": "TensorFlow", "icon": "🧠" },
-        { "name": "OpenCV", "icon": "👁️" }
+        { "name": "Next.js", "icon": "▲" },
+        { "name": "React", "icon": "⚛️" },
+        { "name": "TypeScript", "icon": "💙" },
+        { "name": "Tailwind CSS", "icon": "🎨" },
+        { "name": "Leaflet", "icon": "🗺️" },
+        { "name": "Zustand", "icon": "🐻" },
+        { "name": "Framer Motion", "icon": "✨" },
+        { "name": "OpenStreetMap", "icon": "🌍" },
+        { "name": "Vercel", "icon": "▲" }
       ],
-      "githubUrl": "https://github.com/juancamilo/verification",
-      "liveUrl": "https://verification-demo.vercel.app"
+      "githubUrl": "https://github.com/Juan-Camilo-Martinez-B/Maps.git",
+      "liveUrl": "https://maps-orcin.vercel.app"
     },
     {
       "id": "project-3",

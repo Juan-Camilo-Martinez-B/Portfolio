@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { BsCloudSunFill } from 'react-icons/bs';
 import { FaAngular, FaBootstrap, FaHtml5, FaJava, FaPython, FaReact } from 'react-icons/fa';
 import { HiLockClosed, HiMusicalNote } from 'react-icons/hi2';
+import { IoFitness } from 'react-icons/io5';
 import { SiApachemaven, SiCloudinary, SiDjango, SiJavascript, SiMongodb, SiNextdotjs, SiPostgresql, SiRailway, SiSass, SiSpring, SiTailwindcss, SiTypescript, SiVercel } from 'react-icons/si';
 
 interface Technology {
@@ -31,6 +32,11 @@ const techIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   'Maven': SiApachemaven,
   'Railway': SiRailway,
   'Vercel': SiVercel,
+  // Las tecnologías sin icono específico usarán el emoji del JSON
+  // 'Leaflet': usa 🗺️
+  // 'Zustand': usa 🐻
+  // 'Framer Motion': usa ✨
+  // 'OpenStreetMap': usa 🌍
 };
 
 interface Project {
@@ -244,6 +250,19 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
               {/* Resplandor adicional verde */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-40 h-40 bg-green-400/10 rounded-full blur-3xl"></div>
+              </div>
+            </div>
+          ) : project.imageUrl === 'icon:fitness' ? (
+            <div className="relative">
+              {/* Icono principal con gradiente naranja/rojo */}
+              <IoFitness className="text-9xl text-orange-500 drop-shadow-[0_0_40px_rgba(249,115,22,1)]" />
+              {/* Resplandor naranja */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-40 h-40 bg-orange-400/20 rounded-full blur-3xl"></div>
+              </div>
+              {/* Resplandor rojo */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-44 h-44 bg-red-400/10 rounded-full blur-3xl"></div>
               </div>
             </div>
           ) : project.imageUrl === 'icon:weather' ? (
