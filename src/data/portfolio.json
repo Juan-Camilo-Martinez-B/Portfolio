@@ -52,19 +52,19 @@
         {
           "id": 1,
           "placeholder": "/images/about/testimonio-1.jpg",
-          "author": "Daniel - Profesor facultad de ingeniería UCC",
+          "author": "Daniel Fernando Arteaga Fajardo - Profesor facultad de ingeniería UCC",
           "description": "Demuestra una gran capacidad de aprendizaje y compromiso. Asimila con rapidez los conceptos técnicos y los aplica con criterio en sus proyectos."
         },
         {
           "id": 2,
           "placeholder": "/images/about/testimonio-2.jpg",
-          "author": "Nicolás García - Estudiante ingeniería de software UCC",
+          "author": "Nicolás Alejandro García - Estudiante ingeniería de software UCC",
           "description": "Destaca por su capacidad para analizar y resolver problemas de manera eficiente. Su enfoque práctico y organizado marca la diferencia en los proyectos."
         },
         {
           "id": 3,
           "placeholder": "/images/about/testimonio-3.jpg",
-          "author": "",
+          "author": "Mario Alejandro Cardona Narvaez - Enfermmero profesional Auditor de la calidad en salud",
           "description": "se integra con facilidad, colabora activamente y mantiene una actitud positiva que fortalece el trabajo en equipo"
         },
         {
