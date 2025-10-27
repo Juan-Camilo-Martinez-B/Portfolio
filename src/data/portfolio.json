@@ -52,17 +52,20 @@
         {
           "id": 1,
           "placeholder": "/images/about/testimonio-1.jpg",
-          "description": "Siempre cumple lo que promete en un proyecto."
+          "author": "Daniel - Profesor facultad de ingeniería UCC",
+          "description": "Demuestra una gran capacidad de aprendizaje y compromiso. Asimila con rapidez los conceptos técnicos y los aplica con criterio en sus proyectos."
         },
         {
           "id": 2,
-          "placeholder": "/images/about/testimonio-2.jpg", 
-          "description": "Es alguien que nunca se rinde."
+          "placeholder": "/images/about/testimonio-2.jpg",
+          "author": "Nicolás García - Estudiante ingeniería de software UCC",
+          "description": "Destaca por su capacidad para analizar y resolver problemas de manera eficiente. Su enfoque práctico y organizado marca la diferencia en los proyectos."
         },
         {
           "id": 3,
           "placeholder": "/images/about/testimonio-3.jpg",
-          "description": "Es detallista en todo lo que le apasiona."
+          "author": "",
+          "description": "se integra con facilidad, colabora activamente y mantiene una actitud positiva que fortalece el trabajo en equipo"
         },
         {
           "id": 4,
@@ -78,6 +81,16 @@
           "id": 6,
           "placeholder": "/images/about/musica.jpg",
           "description": "La música me acompaña en cada proyecto, es mi fuente de inspiración."
+        },
+        {
+          "id": 7,
+          "placeholder": "/images/about/canto.jpg",
+          "description": "Cantando expreso todas mis ideas y emociones."
+        },
+        {
+          "id": 8,
+          "placeholder": "/images/about/ciencia-ficcion.jpg",
+          "description": "La ciencia ficción y la fantasía, nutren mis ideas y mejoran mi comprensión del mundo."
         }
       ]
     }

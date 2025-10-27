@@ -1,4 +1,5 @@
 import { useAboutData } from '@/hooks/usePortfolioData';
+import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
 
 interface DynamicModalProps {
@@ -20,25 +21,43 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
     if (!isOpen || !isScrolling) return;
 
     const scrollSpeed = 2;
+    let waitingAtEnd = false;
+
     const interval = setInterval(() => {
       if (isDesktop) {
-        // Scroll vertical para desktop
-        setScrollPosition((prev) => {
-          const maxScroll = 500; // Aproximado para el contenido
-          return prev >= maxScroll ? 0 : prev + scrollSpeed;
-        });
+        const scrollElement = document.querySelector('.desktop-scroll-content') as HTMLElement;
+        if (scrollElement) {
+          const maxScroll = scrollElement.scrollHeight - scrollElement.clientHeight;
+          const currentScroll = scrollElement.scrollTop;
+          
+          if (currentScroll >= maxScroll - 5 && !waitingAtEnd) {
+            waitingAtEnd = true;
+            setTimeout(() => {
+              scrollElement.scrollTo({ top: 0, behavior: 'smooth' });
+              setScrollPosition(0);
+              waitingAtEnd = false;
+            }, 1500);
+          } else if (!waitingAtEnd) {
+            scrollElement.scrollTop = currentScroll + scrollSpeed;
+            setScrollPosition(scrollElement.scrollTop);
+          }
+        }
       } else if (scrollContainerRef.current) {
-        // Scroll horizontal para mobile
         const container = scrollContainerRef.current;
         const maxScroll = container.scrollWidth - container.clientWidth;
+        const currentScroll = container.scrollLeft;
         
-        if (container.scrollLeft >= maxScroll) {
-          container.scrollLeft = 0;
-        } else {
-          container.scrollLeft += scrollSpeed;
+        if (currentScroll >= maxScroll - 5 && !waitingAtEnd) {
+          waitingAtEnd = true;
+          setTimeout(() => {
+            container.scrollTo({ left: 0, behavior: 'smooth' });
+            setScrollPosition(0);
+            waitingAtEnd = false;
+          }, 1500);
+        } else if (!waitingAtEnd) {
+          container.scrollLeft = currentScroll + scrollSpeed;
+          setScrollPosition(container.scrollLeft);
         }
-        
-        setScrollPosition(container.scrollLeft);
       }
     }, 20);
 
@@ -48,7 +67,7 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
   // Detectar si es desktop
   useEffect(() => {
     const checkIsDesktop = () => {
-      setIsDesktop(window.innerWidth >= 1024); // lg breakpoint
+      setIsDesktop(window.innerWidth >= 1024);
     };
     
     checkIsDesktop();
@@ -66,7 +85,7 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
         const rect = mainContainer.getBoundingClientRect();
         setModalPosition({
           top: rect.top,
-          left: rect.right - 145, // 8px de separación - más cerca
+          left: rect.right - 145,
           width: 320,
           height: rect.height
         });
@@ -101,35 +120,60 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
     }
   }, [isOpen]);
 
-  // Pausar scroll al hacer hover
   const handleMouseEnter = () => setIsScrolling(false);
   const handleMouseLeave = () => setIsScrolling(true);
 
+  const handleResetMobile = () => {
+    const wasScrolling = isScrolling;
+    setIsScrolling(false);
+    
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+    }
+    setScrollPosition(0);
+    
+    if (wasScrolling) {
+      setTimeout(() => setIsScrolling(true), 800);
+    }
+  };
+
+  const handleResetDesktop = () => {
+    const wasScrolling = isScrolling;
+    setIsScrolling(false);
+    
+    const scrollElement = document.querySelector('.desktop-scroll-content') as HTMLElement;
+    if (scrollElement) {
+      scrollElement.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setScrollPosition(0);
+    
+    if (wasScrolling) {
+      setTimeout(() => setIsScrolling(true), 800);
+    }
+  };
+
   if (!isOpen) return null;
 
-  // Renderizado para mobile (comportamiento original)
+  // Renderizado para mobile
   if (!isDesktop) {
     return (
       <div 
         className="fixed inset-0 flex items-center justify-center"
         style={{ 
-          zIndex: 9999999,
+          zIndex: 100,
           backgroundColor: 'rgba(0, 0, 0, 0.99)',
           backdropFilter: 'blur(20px)'
         }}
       >
-        {/* Overlay clickeable */}
         <div 
           className="absolute inset-0"
           onClick={onClose}
         />
         
-        {/* Modal */}
         <div 
           className="relative w-full max-w-5xl mx-4 bg-gray-800 border-2 border-orange-500 rounded-xl overflow-hidden shadow-2xl"
-          style={{ zIndex: 9999999 }}
+          style={{ zIndex: 101 }}
         >
-          {/* Header */}
           <div className="flex justify-between items-center p-4 border-b border-orange-500 bg-gray-900">
             <h2 className="text-xl font-audiowide text-orange-500">
               {aboutData.modal.title}
@@ -142,24 +186,24 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
             </button>
           </div>
 
-          {/* Contenido con títulos verticales y scroll horizontal */}
           <div 
             ref={scrollContainerRef}
             className="relative h-80 md:h-96 overflow-x-auto overflow-y-hidden bg-gray-800 no-scrollbar"
+            style={{ scrollBehavior: 'auto' }}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onTouchStart={handleMouseEnter}
             onTouchEnd={handleMouseLeave}
           >
             <div className="flex h-full">
-              {/* Duplicar imágenes para scroll infinito */}
-              {[...aboutData.modal.images, ...aboutData.modal.images].map((image, index) => (
+              {aboutData.modal.images.map((image, index) => (
                 <div
                   key={`${image.id}-${index}`}
-                  className="flex-shrink-0 w-80 h-full flex items-center justify-center p-6 space-x-6"
+                  className={`flex-shrink-0 h-full flex items-center justify-center p-6 space-x-6 ${
+                    image.id <= 3 ? 'w-[36rem]' : 'w-80'
+                  }`}
                 >
-                  {/* Título vertical - Referencias (primeras 3 imágenes) */}
-                  {image.id === 1 && index < aboutData.modal.images.length && (
+                  {image.id === 1 && (
                     <div className="flex flex-col items-center justify-center p-3">
                       <h3 
                         className="text-lg md:text-xl font-audiowide text-orange-500 whitespace-nowrap"
@@ -174,8 +218,7 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
                     </div>
                   )}
                   
-                  {/* Título vertical - Lo que amo hacer (después de la 3ra imagen) */}
-                  {image.id === 4 && index < aboutData.modal.images.length && (
+                  {image.id === 4 && (
                     <div className="flex flex-col items-center justify-center p-3">
                       <h3 
                         className="text-lg md:text-xl font-audiowide text-orange-500 whitespace-nowrap"
@@ -190,41 +233,81 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
                     </div>
                   )}
 
-                  {/* Contenedor de imagen y descripciones con patrón arriba/abajo */}
-                  <div className="flex flex-col items-center justify-center space-y-4">
-                    {/* Descripción arriba (solo para imágenes pares) */}
-                    {image.id % 2 === 0 && (
-                      <div className="max-w-32">
-                        <p className="text-white font-audiowide text-xs md:text-sm leading-relaxed text-center">
+                  {image.id <= 3 ? (
+                    <div className="flex items-center space-x-6 flex-1">
+                      <div className="w-32 h-32 border-2 border-orange-500 rounded-full bg-white flex items-center justify-center flex-shrink-0 overflow-hidden relative">
+                        <Image 
+                          src={image.placeholder}
+                          alt={image.description}
+                          fill
+                          className="object-cover rounded-full"
+                          unoptimized
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                          }}
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-300 -z-10">
+                          <span className="text-gray-600 text-xs font-audiowide text-center px-2">
+                            Imagen {image.id}
+                          </span>
+                        </div>
+                      </div>
+                      
+                      <div className="flex flex-col justify-center space-y-3 flex-1 min-w-0 pr-8">
+                        {(image as any).author && (
+                          <p className="text-orange-500 font-audiowide text-base font-bold leading-relaxed">
+                            {(image as any).author}
+                          </p>
+                        )}
+                        <p className="text-white font-audiowide text-base leading-relaxed">
                           {image.description}
                         </p>
-                      </div>
-                    )}
-
-                    {/* Imagen circular */}
-                    <div className="w-44 md:w-52 h-44 md:h-52 border-2 border-orange-500 rounded-full bg-white flex items-center justify-center">
-                      <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-100 to-gray-300 flex items-center justify-center">
-                        <span className="text-gray-600 text-xs font-audiowide">
-                          {image.placeholder}
-                        </span>
                       </div>
                     </div>
-                    
-                    {/* Descripción abajo (solo para imágenes impares) */}
-                    {image.id % 2 === 1 && (
-                      <div className="max-w-32">
-                        <p className="text-white font-audiowide text-xs md:text-sm leading-relaxed text-center">
-                          {image.description}
-                        </p>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center space-y-4">
+                      {image.id % 2 === 0 && (
+                        <div className="max-w-48">
+                          <p className="text-white font-audiowide text-sm md:text-base leading-relaxed text-center">
+                            {image.description}
+                          </p>
+                        </div>
+                      )}
+
+                      <div className="w-40 md:w-52 h-40 md:h-52 border-2 border-orange-500 rounded-full bg-white flex items-center justify-center overflow-hidden relative">
+                        <Image 
+                          src={image.placeholder}
+                          alt={image.description}
+                          fill
+                          className="object-cover rounded-full"
+                          unoptimized
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                          }}
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-300 -z-10">
+                          <span className="text-gray-600 text-xs font-audiowide text-center px-2">
+                            Imagen {image.id}
+                          </span>
+                        </div>
                       </div>
-                    )}
-                  </div>
+                      
+                      {image.id % 2 === 1 && (
+                        <div className="max-w-48">
+                          <p className="text-white font-audiowide text-sm md:text-base leading-relaxed text-center">
+                            {image.description}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Footer con controles */}
           <div className="p-4 border-t border-orange-500 bg-gray-900">
             <div className="flex justify-center space-x-4">
               <button
@@ -234,7 +317,7 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
                 {isScrolling ? "Pausar" : "Reproducir"}
               </button>
               <button
-                onClick={() => setScrollPosition(0)}
+                onClick={handleResetMobile}
                 className="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors font-orbitron text-sm"
               >
                 Reiniciar
@@ -246,12 +329,12 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
     );
   }
 
-  // Renderizado para desktop (sidebar) - altura reducida
+  // Renderizado para desktop
   return (
     <div 
       className="fixed bg-gray-800 border-2 border-orange-500 rounded-xl shadow-2xl overflow-hidden transform transition-all duration-500 ease-in-out"
       style={{ 
-        zIndex: 9999999,
+        zIndex: 100,
         top: `${modalPosition.top}px`,
         left: `${modalPosition.left}px`,
         width: `${modalPosition.width}px`,
@@ -259,14 +342,8 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
         transform: isOpen ? 'translateX(0)' : 'translateX(100%)'
       }}
     >
-      {/* Contenido del sidebar con scroll vertical */}
-      <div 
-        className="relative h-full bg-gray-800"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
+      <div className="relative h-full bg-gray-800">
         <div className="h-full flex flex-col">
-          {/* Header con botón de cerrar */}
           <div className="flex justify-between items-center p-6 pb-4">
             <h2 className="text-lg font-audiowide text-orange-500">
               {aboutData.modal.title}
@@ -279,48 +356,58 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
             </button>
           </div>
 
-          {/* Línea separadora horizontal */}
           <div className="h-[2px] bg-orange-500 mx-6" />
 
-          {/* Contenido con scroll infinito - solo las imágenes */}
           <div 
-            className="flex-1 overflow-y-auto no-scrollbar px-6 py-4"
+            className="desktop-scroll-content flex-1 overflow-y-auto no-scrollbar px-6 py-4"
+            style={{ scrollBehavior: 'auto' }}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            ref={(el) => {
-              if (el && isScrolling) {
-                el.scrollTop = scrollPosition;
-              }
-            }}
           >
             <div className="space-y-8">
-              {/* Sección de Referencias */}
               <div>
                 <h3 className="text-lg font-audiowide text-orange-500 mb-6 text-center">
                   {aboutData.modal.sections.references.title}
                 </h3>
                 <div className="space-y-8">
                   {aboutData.modal.images.slice(0, 3).map((image) => (
-                    <div key={image.id} className="flex items-center space-x-6">
-                      <div className="w-28 h-28 border-2 border-orange-500 rounded-full bg-white flex items-center justify-center flex-shrink-0">
-                        <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-100 to-gray-300 flex items-center justify-center">
-                          <span className="text-gray-600 text-base font-audiowide">
-                            {image.placeholder}
+                    <div key={image.id} className="flex flex-col items-center text-center space-y-4">
+                      <div className="w-40 h-40 border-2 border-orange-500 rounded-full bg-white flex items-center justify-center overflow-hidden relative">
+                        <Image 
+                          src={image.placeholder}
+                          alt={image.description}
+                          fill
+                          className="object-cover rounded-full"
+                          unoptimized
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                          }}
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-300 -z-10">
+                          <span className="text-gray-600 text-xs font-audiowide text-center">
+                            {image.id}
                           </span>
                         </div>
                       </div>
-                      <p className="text-white font-audiowide text-base leading-relaxed">
-                        {image.description}
-                      </p>
+                      
+                      <div className="space-y-2">
+                        {(image as any).author && (
+                          <p className="text-orange-500 font-audiowide text-sm font-bold leading-relaxed">
+                            {(image as any).author}
+                          </p>
+                        )}
+                        <p className="text-white font-audiowide text-sm leading-relaxed">
+                          {image.description}
+                        </p>
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Línea separadora */}
               <div className="w-full h-[1px] bg-orange-500 my-6" />
 
-              {/* Sección de Lo que amo hacer */}
               <div>
                 <h3 className="text-lg font-audiowide text-orange-500 mb-6 text-center">
                   {aboutData.modal.sections.myWorld.title}
@@ -329,12 +416,23 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
                   {aboutData.modal.images.slice(3).map((image, index) => (
                     <div 
                       key={image.id} 
-                      className={`flex items-center ${index % 2 === 0 ? 'space-x-6' : 'space-x-6 flex-row-reverse'}`}
+                      className={`flex items-center space-x-6 ${index % 2 === 1 ? 'flex-row-reverse' : ''}`}
                     >
-                      <div className="w-28 h-28 border-2 border-orange-500 rounded-full bg-white flex items-center justify-center flex-shrink-0">
-                        <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-100 to-gray-300 flex items-center justify-center">
-                          <span className="text-gray-600 text-base font-audiowide">
-                            {image.placeholder}
+                      <div className="w-28 h-28 border-2 border-orange-500 rounded-full bg-white flex items-center justify-center flex-shrink-0 overflow-hidden relative">
+                        <Image 
+                          src={image.placeholder}
+                          alt={image.description}
+                          fill
+                          className="object-cover rounded-full"
+                          unoptimized
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                          }}
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-300 -z-10">
+                          <span className="text-gray-600 text-xs font-audiowide text-center">
+                            {image.id}
                           </span>
                         </div>
                       </div>
@@ -348,7 +446,6 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
             </div>
           </div>
 
-          {/* Footer con controles - FIJO */}
           <div className="pt-4 pb-6 px-6 border-t border-orange-500 bg-gray-800">
             <div className="flex justify-center space-x-2">
               <button
@@ -358,7 +455,7 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
                 {isScrolling ? "Pausar" : "Reproducir"}
               </button>
               <button
-                onClick={() => setScrollPosition(0)}
+                onClick={handleResetDesktop}
                 className="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors font-orbitron text-sm"
               >
                 Reiniciar
