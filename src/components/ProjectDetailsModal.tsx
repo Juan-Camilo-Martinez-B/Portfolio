@@ -114,27 +114,26 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
   // Renderizado para mobile (Modal)
   if (!isDesktop) {
     return (
-      <div 
+      <aside 
         className="fixed inset-0 flex items-center justify-center p-4 pb-20"
+        role="dialog"
+        aria-modal="true"
         style={{ 
-          zIndex: 9999999,
+          zIndex: 100,
           backgroundColor: 'rgba(0, 0, 0, 0.99)',
           backdropFilter: 'blur(20px)'
         }}
       >
-        {/* Overlay clickeable */}
         <div 
           className="absolute inset-0"
           onClick={onClose}
         />
         
-        {/* Modal - Ahora todo el contenido tiene scroll */}
-        <div 
+        <article 
           className="relative w-full max-w-2xl max-h-full bg-gray-800 border-2 border-orange-500 rounded-xl shadow-2xl overflow-y-auto no-scrollbar"
-          style={{ zIndex: 9999999 }}
+          style={{ zIndex: 101 }}
         >
-          {/* Header con título */}
-          <div className="sticky top-0 flex justify-between items-center p-5 border-b border-orange-500 bg-gray-900 z-10">
+          <header className="sticky top-0 flex justify-between items-center p-5 border-b border-orange-500 bg-gray-900 z-10">
             <h2 className="text-xl font-orbitron text-orange-500">
               {project.title}
             </h2>
@@ -144,10 +143,9 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
             >
               ×
             </button>
-          </div>
+          </header>
 
-          {/* Contenido */}
-          <div className="p-6 space-y-8">
+          <section className="p-6 space-y-8">
             {/* Descripción */}
             <div>
               <h3 className="text-lg font-orbitron text-orange-500 mb-4">
@@ -158,8 +156,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
               </p>
             </div>
 
-            {/* Línea separadora */}
-            <div className="w-full h-[2px] bg-orange-500" />
+            <hr className="w-full h-[2px] bg-orange-500 border-0" />
 
             {/* Stack */}
             <div>
@@ -201,18 +198,20 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
                 })}
               </div>
             </div>
-          </div>
-        </div>
-      </div>
+          </section>
+        </article>
+      </aside>
     );
   }
 
   // Renderizado para desktop (sidebar)
   return (
-    <div 
+    <aside 
       className="fixed bg-gray-800 border-2 border-orange-500 rounded-xl shadow-2xl transform transition-all duration-500 ease-in-out overflow-y-auto no-scrollbar"
+      role="dialog"
+      aria-modal="true"
       style={{ 
-        zIndex: 9999999,
+        zIndex: 100,
         top: `${modalPosition.top}px`,
         left: `${modalPosition.left}px`,
         width: `${modalPosition.width}px`,
@@ -220,20 +219,17 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
         transform: isOpen ? 'translateX(0)' : 'translateX(100%)'
       }}
     >
-      {/* Botón de cerrar sticky */}
-      <div className="sticky top-0 flex justify-end p-4 bg-gray-800 z-10">
+      <header className="sticky top-0 flex justify-end p-4 bg-gray-800 z-10">
         <button
           onClick={onClose}
           className="text-white hover:text-orange-500 transition-colors text-xl font-bold"
         >
           ×
         </button>
-      </div>
+      </header>
 
-      {/* Todo el contenido scrolleable */}
-      <div className="px-6 pb-6 space-y-4">
-        {/* Imagen del proyecto */}
-        <div className="w-full h-80 bg-gray-700 rounded-lg overflow-hidden border-2 border-orange-500 relative flex items-center justify-center">
+      <section className="px-6 pb-6 space-y-4">
+        <figure className="w-full h-80 bg-gray-700 rounded-lg overflow-hidden border-2 border-orange-500 relative flex items-center justify-center">
           {project.imageUrl === 'icon:lock' ? (
             <div className="relative">
               {/* Icono principal con gradiente azul a blanco */}
@@ -290,15 +286,13 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
               className="object-cover"
             />
           )}
-        </div>
+        </figure>
 
-        {/* Título del proyecto */}
         <h2 className="text-lg font-orbitron text-orange-500 text-center">
           {project.title}
         </h2>
 
-        {/* Línea separadora horizontal */}
-        <div className="h-[2px] bg-orange-500" />
+        <hr className="h-[2px] bg-orange-500 border-0" />
 
         {/* Descripción */}
         <div>
@@ -310,8 +304,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
           </p>
         </div>
 
-        {/* Línea separadora */}
-        <div className="w-full h-[1px] bg-orange-500" />
+        <hr className="w-full h-[1px] bg-orange-500 border-0" />
 
         {/* Stack */}
         <div>
@@ -353,8 +346,8 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
             })}
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </aside>
   );
 };
 

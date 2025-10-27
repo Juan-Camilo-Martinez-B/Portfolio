@@ -156,8 +156,10 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
   // Renderizado para mobile
   if (!isDesktop) {
     return (
-      <div 
+      <aside 
         className="fixed inset-0 flex items-center justify-center"
+        role="dialog"
+        aria-modal="true"
         style={{ 
           zIndex: 100,
           backgroundColor: 'rgba(0, 0, 0, 0.99)',
@@ -169,11 +171,11 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
           onClick={onClose}
         />
         
-        <div 
+        <article 
           className="relative w-full max-w-5xl mx-4 bg-gray-800 border-2 border-orange-500 rounded-xl overflow-hidden shadow-2xl"
           style={{ zIndex: 101 }}
         >
-          <div className="flex justify-between items-center p-4 border-b border-orange-500 bg-gray-900">
+          <header className="flex justify-between items-center p-4 border-b border-orange-500 bg-gray-900">
             <h2 className="text-xl font-audiowide text-orange-500">
               {aboutData.modal.title}
             </h2>
@@ -183,9 +185,9 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
             >
               ×
             </button>
-          </div>
+          </header>
 
-          <div 
+          <section 
             ref={scrollContainerRef}
             className="relative h-80 md:h-96 overflow-x-auto overflow-y-hidden bg-gray-800 no-scrollbar"
             style={{ scrollBehavior: 'auto' }}
@@ -305,10 +307,10 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
                 </div>
               ))}
             </div>
-          </div>
+          </section>
 
-          <div className="p-4 border-t border-orange-500 bg-gray-900">
-            <div className="flex justify-center space-x-4">
+          <footer className="p-4 border-t border-orange-500 bg-gray-900">
+            <nav className="flex justify-center space-x-4">
               <button
                 onClick={() => setIsScrolling(!isScrolling)}
                 className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-orbitron text-sm"
@@ -321,17 +323,19 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
               >
                 Reiniciar
               </button>
-            </div>
-          </div>
-        </div>
-      </div>
+            </nav>
+          </footer>
+        </article>
+      </aside>
     );
   }
 
   // Renderizado para desktop
   return (
-    <div 
+    <aside 
       className="fixed bg-gray-800 border-2 border-orange-500 rounded-xl shadow-2xl overflow-hidden transform transition-all duration-500 ease-in-out"
+      role="dialog"
+      aria-modal="true"
       style={{ 
         zIndex: 100,
         top: `${modalPosition.top}px`,
@@ -343,7 +347,7 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
     >
       <div className="relative h-full bg-gray-800">
         <div className="h-full flex flex-col">
-          <div className="flex justify-between items-center p-6 pb-4">
+          <header className="flex justify-between items-center p-6 pb-4">
             <h2 className="text-lg font-audiowide text-orange-500">
               {aboutData.modal.title}
             </h2>
@@ -353,11 +357,11 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
             >
               ×
             </button>
-          </div>
+          </header>
 
-          <div className="h-[2px] bg-orange-500 mx-6" />
+          <hr className="h-[2px] bg-orange-500 mx-6 border-0" />
 
-          <div 
+          <section 
             className="desktop-scroll-content flex-1 overflow-y-auto no-scrollbar px-6 py-4"
             style={{ scrollBehavior: 'auto' }}
             onMouseEnter={handleMouseEnter}
@@ -443,10 +447,10 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
                 </div>
               </div>
             </div>
-          </div>
+          </section>
 
-          <div className="pt-4 pb-6 px-6 border-t border-orange-500 bg-gray-800">
-            <div className="flex justify-center space-x-2">
+          <footer className="pt-4 pb-6 px-6 border-t border-orange-500 bg-gray-800">
+            <nav className="flex justify-center space-x-2">
               <button
                 onClick={() => setIsScrolling(!isScrolling)}
                 className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-orbitron text-sm"
@@ -459,11 +463,11 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
               >
                 Reiniciar
               </button>
-            </div>
-          </div>
+            </nav>
+          </footer>
         </div>
       </div>
-    </div>
+    </aside>
   );
 };
 

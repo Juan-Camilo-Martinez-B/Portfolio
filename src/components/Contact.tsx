@@ -102,12 +102,10 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
-      {/* Mobile y Desktop Layout - Ambos en columna */}
+    <section className="space-y-6">
       <div className="grid grid-cols-1 gap-6 max-w-2xl mx-auto">
         
-        {/* Información de contacto */}
-        <div className="bg-black border-2 border-orange-500 rounded-xl p-6">
+        <article className="bg-black border-2 border-orange-500 rounded-xl p-6">
           <h2 className="text-xl font-orbitron text-center mb-6 bg-orange-500 text-black py-2 rounded-lg">
             {contactData.contactInfo.title}
           </h2>
@@ -185,10 +183,9 @@ const Contact: React.FC = () => {
               </a>
             </div>
           </div>
-        </div>
+        </article>
 
-        {/* Formulario de contacto */}
-        <div className="bg-black border-2 border-orange-500 rounded-xl p-6">
+        <article className="bg-black border-2 border-orange-500 rounded-xl p-6">
           <h2 className="text-xl font-orbitron text-center mb-6 bg-orange-500 text-black py-2 rounded-lg">
             {contactData.form.title}
           </h2>
@@ -284,10 +281,10 @@ const Contact: React.FC = () => {
               </div>
             )}
           </form>
-        </div>
+        </article>
 
       </div>
-    </div>
+    </section>
   );
 };
 

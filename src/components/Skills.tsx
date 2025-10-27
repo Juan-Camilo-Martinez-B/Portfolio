@@ -75,28 +75,28 @@ const Skills: React.FC = () => {
     setIsScrolling: (value: boolean) => void,
     direction: 'left' | 'right'
   ) => (
-    <div
+    <nav
       className="relative overflow-hidden h-32"
       onMouseEnter={() => setIsScrolling(false)}
       onMouseLeave={() => setIsScrolling(true)}
       onTouchStart={() => setIsScrolling(false)}
       onTouchEnd={() => setIsScrolling(true)}
     >
-      <div
+      <ul
         className="flex gap-6 py-4 absolute"
         style={{
           animation: direction === 'left' 
             ? 'scrollLeft 30s linear infinite' 
             : 'scrollRight 30s linear infinite',
-          animationPlayState: isScrolling ? 'running' : 'paused'
+          animationPlayState: isScrolling ? 'running' : 'paused',
+          listStyle: 'none'
         }}
       >
-        {/* Duplicar iconos para scroll infinito */}
         {[...skills, ...skills, ...skills, ...skills].map((skill, index) => {
           const IconComponent = skillIcons[skill.name];
           
           return (
-            <div
+            <li
               key={`${skill.name}-${index}`}
               className="flex-shrink-0 flex flex-col items-center justify-center space-y-2 group"
             >
@@ -122,15 +122,15 @@ const Skills: React.FC = () => {
               <span className="text-white font-audiowide text-xs text-center w-24 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
                 {skill.name}
               </span>
-            </div>
+            </li>
           );
         })}
-      </div>
-    </div>
+      </ul>
+    </nav>
   );
 
   return (
-    <div className="space-y-8">
+    <section className="space-y-8">
       <h2 className="text-3xl font-semibold text-orange-500 font-orbitron text-center">
         Skills
       </h2>
@@ -188,7 +188,7 @@ const Skills: React.FC = () => {
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

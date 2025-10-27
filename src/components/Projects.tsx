@@ -35,20 +35,18 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
   };
 
   return (
-    <div className="space-y-6">
+    <section className="space-y-6">
       <h2 className="text-3xl font-semibold text-orange-500 font-orbitron text-center">
         {projectsSection.title}
       </h2>
       
-      {/* Grid de proyectos */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {projects.map((project) => (
-          <div
+          <article
             key={project.id}
             className="bg-gray-800 border-2 border-orange-500 rounded-xl overflow-hidden"
           >
-            {/* Imagen del proyecto con vista previa */}
-            <div 
+            <figure 
               className="w-full h-48 bg-gray-700 flex items-center justify-center overflow-hidden relative group"
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
@@ -158,9 +156,8 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
               {hoveredProject !== project.id && (
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               )}
-            </div>
+            </figure>
 
-            {/* Contenido */}
             <div className="p-5 space-y-4">
               <div className="flex items-center justify-between gap-2">
                 <h3 className="text-xl font-semibold text-orange-500 font-orbitron">
@@ -203,10 +200,10 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                 </Button>
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

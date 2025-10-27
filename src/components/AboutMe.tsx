@@ -16,46 +16,38 @@ const AboutMe: React.FC<AboutMeProps> = ({ onOpenModal }) => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center space-y-8 p-4">
-        {/* Imagen circular - placeholder */}
-        <div className="w-32 h-32 md:w-40 md:h-40 border-2 border-orange-500 rounded-full bg-gray-700 flex items-center justify-center mb-4">
-          {/* Espacio para imagen */}
+    <section className="w-full h-full flex flex-col justify-center items-center space-y-8 p-4">
+        <figure className="w-32 h-32 md:w-40 md:h-40 border-2 border-orange-500 rounded-full bg-gray-700 flex items-center justify-center mb-4">
           <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center">
             <span className="text-gray-400 text-xs font-audiowide">
               {aboutData.image.placeholder}
             </span>
           </div>
-        </div>
+        </figure>
 
-        {/* Contenedor de textos izquierdo y derecho */}
-        <div className="w-full max-w-4xl flex flex-col md:flex-row items-start justify-between gap-8 md:gap-12">
-          {/* Texto izquierdo */}
+        <article className="w-full max-w-4xl flex flex-col md:flex-row items-start justify-between gap-8 md:gap-12">
           <div className="text-center md:text-left md:w-1/3 w-full">
-            <div className="hidden md:block w-full h-px bg-orange-500 mb-4"></div>
+            <hr className="hidden md:block w-full h-px bg-orange-500 mb-4 border-0" />
             <p className="text-white font-audiowide text-sm md:text-base leading-relaxed whitespace-pre-line">
               {aboutData.texts.left}
             </p>
           </div>
 
-          {/* Texto derecho */}
           <div className="text-center md:text-left md:w-1/3 w-full">
-            <div className="hidden md:block w-full h-px bg-orange-500 mb-4"></div>
+            <hr className="hidden md:block w-full h-px bg-orange-500 mb-4 border-0" />
             <p className="text-white font-audiowide text-sm md:text-base leading-relaxed whitespace-pre-line">
               {aboutData.texts.right}
             </p>
           </div>
-        </div>
+        </article>
 
-        {/* Divisor horizontal */}
-        <div className="w-full max-w-2xl h-px bg-orange-500"></div>
+        <hr className="w-full max-w-2xl h-px bg-orange-500 border-0" />
 
-        {/* Texto principal centrado */}
-        <div className="w-full max-w-3xl text-center">
+        <article className="w-full max-w-3xl text-center">
           <p className="text-white font-audiowide text-sm md:text-base leading-relaxed mb-6 whitespace-pre-line">
             {aboutData.description}
           </p>
           
-          {/* Botón "Entra en mi mundo" */}
           <Button 
             variant="primary" 
             size="lg"
@@ -64,8 +56,8 @@ const AboutMe: React.FC<AboutMeProps> = ({ onOpenModal }) => {
           >
             {aboutData.button.text}
           </Button>
-        </div>
-    </div>
+        </article>
+    </section>
   );
 };
 
