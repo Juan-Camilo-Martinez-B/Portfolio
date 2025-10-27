@@ -1,4 +1,8 @@
-import portfolioData from '@/data/portfolio.json';
+'use client';
+
+import portfolioDataEs from '@/data/portfolio.json';
+import portfolioDataEn from '@/data/portfolio.en.json';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect, useState } from 'react';
 
 export interface PortfolioData {
@@ -143,12 +147,13 @@ export interface PortfolioData {
 }
 
 export const usePortfolioData = (): PortfolioData => {
-  const [data, setData] = useState<PortfolioData>(portfolioData as PortfolioData);
+  const { language } = useLanguage();
+  const [data, setData] = useState<PortfolioData>(portfolioDataEs as PortfolioData);
 
   useEffect(() => {
-    // En el futuro, aquí podrías cargar datos desde una API
+    const portfolioData = language === 'es' ? portfolioDataEs : portfolioDataEn;
     setData(portfolioData as PortfolioData);
-  }, []);
+  }, [language]);
 
   return data;
 };

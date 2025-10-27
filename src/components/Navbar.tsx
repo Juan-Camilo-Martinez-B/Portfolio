@@ -4,6 +4,7 @@ import React from 'react';
 import { useNavigationData } from '@/hooks/usePortfolioData';
 import { scrollToSection } from '@/lib/utils';
 import Button from '@/components/ui/Button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface NavbarProps {
   active: string;
@@ -12,6 +13,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ active, setActive }) => {
   const navigationItems = useNavigationData();
+  const { language, toggleLanguage } = useLanguage();
 
   const handleClick = (id: string) => {
     setActive(id);
@@ -33,8 +35,14 @@ const Navbar: React.FC<NavbarProps> = ({ active, setActive }) => {
       ))}
 
       {/* Botones de utilidad */}
-      <Button variant="outline" size="sm" className="text-sm sm:text-base">
-        EN/ES
+      <Button 
+        variant="outline" 
+        size="sm" 
+        className="text-sm sm:text-base font-bold"
+        onClick={toggleLanguage}
+        title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+      >
+        {language === 'es' ? 'EN' : 'ES'}
       </Button>
       <Button variant="outline" size="sm" className="text-sm sm:text-base">
         ☀️/🌙

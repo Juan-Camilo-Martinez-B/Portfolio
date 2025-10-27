@@ -1,0 +1,267 @@
+{
+  "personalInfo": {
+    "name": "Juan Camilo Martínez",
+    "social": {
+      "github": "https://github.com/Juan-Camilo-Martinez-B",
+      "linkedin": "https://www.linkedin.com/in/juan-camilo-martínez-bedoya-559568393",
+      "instagram": "https://www.instagram.com/juan_camilo_m_b",
+      "facebook": "https://facebook.com/juancamilo"
+    }
+  },
+  "hero": {
+    "image": "/images/avatar.jpg",
+    "name": "I'm Juan Camilo Martinez.",
+    "description": "I'm a software engineer and I firmly believe in innovation as the driving force to build a more technological future full of possibilities.",
+    "cvButton": {
+      "text": "CV",
+      "url": "/cv/juan-camilo-martinez.pdf"
+    }
+  },
+  "about": {
+    "title": "About me",
+    "image": {
+      "placeholder": "Image",
+      "alt": "Juan Camilo Martinez Bedoya"
+    },
+    "texts": {
+      "left": "I'm Juan Camilo\nMartinez Bedoya,\na software engineer\nopen to new challenges\nand diverse solutions.",
+      "right": "Besides\ntechnology, I enjoy\nsports, video games\nand music, passions\nthat fuel my creativity\nand inspiration."
+    },
+    "description": "As an engineer I can work in different areas of software,\nI generally specialize in the technical and creative\ndevelopment of digital projects, working on practical\nsystems and using different programming tools",
+    "button": {
+      "text": "Enter my world",
+      "action": "openModal"
+    },
+    "modal": {
+      "title": "My World",
+      "sections": {
+        "references": {
+          "title": "Testimonials"
+        },
+        "myWorld": {
+          "title": "What I love to do"
+        }
+      },
+      "images": [
+        {
+          "id": 1,
+          "placeholder": "/images/about/testimonio-1.jpg",
+          "author": "Daniel Fernando Arteaga Fajardo - Professor at UCC Engineering Faculty",
+          "description": "Demonstrates great learning capacity and commitment. Quickly assimilates technical concepts and applies them with judgment in his projects."
+        },
+        {
+          "id": 2,
+          "placeholder": "/images/about/testimonio-2.jpg",
+          "author": "Nicolás Alejandro García - Software Engineering Student at UCC",
+          "description": "Stands out for his ability to analyze and solve problems efficiently. His practical and organized approach makes a difference in projects."
+        },
+        {
+          "id": 3,
+          "placeholder": "/images/about/testimonio-3.jpg",
+          "author": "Mario Alejandro Cardona Narvaez - Professional Nurse Health Quality Auditor",
+          "description": "Integrates easily, collaborates actively and maintains a positive attitude that strengthens teamwork"
+        },
+        {
+          "id": 4,
+          "placeholder": "/images/about/deporte.jpg",
+          "description": "I love sports, playing makes me feel free."
+        },
+        {
+          "id": 5,
+          "placeholder": "/images/about/videojuegos.jpg",
+          "description": "Video games fuel my creativity and strategic thinking."
+        },
+        {
+          "id": 6,
+          "placeholder": "/images/about/musica.jpg",
+          "description": "Music accompanies me in every project, it's my source of inspiration."
+        },
+        {
+          "id": 7,
+          "placeholder": "/images/about/canto.jpg",
+          "description": "Singing I express all my ideas and emotions."
+        },
+        {
+          "id": 8,
+          "placeholder": "/images/about/ciencia-ficcion.jpg",
+          "description": "Science fiction and fantasy nourish my ideas and improve my understanding of the world."
+        }
+      ]
+    }
+  },
+  "projectsSection": {
+    "title": "Projects",
+    "buttons": {
+      "details": "Details",
+      "live": "Live Demo"
+    }
+  },
+  "projects": [
+    {
+      "id": "project-1",
+      "title": "Control Plus",
+      "shortDescription": "Comprehensive access control system using QR codes for residential complexes",
+      "fullDescription": "ControlPlus is a comprehensive access control system designed for residential complexes, buildings and spaces that require entry management through QR codes. The application allows registering different types of users (residents, visitors, employees and administrators), each with specific permission levels that determine which doors or areas they can access. The system implements a secure registration flow with email verification, automatic generation of unique QR codes for each user, and real-time access validation. Users receive their QR code by email after verifying their account, and can use it by scanning it from a file or entering the token directly. The project architecture is completely separated between frontend and backend, following good development practices and clean architecture, which facilitates maintenance, scalability and future system expansions.",
+      "imageUrl": "icon:lock",
+      "technologies": [
+        { "name": "Java", "icon": "☕" },
+        { "name": "Spring Boot", "icon": "🍃" },
+        { "name": "MongoDB", "icon": "🍀" },
+        { "name": "Next.js", "icon": "▲" },
+        { "name": "React", "icon": "⚛️" },
+        { "name": "TypeScript", "icon": "💙" },
+        { "name": "Tailwind CSS", "icon": "🎨" },
+        { "name": "Maven", "icon": "📦" },
+        { "name": "Railway", "icon": "🚂" },
+        { "name": "Vercel", "icon": "▲" }
+      ],
+      "githubUrl": "https://github.com/Juan-Camilo-Martinez-B/Control_Plus",
+      "liveUrl": "https://control-plus-beta.vercel.app"
+    },
+    {
+      "id": "project-2",
+      "title": "Fitness Tracker",
+      "shortDescription": "Web application for tracking physical activities with interactive maps and real-time analysis",
+      "fullDescription": "Fitness Tracker is a professional web application for real-time physical activity tracking that allows recording, monitoring and analyzing running, cycling and walking workouts. It integrates interactive maps with OpenStreetMap and Leaflet for route visualization, includes automatic route planning using OSRM from current location, and offers continuous GPS tracking with real-time metrics calculation (distance, speed, calories, pace). Features a daily statistics dashboard, activity export in standard GPX format, local data persistence with Zustand and localStorage, and a mobile-first responsive design with complete dark mode. The application uses Next.js 16 with App Router, React 19, TypeScript and Tailwind CSS, offering a professional user experience with smooth animations through Framer Motion and elegant toast notifications.",
+      "imageUrl": "icon:fitness",
+      "technologies": [
+        { "name": "Next.js", "icon": "▲" },
+        { "name": "React", "icon": "⚛️" },
+        { "name": "TypeScript", "icon": "💙" },
+        { "name": "Tailwind CSS", "icon": "🎨" },
+        { "name": "Leaflet", "icon": "🗺️" },
+        { "name": "Zustand", "icon": "🐻" },
+        { "name": "Framer Motion", "icon": "✨" },
+        { "name": "OpenStreetMap", "icon": "🌍" },
+        { "name": "Vercel", "icon": "▲" }
+      ],
+      "githubUrl": "https://github.com/Juan-Camilo-Martinez-B/Maps.git",
+      "liveUrl": "https://maps-orcin.vercel.app"
+    },
+    {
+      "id": "project-3",
+      "title": "MP3 Player Web",
+      "shortDescription": "Modern web music player application with playlist management",
+      "fullDescription": "MP3 Player Web is a modern web application that allows you to manage and play your music library intuitively. Features song downloads from YouTube with automatic MP3 conversion (in local mode), complete custom playlist system with shuffle function and drag-and-drop reordering. The player includes complete controls, interactive progress bar, volume control and continuous playback with automatic song transitions. All music is stored in the cloud for global access. The application operates in two modes: development with all features enabled, and demo with 25 pre-loaded songs.",
+      "imageUrl": "icon:music",
+      "technologies": [
+        { "name": "Django", "icon": "django" },
+        { "name": "Python", "icon": "python" },
+        { "name": "PostgreSQL", "icon": "postgresql" },
+        { "name": "JavaScript", "icon": "javascript" },
+        { "name": "HTML5", "icon": "html5" },
+        { "name": "Cloudinary", "icon": "cloudinary" }
+      ],
+      "githubUrl": "https://github.com/Juan-Camilo-Martinez-B/MP3.git",
+      "liveUrl": "https://mp3-f8on.onrender.com"
+    },
+    {
+      "id": "project-4",
+      "title": "ClimaGlobal",
+      "shortDescription": "Weather web application with Angular 19",
+      "fullDescription": "ClimaGlobal is a weather web application developed with Angular 19 that allows real-time weather queries for over 200,000 cities around the world. It stands out for its professional architecture implementing 9 classic design patterns and efficient data structures. Includes a unique dynamic SVG animation system that generates up to 350 particles in real time with ultra-realistic rain, snow and storm effects at constant 60 FPS. Features intelligent cache that reduces HTTP requests by 60%, 100% strong typing with TypeScript, and modern visual design with glassmorphism, vibrant gradients and over 30 fluid microinteractions. The application implements OnPush Change Detection, Lazy Loading and GPU-accelerated animations for optimal performance.",
+      "imageUrl": "icon:weather",
+      "technologies": [
+        { "name": "Angular", "icon": "angular" },
+        { "name": "TypeScript", "icon": "typescript" },
+        { "name": "SCSS", "icon": "scss" },
+        { "name": "Bootstrap", "icon": "bootstrap" }
+      ],
+      "githubUrl": "https://github.com/Juan-Camilo-Martinez-B/Clima.git",
+      "liveUrl": "https://clima-one-ebon.vercel.app/home"
+    }
+  ],
+  "skills": {
+    "frontend": [
+      { "name": "React", "icon": "⚛️" },
+      { "name": "Next.js", "icon": "▲" },
+      { "name": "TypeScript", "icon": "💙" },
+      { "name": "Tailwind CSS", "icon": "🎨" },
+      { "name": "JavaScript", "icon": "📜" },
+      { "name": "Angular", "icon": "🅰️" }
+    ],
+    "backend": [
+      { "name": "Node.js", "icon": "🟢" },
+      { "name": "Spring Boot", "icon": "🍃" },
+      { "name": "MongoDB", "icon": "🍀" },
+      { "name": "PostgreSQL", "icon": "🐘" },
+      { "name": "C#", "icon": "♯" }
+    ],
+    "languages": [
+      { "name": "JavaScript", "icon": "📜" },
+      { "name": "TypeScript", "icon": "💙" },
+      { "name": "Python", "icon": "🐍" },
+      { "name": "Java", "icon": "☕" },
+      { "name": "C#", "icon": "♯" }
+    ],
+    "tools": [
+      { "name": "Git/GitHub", "icon": "🔧" },
+      { "name": "AWS", "icon": "☁️" },
+      { "name": "Figma", "icon": "🎯" },
+      { "name": "Visual Paradigm", "icon": "📐" }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Do you have a project in mind? I'd love to hear about it. I'm always open to new opportunities and collaborations.",
+    "responseTime": "Typical response time: 24-48 hours",
+    "contactInfo": {
+      "title": "Contact information",
+      "location": {
+        "label": "Location",
+        "value": "Pasto-Nariño",
+        "icon": "flag-colombia"
+      },
+      "email": {
+        "label": "Email",
+        "value": "martinez.b.juan.camilo@gmail.com"
+      },
+      "availability": {
+        "label": "Availability",
+        "value": "After business hours on weekdays"
+      }
+    },
+    "form": {
+      "title": "Contact me",
+      "enabled": true,
+      "fields": [
+        { "name": "name", "label": "Your name", "type": "text", "required": true },
+        { "name": "email", "label": "Email", "type": "email", "required": true },
+        { "name": "projectType", "label": "Project type", "type": "text", "required": true },
+        { "name": "message", "label": "Tell me more", "type": "textarea", "required": true }
+      ],
+      "submitButton": {
+        "text": "Send proposal",
+        "loadingText": "Sending..."
+      },
+      "messages": {
+        "success": "✅ Message sent successfully! I'll reply soon.",
+        "error": "❌ Error sending message. Please try again."
+      }
+    }
+  },
+  "navigation": [
+    { "id": "hero", "label": "Hero" },
+    { "id": "about", "label": "About" },
+    { "id": "projects", "label": "Projects" },
+    { "id": "skills", "label": "Skills" },
+    { "id": "contact", "label": "Contact" }
+  ],
+  "sidebar": {
+    "texts": {
+      "hero": "I transform uncertainty into creative and functional solutions.",
+      "about": "I enjoy living experiences that give me other perspectives on my goals",
+      "projects": "I create practical solutions to everyday problems, transforming ideas into useful experiences for users.",
+      "skills": "Always learning, always improving",
+      "contact": "Contact me, your project could be my next obsession. Good ideas start with a message."
+    }
+  },
+  "seo": {
+    "title": "Juan Camilo Martínez - Software Engineer",
+    "description": "Portfolio of Juan Camilo Martínez, software engineer specialized in modern web development with React, Next.js and TypeScript.",
+    "keywords": ["developer", "software", "react", "nextjs", "typescript", "frontend", "portfolio"],
+    "author": "Juan Camilo Martínez",
+    "url": "https://juancamilo.dev"
+  }
+}
+

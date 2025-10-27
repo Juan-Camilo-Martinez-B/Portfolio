@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Audiowide, Orbitron } from "next/font/google";
 import "./globals.css";
 import portfolioData from "@/data/portfolio.json";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const audiowide = Audiowide({
   weight: "400",
@@ -42,7 +43,9 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${audiowide.variable} ${orbitron.variable}`}>
       <body className="bg-black text-white antialiased">
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );
