@@ -8,9 +8,15 @@ interface DynamicModalProps {
   onContentShift?: (shifted: boolean) => void;
 }
 
+interface ImageWithAuthor {
+  id: number;
+  placeholder: string;
+  description: string;
+  author?: string;
+}
+
 const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentShift }) => {
   const aboutData = useAboutData();
-  const [scrollPosition, setScrollPosition] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0, width: 0, height: 0 });
@@ -34,12 +40,10 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
             waitingAtEnd = true;
             setTimeout(() => {
               scrollElement.scrollTo({ top: 0, behavior: 'smooth' });
-              setScrollPosition(0);
               waitingAtEnd = false;
             }, 1500);
           } else if (!waitingAtEnd) {
             scrollElement.scrollTop = currentScroll + scrollSpeed;
-            setScrollPosition(scrollElement.scrollTop);
           }
         }
       } else if (scrollContainerRef.current) {
@@ -51,12 +55,10 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
           waitingAtEnd = true;
           setTimeout(() => {
             container.scrollTo({ left: 0, behavior: 'smooth' });
-            setScrollPosition(0);
             waitingAtEnd = false;
           }, 1500);
         } else if (!waitingAtEnd) {
           container.scrollLeft = currentScroll + scrollSpeed;
-          setScrollPosition(container.scrollLeft);
         }
       }
     }, 20);
@@ -116,7 +118,6 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
       return () => clearTimeout(timer);
     } else {
       setIsScrolling(false);
-      setScrollPosition(0);
     }
   }, [isOpen]);
 
@@ -130,7 +131,6 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
     }
-    setScrollPosition(0);
     
     if (wasScrolling) {
       setTimeout(() => setIsScrolling(true), 800);
@@ -145,7 +145,6 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
     if (scrollElement) {
       scrollElement.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    setScrollPosition(0);
     
     if (wasScrolling) {
       setTimeout(() => setIsScrolling(true), 800);
@@ -255,9 +254,9 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
                       </div>
                       
                       <div className="flex flex-col justify-center space-y-3 flex-1 min-w-0 pr-8">
-                        {(image as any).author && (
+                        {(image as ImageWithAuthor).author && (
                           <p className="text-orange-500 font-audiowide text-base font-bold leading-relaxed">
-                            {(image as any).author}
+                            {(image as ImageWithAuthor).author}
                           </p>
                         )}
                         <p className="text-white font-audiowide text-base leading-relaxed">
@@ -392,9 +391,9 @@ const DynamicModal: React.FC<DynamicModalProps> = ({ isOpen, onClose, onContentS
                       </div>
                       
                       <div className="space-y-2">
-                        {(image as any).author && (
+                        {(image as ImageWithAuthor).author && (
                           <p className="text-orange-500 font-audiowide text-sm font-bold leading-relaxed">
-                            {(image as any).author}
+                            {(image as ImageWithAuthor).author}
                           </p>
                         )}
                         <p className="text-white font-audiowide text-sm leading-relaxed">
