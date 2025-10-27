@@ -1,12 +1,6 @@
 {
   "personalInfo": {
     "name": "Juan Camilo Martínez",
-    "title": "Ingeniero de Software",
-    "description": "Ingeniero de software que cree en la innovación como motor para construir un futuro más tecnológico y lleno de posibilidades.",
-    "email": "martinez.b.juan.camilo@gmail.com",
-    "phone": "+57 300 123 4567",
-    "location": "Pasto-Nariño",
-    "avatar": "/images/avatar.jpg",
     "social": {
       "github": "https://github.com/Juan-Camilo-Martinez-B",
       "linkedin": "https://www.linkedin.com/in/juan-camilo-martínez-bedoya-559568393",
@@ -64,7 +58,7 @@
         {
           "id": 3,
           "placeholder": "/images/about/testimonio-3.jpg",
-          "author": "Mario Alejandro Cardona Narvaez - Enfermmero profesional Auditor de la calidad en salud",
+          "author": "Mario Alejandro Cardona Narvaez - Enfermero profesional Auditor de la calidad en salud",
           "description": "se integra con facilidad, colabora activamente y mantiene una actitud positiva que fortalece el trabajo en equipo"
         },
         {
@@ -207,50 +201,6 @@
       { "name": "Visual Paradigm", "icon": "📐" }
     ]
   },
-  "experience": [
-    {
-      "id": "exp-1",
-      "title": "Desarrollador Frontend Senior",
-      "company": "TechCorp Solutions",
-      "period": "2022 - Presente",
-      "description": "Desarrollo de aplicaciones web modernas con React y Next.js, liderando proyectos de gran escala.",
-      "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-      "achievements": [
-        "Mejoré el rendimiento de la aplicación en un 40%",
-        "Implementé sistema de diseño consistente",
-        "Mentor de desarrolladores junior"
-      ]
-    },
-    {
-      "id": "exp-2",
-      "title": "Desarrollador Full Stack",
-      "company": "StartupXYZ",
-      "period": "2021 - 2022",
-      "description": "Desarrollo de aplicaciones web completas desde el frontend hasta el backend.",
-      "technologies": ["React", "Node.js", "MongoDB", "Express"],
-      "achievements": [
-        "Desarrollé 3 aplicaciones web desde cero",
-        "Implementé sistema de autenticación seguro",
-        "Optimicé consultas de base de datos"
-      ]
-    }
-  ],
-  "education": [
-    {
-      "id": "edu-1",
-      "degree": "Ingeniería de Sistemas",
-      "institution": "Universidad Nacional de Colombia",
-      "period": "2018 - 2022",
-      "description": "Especialización en desarrollo de software y arquitectura de sistemas."
-    },
-    {
-      "id": "edu-2",
-      "degree": "Certificación AWS Cloud Practitioner",
-      "institution": "Amazon Web Services",
-      "period": "2023",
-      "description": "Fundamentos de computación en la nube y servicios AWS."
-    }
-  ],
   "contact": {
     "title": "Contacto",
     "description": "¿Tienes un proyecto en mente? Me encantaría escuchar sobre él. Estoy siempre abierto a nuevas oportunidades y colaboraciones.",
@@ -304,21 +254,6 @@
       "projects": "Creo soluciones prácticas para problemas cotidianos, transformando ideas en experiencias útiles para los usuarios.",
       "skills": "Siempre aprendiendo, siempre mejorando",
       "contact": "Contáctame, tu proyecto puede ser mi próxima obsesión. Las buenas ideas inician con un mensaje."
-    }
-  },
-  "theme": {
-    "colors": {
-      "primary": "#f97316",
-      "secondary": "#1f2937",
-      "background": "#000000",
-      "surface": "#1f2937",
-      "text": "#ffffff",
-      "textSecondary": "#d1d5db",
-      "textMuted": "#9ca3af"
-    },
-    "fonts": {
-      "primary": "Audiowide",
-      "secondary": "Orbitron"
     }
   },
   "seo": {

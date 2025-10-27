@@ -4,16 +4,9 @@ import { useEffect, useState } from 'react';
 export interface PortfolioData {
   personalInfo: {
     name: string;
-    title: string;
-    description: string;
-    email: string;
-    phone?: string;
-    location: string;
-    avatar: string;
     social: {
       github: string;
       linkedin: string;
-      twitter?: string;
       instagram?: string;
       facebook?: string;
     };
@@ -94,22 +87,6 @@ export interface PortfolioData {
       icon: string;
     }>;
   };
-  experience: Array<{
-    id: string;
-    title: string;
-    company: string;
-    period: string;
-    description: string;
-    technologies: string[];
-    achievements: string[];
-  }>;
-  education: Array<{
-    id: string;
-    degree: string;
-    institution: string;
-    period: string;
-    description: string;
-  }>;
   contact: {
     title: string;
     description: string;
@@ -155,10 +132,6 @@ export interface PortfolioData {
   }>;
   sidebar: {
     texts: Record<string, string>;
-  };
-  theme: {
-    colors: Record<string, string>;
-    fonts: Record<string, string>;
   };
   seo: {
     title: string;
