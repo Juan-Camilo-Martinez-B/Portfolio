@@ -21,7 +21,7 @@ const Navbar: React.FC<NavbarProps> = ({ active, setActive }) => {
   };
 
   return (
-    <nav className="flex flex-wrap justify-center gap-2 sm:gap-3 px-2 sm:px-4 py-1 sm:py-2">
+    <nav className="flex flex-wrap justify-center gap-1.5 sm:gap-3 px-1 sm:px-4 py-1 sm:py-2">
       {navigationItems.map((item) => (
         <Button
           key={item.id}

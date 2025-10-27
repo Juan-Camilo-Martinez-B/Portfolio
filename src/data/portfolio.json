@@ -226,7 +226,7 @@
       "enabled": true,
       "fields": [
         { "name": "name", "label": "Tu nombre", "type": "text", "required": true },
-        { "name": "email", "label": "Email", "type": "email", "required": true },
+        { "name": "email", "label": "Correo", "type": "email", "required": true },
         { "name": "projectType", "label": "Tipo de proyecto", "type": "text", "required": true },
         { "name": "message", "label": "Cuéntame más", "type": "textarea", "required": true }
       ],
