@@ -42,7 +42,7 @@
       "title": "Mi Mundo",
       "sections": {
         "references": {
-          "title": "Referencias"
+          "title": "Testimonios"
         },
         "myWorld": {
           "title": "Lo que amo hacer"
@@ -51,33 +51,33 @@
       "images": [
         {
           "id": 1,
-          "placeholder": "Imagen 1",
+          "placeholder": "/images/about/testimonio-1.jpg",
           "description": "Siempre cumple lo que promete en un proyecto."
         },
         {
           "id": 2,
-          "placeholder": "Imagen 2", 
+          "placeholder": "/images/about/testimonio-2.jpg", 
           "description": "Es alguien que nunca se rinde."
         },
         {
           "id": 3,
-          "placeholder": "Imagen 3",
+          "placeholder": "/images/about/testimonio-3.jpg",
           "description": "Es detallista en todo lo que le apasiona."
         },
         {
           "id": 4,
-          "placeholder": "Imagen 4",
-          "description": "Su compromiso marca la diferencia."
+          "placeholder": "/images/about/deporte.jpg",
+          "description": "Me encanta el deporte, jugar me hace sentir libre."
         },
         {
           "id": 5,
-          "placeholder": "Imagen 5",
-          "description": "Innovación constante en cada proyecto."
+          "placeholder": "/images/about/videojuegos.jpg",
+          "description": "Los videojuegos alimentan mi creatividad y pensamiento estratégico."
         },
         {
           "id": 6,
-          "placeholder": "Imagen 6",
-          "description": "Colaboración efectiva con equipos."
+          "placeholder": "/images/about/musica.jpg",
+          "description": "La música me acompaña en cada proyecto, es mi fuente de inspiración."
         }
       ]
     }
