@@ -5,6 +5,7 @@ import { useNavigationData } from '@/hooks/usePortfolioData';
 import { scrollToSection } from '@/lib/utils';
 import Button from '@/components/ui/Button';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface NavbarProps {
   active: string;
@@ -14,10 +15,32 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ active, setActive }) => {
   const navigationItems = useNavigationData();
   const { language, toggleLanguage } = useLanguage();
+  const { theme, cycleTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+
+  // Esperar a que el componente esté montado para evitar hydration mismatch
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleClick = (id: string) => {
     setActive(id);
     scrollToSection(id);
+  };
+
+  // Obtener el icono según el tema
+  const getThemeIcon = () => {
+    if (!mounted) return '🌙'; // Default durante SSR
+    if (theme === 'light') return '☀️';
+    if (theme === 'dark') return '🌙';
+    return '💻'; // system
+  };
+
+  const getThemeLabel = () => {
+    if (!mounted) return 'Cambiar Tema'; // Default durante SSR
+    if (theme === 'light') return 'Modo Claro';
+    if (theme === 'dark') return 'Modo Oscuro';
+    return 'Preferencias del Sistema';
   };
 
   return (
@@ -44,9 +67,15 @@ const Navbar: React.FC<NavbarProps> = ({ active, setActive }) => {
       >
         {language === 'es' ? 'EN' : 'ES'}
       </Button>
-      <Button variant="outline" size="sm" className="text-sm sm:text-base">
-        ☀️/🌙
-      </Button>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="text-sm sm:text-base"
+            onClick={cycleTheme}
+            title={getThemeLabel()}
+          >
+            {getThemeIcon()}
+          </Button>
     </nav>
   );
 };

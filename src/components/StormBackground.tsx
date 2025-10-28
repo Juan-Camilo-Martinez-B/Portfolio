@@ -1,4 +1,7 @@
+'use client';
+
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface LightningProps {
   hue?: number;
@@ -14,10 +17,17 @@ const Lightning: React.FC<LightningProps> = ({
   size = 1.2,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { theme } = useTheme();
+  const animationFrameRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    
+    // Cancelar animación anterior si existe
+    if (animationFrameRef.current) {
+      cancelAnimationFrame(animationFrameRef.current);
+    }
 
     const resizeCanvas = () => {
       canvas.width = canvas.clientWidth * window.devicePixelRatio;
@@ -26,7 +36,10 @@ const Lightning: React.FC<LightningProps> = ({
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    const gl = canvas.getContext('webgl');
+    const gl = canvas.getContext('webgl', { 
+      alpha: true, // Habilitar transparencia
+      premultipliedAlpha: false 
+    });
     if (!gl) {
       console.error('WebGL not supported');
       return;
@@ -189,7 +202,14 @@ const Lightning: React.FC<LightningProps> = ({
     const render = () => {
       resizeCanvas();
       gl.viewport(0, 0, canvas.width, canvas.height);
-      gl.clearColor(0.0, 0.0, 0.0, 1.0);
+      
+      // Cambiar color de fondo según el tema
+      const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      if (isDark) {
+        gl.clearColor(0.0, 0.0, 0.0, 1.0); // Fondo negro para modo oscuro
+      } else {
+        gl.clearColor(0.95, 0.95, 0.95, 1.0); // Fondo gris claro para modo light
+      }
       gl.clear(gl.COLOR_BUFFER_BIT);
 
       const currentTime = performance.now();
@@ -201,17 +221,22 @@ const Lightning: React.FC<LightningProps> = ({
       gl.uniform1f(uSizeLocation, size);
 
       gl.drawArrays(gl.TRIANGLES, 0, 6);
-      requestAnimationFrame(render);
+      animationFrameRef.current = requestAnimationFrame(render);
     };
-    requestAnimationFrame(render);
+    animationFrameRef.current = requestAnimationFrame(render);
 
-    return () => window.removeEventListener('resize', resizeCanvas);
-  }, [hue, speed, intensity, size]);
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, [hue, speed, intensity, size, theme]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-screen h-screen block"
+      className="fixed top-0 left-0 w-screen h-screen block opacity-70 dark:opacity-100 transition-opacity duration-300"
       style={{ width: '100%', height: '100%' }}
     />
   );

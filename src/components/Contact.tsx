@@ -105,14 +105,14 @@ const Contact: React.FC = () => {
     <section className="space-y-6">
       <div className="grid grid-cols-1 gap-6 max-w-2xl mx-auto">
         
-        <article className="bg-black border-2 border-orange-500 rounded-xl p-6">
-          <h2 className="text-xl font-orbitron text-center mb-6 bg-orange-500 text-black py-2 rounded-lg">
+        <article className="bg-white dark:bg-black border-2 border-orange-500 rounded-xl p-6 transition-colors duration-300">
+          <h2 className="text-xl font-orbitron text-center mb-6 bg-orange-500 text-white py-2 rounded-lg">
             {contactData.contactInfo.title}
           </h2>
 
           <div className="space-y-4">
             {/* Ubicación */}
-            <div className="bg-gray-700 rounded-lg px-4 py-3 flex items-center gap-3">
+            <div className="bg-gray-200 dark:bg-gray-700 rounded-lg px-4 py-3 flex items-center gap-3 transition-colors duration-300">
               <ReactCountryFlag 
                 countryCode="CO" 
                 svg 
@@ -121,21 +121,21 @@ const Contact: React.FC = () => {
                   lineHeight: '2em',
                 }}
               />
-              <p className="text-white font-audiowide text-sm">
+              <p className="text-gray-800 dark:text-white font-audiowide text-sm">
                 {contactData.contactInfo.location.value}
               </p>
             </div>
 
             {/* Email */}
-            <div className="bg-gray-700 rounded-lg px-4 py-3">
-              <p className="text-white font-audiowide text-sm">
+            <div className="bg-gray-200 dark:bg-gray-700 rounded-lg px-4 py-3 transition-colors duration-300">
+              <p className="text-gray-800 dark:text-white font-audiowide text-sm">
                 {contactData.contactInfo.email.value}
               </p>
             </div>
 
             {/* Disponibilidad */}
-            <div className="bg-gray-700 rounded-lg px-4 py-3">
-              <p className="text-white font-audiowide text-sm">
+            <div className="bg-gray-200 dark:bg-gray-700 rounded-lg px-4 py-3 transition-colors duration-300">
+              <p className="text-gray-800 dark:text-white font-audiowide text-sm">
                 {contactData.contactInfo.availability.value}
               </p>
             </div>
@@ -177,16 +177,16 @@ const Contact: React.FC = () => {
                 href={personalInfo.social.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-800 border-2 border-orange-500 flex items-center justify-center hover:scale-110 transition-transform"
+                className="w-10 h-10 rounded-full bg-gray-300 dark:bg-gray-800 border-2 border-orange-500 flex items-center justify-center hover:scale-110 transition-all duration-300"
               >
-                <FaGithub className="text-white text-xl" />
+                <FaGithub className="text-gray-800 dark:text-white text-xl" />
               </a>
             </div>
           </div>
         </article>
 
-        <article className="bg-black border-2 border-orange-500 rounded-xl p-6">
-          <h2 className="text-xl font-orbitron text-center mb-6 bg-orange-500 text-black py-2 rounded-lg">
+        <article className="bg-white dark:bg-black border-2 border-orange-500 rounded-xl p-6 transition-colors duration-300">
+          <h2 className="text-xl font-orbitron text-center mb-6 bg-orange-500 text-white py-2 rounded-lg">
             {contactData.form.title}
           </h2>
 
@@ -194,7 +194,7 @@ const Contact: React.FC = () => {
             {/* Tu nombre y Email en fila */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-white font-audiowide text-sm mb-2">
+                <label className="block text-gray-800 dark:text-white font-audiowide text-sm mb-2">
                   {contactData.form.fields[0].label}
                 </label>
                 <input
@@ -202,13 +202,13 @@ const Contact: React.FC = () => {
                   name={contactData.form.fields[0].name}
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300"
                   required={contactData.form.fields[0].required}
                 />
               </div>
 
               <div>
-                <label className="block text-white font-audiowide text-sm mb-2">
+                <label className="block text-gray-800 dark:text-white font-audiowide text-sm mb-2">
                   {contactData.form.fields[1].label}
                 </label>
                 <input
@@ -216,7 +216,7 @@ const Contact: React.FC = () => {
                   name={contactData.form.fields[1].name}
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300"
                   required={contactData.form.fields[1].required}
                 />
               </div>
@@ -224,7 +224,7 @@ const Contact: React.FC = () => {
 
             {/* Tipo de proyecto */}
             <div>
-              <label className="block text-white font-audiowide text-sm mb-2">
+              <label className="block text-gray-800 dark:text-white font-audiowide text-sm mb-2">
                 {contactData.form.fields[2].label}
               </label>
               <input
@@ -232,14 +232,14 @@ const Contact: React.FC = () => {
                 name={contactData.form.fields[2].name}
                 value={formData.projectType}
                 onChange={handleInputChange}
-                className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300"
                 required={contactData.form.fields[2].required}
               />
             </div>
 
             {/* Cuéntame más */}
             <div>
-              <label className="block text-white font-audiowide text-sm mb-2">
+              <label className="block text-gray-800 dark:text-white font-audiowide text-sm mb-2">
                 {contactData.form.fields[3].label}
               </label>
               <textarea
@@ -247,7 +247,7 @@ const Contact: React.FC = () => {
                 value={formData.message}
                 onChange={handleInputChange}
                 rows={4}
-                className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none"
+                className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none transition-colors duration-300"
                 required={contactData.form.fields[3].required}
               />
             </div>

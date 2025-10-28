@@ -69,7 +69,7 @@ export default function Home() {
   const isContentShifted = isAboutModalShifted || isProjectModalShifted;
 
   return (
-    <div className="fixed inset-0 bg-black text-white overflow-hidden flex flex-col">
+    <div className="fixed inset-0 bg-white dark:bg-black text-gray-900 dark:text-white overflow-hidden flex flex-col transition-colors duration-300">
       {/* Contenedor principal */}
       <div 
         className={`relative z-10 flex flex-col md:flex-row justify-center items-start w-full pt-2 sm:pt-12 pb-24 sm:pb-25 px-3 sm:px-4 gap-3 sm:gap-4 max-w-[1200px] mx-auto h-[calc(100vh-6rem)] sm:h-[85vh] transition-all duration-500 ease-in-out ${

@@ -44,10 +44,10 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
         {projects.map((project) => (
           <article
             key={project.id}
-            className="bg-gray-800 border-2 border-orange-500 rounded-xl overflow-hidden"
+            className="bg-white dark:bg-gray-800 border-2 border-orange-500 rounded-xl overflow-hidden transition-colors duration-300"
           >
             <figure 
-              className="w-full h-48 bg-gray-700 flex items-center justify-center overflow-hidden relative group"
+              className="w-full h-48 bg-gray-500/50 dark:bg-gray-700 flex items-center justify-center overflow-hidden relative group transition-colors duration-300"
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
             >
@@ -176,7 +176,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                 )}
               </div>
               
-              <p className="text-white font-audiowide text-sm leading-relaxed">
+              <p className="text-gray-700 dark:text-white font-audiowide text-sm leading-relaxed">
                 {project.shortDescription}
               </p>
 

@@ -130,16 +130,16 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
         />
         
         <article 
-          className="relative w-full max-w-2xl max-h-full bg-gray-800 border-2 border-orange-500 rounded-xl shadow-2xl overflow-y-auto no-scrollbar"
+          className="relative w-full max-w-2xl max-h-full bg-white dark:bg-gray-800 border-2 border-orange-500 rounded-xl shadow-2xl overflow-y-auto no-scrollbar transition-colors duration-300"
           style={{ zIndex: 101 }}
         >
-          <header className="sticky top-0 flex justify-between items-center p-5 border-b border-orange-500 bg-gray-900 z-10">
+          <header className="sticky top-0 flex justify-between items-center p-5 border-b border-orange-500 bg-gray-50 dark:bg-gray-900 z-10 transition-colors duration-300">
             <h2 className="text-xl font-orbitron text-orange-500">
               {project.title}
             </h2>
             <button
               onClick={onClose}
-              className="text-white hover:text-orange-500 transition-colors text-3xl font-bold"
+              className="text-gray-900 dark:text-white hover:text-orange-500 transition-colors text-3xl font-bold"
             >
               ×
             </button>
@@ -151,7 +151,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
               <h3 className="text-lg font-orbitron text-orange-500 mb-4">
                 Descripción
               </h3>
-              <p className="text-white font-audiowide text-base leading-relaxed">
+              <p className="text-gray-900 dark:text-white font-audiowide text-base leading-relaxed transition-colors duration-300">
                 {project.fullDescription}
               </p>
             </div>
@@ -177,7 +177,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
                         <div className="absolute inset-0 rounded-full border-[2px] border-orange-500/40 animate-spin-slow" />
                         
                         {/* Icono principal */}
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 border-[2px] border-orange-500 flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-[360deg] group-hover:border-orange-400 group-hover:shadow-xl group-hover:shadow-orange-500/60 group-hover:from-orange-900/20 group-hover:to-gray-900">
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-500/50 to-gray-500/50 dark:from-gray-800 dark:to-gray-900 border-[2px] border-orange-500 flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-[360deg] group-hover:border-orange-400 group-hover:shadow-xl group-hover:shadow-orange-500/60 group-hover:from-orange-200/30 dark:group-hover:from-orange-900/20 group-hover:to-gray-500/50 dark:group-hover:to-gray-900">
                           {IconComponent ? (
                             <IconComponent className="text-3xl text-orange-500 filter group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500" />
                           ) : (
@@ -190,7 +190,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
                       </div>
                       
                       {/* Nombre de la tecnología con efecto neón */}
-                      <span className="text-white font-audiowide text-xs text-center w-20 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
+                      <span className="text-gray-900 dark:text-white font-audiowide text-xs text-center w-20 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
                         {tech.name}
                       </span>
                     </div>
@@ -207,7 +207,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
   // Renderizado para desktop (sidebar)
   return (
     <aside 
-      className="fixed bg-gray-800 border-2 border-orange-500 rounded-xl shadow-2xl transform transition-all duration-500 ease-in-out overflow-y-auto no-scrollbar"
+      className="fixed bg-white dark:bg-gray-800 border-2 border-orange-500 rounded-xl shadow-2xl transform transition-all duration-500 ease-in-out overflow-y-auto no-scrollbar"
       role="dialog"
       aria-modal="true"
       style={{ 
@@ -219,17 +219,17 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
         transform: isOpen ? 'translateX(0)' : 'translateX(100%)'
       }}
     >
-      <header className="sticky top-0 flex justify-end p-4 bg-gray-800 z-10">
+      <header className="sticky top-0 flex justify-end p-4 bg-white dark:bg-gray-800 z-10 transition-colors duration-300">
         <button
           onClick={onClose}
-          className="text-white hover:text-orange-500 transition-colors text-xl font-bold"
+          className="text-gray-900 dark:text-white hover:text-orange-500 transition-colors text-xl font-bold"
         >
           ×
         </button>
       </header>
 
       <section className="px-6 pb-6 space-y-4">
-        <figure className="w-full h-80 bg-gray-700 rounded-lg overflow-hidden border-2 border-orange-500 relative flex items-center justify-center">
+        <figure className="w-full h-80 bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden border-2 border-orange-500 relative flex items-center justify-center transition-colors duration-300">
           {project.imageUrl === 'icon:lock' ? (
             <div className="relative">
               {/* Icono principal con gradiente azul a blanco */}
@@ -299,7 +299,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
           <h3 className="text-base font-orbitron text-orange-500 mb-3">
             Descripción
           </h3>
-          <p className="text-white font-audiowide text-sm leading-relaxed">
+          <p className="text-gray-900 dark:text-white font-audiowide text-sm leading-relaxed transition-colors duration-300">
             {project.fullDescription}
           </p>
         </div>
@@ -325,7 +325,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
                     <div className="absolute inset-0 rounded-full border-[2px] border-orange-500/40 animate-spin-slow" />
                     
                     {/* Icono principal */}
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 border-[2px] border-orange-500 flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-[360deg] group-hover:border-orange-400 group-hover:shadow-xl group-hover:shadow-orange-500/60 group-hover:from-orange-900/20 group-hover:to-gray-900">
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-500/50 to-gray-500/50 dark:from-gray-800 dark:to-gray-900 border-[2px] border-orange-500 flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-[360deg] group-hover:border-orange-400 group-hover:shadow-xl group-hover:shadow-orange-500/60 group-hover:from-orange-200/30 dark:group-hover:from-orange-900/20 group-hover:to-gray-500/50 dark:group-hover:to-gray-900">
                       {IconComponent ? (
                         <IconComponent className="text-xl text-orange-500 filter group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500" />
                       ) : (
@@ -338,7 +338,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
                   </div>
                   
                   {/* Nombre de la tecnología con efecto neón */}
-                  <span className="text-white font-audiowide text-[10px] text-center w-16 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
+                  <span className="text-gray-900 dark:text-white font-audiowide text-[10px] text-center w-16 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
                     {tech.name}
                   </span>
                 </div>
