@@ -5,6 +5,7 @@ import { FaAngular, FaBootstrap, FaHtml5, FaJava, FaPython, FaReact } from 'reac
 import { HiLockClosed, HiMusicalNote } from 'react-icons/hi2';
 import { IoFitness } from 'react-icons/io5';
 import { SiApachemaven, SiCloudinary, SiDjango, SiJavascript, SiMongodb, SiNextdotjs, SiPostgresql, SiRailway, SiSass, SiSpring, SiTailwindcss, SiTypescript, SiVercel } from 'react-icons/si';
+import { useProjectsSectionData, useProjectsData } from '@/hooks/usePortfolioData';
 
 interface Technology {
   name: string;
@@ -52,17 +53,20 @@ interface Project {
 
 interface ProjectDetailsModalProps {
   isOpen: boolean;
-  project: Project | null;
+  projectId: string | null;
   onClose: () => void;
   onContentShift?: (shifted: boolean) => void;
 }
 
 const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ 
   isOpen, 
-  project, 
+  projectId, 
   onClose, 
   onContentShift 
 }) => {
+  const projectsSectionData = useProjectsSectionData();
+  const projects = useProjectsData();
+  const project = projects.find(p => p.id === projectId);
   const [isDesktop, setIsDesktop] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0, width: 0, height: 0 });
 
@@ -149,7 +153,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
             {/* Descripción */}
             <div>
               <h3 className="text-lg font-orbitron text-blue-500 dark:text-orange-500 mb-4">
-                Descripción
+                {projectsSectionData.modal.description}
               </h3>
               <p className="text-gray-900 dark:text-white font-audiowide text-base leading-relaxed transition-colors duration-300">
                 {project.fullDescription}
@@ -161,7 +165,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
             {/* Stack */}
             <div>
               <h3 className="text-lg font-orbitron text-blue-500 dark:text-orange-500 mb-6 text-center">
-                Stack
+                {projectsSectionData.modal.stack}
               </h3>
               <div className="flex justify-center gap-6 flex-wrap">
                 {project.technologies.map((tech) => {
@@ -297,7 +301,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
         {/* Descripción */}
         <div>
           <h3 className="text-base font-orbitron text-blue-500 dark:text-orange-500 mb-3">
-            Descripción
+            {projectsSectionData.modal.description}
           </h3>
           <p className="text-gray-900 dark:text-white font-audiowide text-sm leading-relaxed transition-colors duration-300">
             {project.fullDescription}
@@ -309,7 +313,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
         {/* Stack */}
         <div>
           <h3 className="text-base font-orbitron text-blue-500 dark:text-orange-500 mb-4 text-center">
-            Stack
+            {projectsSectionData.modal.stack}
           </h3>
           <div className="flex justify-center gap-4 flex-wrap">
             {project.technologies.map((tech) => {

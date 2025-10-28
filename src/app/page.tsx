@@ -30,7 +30,7 @@ interface Project {
 export default function Home() {
   const { activeSection, setActiveSection, setSectionRef } = useResponsiveIntersectionObserver();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
   const [isAboutModalShifted, setIsAboutModalShifted] = useState(false);
   const [isProjectModalShifted, setIsProjectModalShifted] = useState(false);
 
@@ -43,8 +43,8 @@ export default function Home() {
 
   const handleOpenModal = () => {
     // Cerrar el modal de proyecto si está abierto
-    if (selectedProject) {
-      setSelectedProject(null);
+    if (selectedProjectId) {
+      setSelectedProjectId(null);
       // Esperar a que termine la animación de cierre (500ms) antes de abrir el nuevo modal
       setTimeout(() => {
         setIsModalOpen(true);
@@ -68,15 +68,15 @@ export default function Home() {
       setIsModalOpen(false);
       // Esperar a que termine la animación de cierre (500ms) antes de abrir el nuevo modal
       setTimeout(() => {
-        setSelectedProject(project);
+        setSelectedProjectId(project.id);
       }, 500);
     } else {
-      setSelectedProject(project);
+      setSelectedProjectId(project.id);
     }
   };
 
   const handleCloseProjectModal = () => {
-    setSelectedProject(null);
+    setSelectedProjectId(null);
   };
 
   const handleProjectModalContentShift = (shifted: boolean) => {
@@ -169,8 +169,8 @@ export default function Home() {
 
       {/* Modal de detalles de proyecto - renderizado fuera del contenedor principal */}
       <ProjectDetailsModal
-        isOpen={selectedProject !== null}
-        project={selectedProject}
+        isOpen={selectedProjectId !== null}
+        projectId={selectedProjectId}
         onClose={handleCloseProjectModal}
         onContentShift={handleProjectModalContentShift}
       />

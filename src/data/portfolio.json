@@ -94,6 +94,10 @@
     "buttons": {
       "details": "Detalles",
       "live": "Despliegue"
+    },
+    "modal": {
+      "description": "Descripción",
+      "stack": "Stack"
     }
   },
   "projects": [

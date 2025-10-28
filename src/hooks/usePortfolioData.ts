@@ -62,6 +62,10 @@ export interface PortfolioData {
       details: string;
       live: string;
     };
+    modal: {
+      description: string;
+      stack: string;
+    };
   };
   projects: Array<{
     id: string;
