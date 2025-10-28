@@ -105,8 +105,8 @@ const Contact: React.FC = () => {
     <section className="space-y-6">
       <div className="grid grid-cols-1 gap-6 max-w-2xl mx-auto">
         
-        <article className="bg-white dark:bg-black border-2 border-orange-500 rounded-xl p-6 transition-colors duration-300">
-          <h2 className="text-xl font-orbitron text-center mb-6 bg-orange-500 text-white py-2 rounded-lg">
+        <article className="bg-white dark:bg-black border-2  border-blue-500 dark:border-orange-500 rounded-xl p-6 transition-colors duration-300">
+          <h2 className="text-xl font-orbitron text-center mb-6 bg-blue-500 dark:bg-orange-500 text-white py-2 rounded-lg">
             {contactData.contactInfo.title}
           </h2>
 
