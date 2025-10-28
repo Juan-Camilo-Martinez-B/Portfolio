@@ -20,7 +20,7 @@
   "about": {
     "title": "About me",
     "image": {
-      "placeholder": "Image",
+      "placeholder": "/images/about/profile.jpg",
       "alt": "Juan Camilo Martinez Bedoya"
     },
     "texts": {

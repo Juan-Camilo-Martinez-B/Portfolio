@@ -1,5 +1,6 @@
 import Button from '@/components/ui/Button';
 import { useAboutData } from '@/hooks/usePortfolioData';
+import Image from 'next/image';
 import React from 'react';
 
 interface AboutMeProps {
@@ -17,12 +18,21 @@ const AboutMe: React.FC<AboutMeProps> = ({ onOpenModal }) => {
 
   return (
     <section className="w-full h-full flex flex-col justify-center items-center space-y-8 p-4">
-        <figure className="w-32 h-32 md:w-40 md:h-40 border-2 border-orange-500 rounded-full bg-gray-300 dark:bg-gray-700 flex items-center justify-center mb-4 transition-colors duration-300">
-          <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-200 to-gray-400 dark:from-gray-600 dark:to-gray-800 flex items-center justify-center transition-colors duration-300">
-            <span className="text-gray-500 dark:text-gray-400 text-xs font-audiowide">
-              {aboutData.image.placeholder}
+        <figure className="w-56 h-56 md:w-80 md:h-80 border-4 border-orange-500 rounded-full bg-gray-300 dark:bg-gray-700 flex items-center justify-center mb-4 transition-colors duration-300 overflow-hidden relative shadow-glow">
+          {/* Fallback placeholder - se muestra si la imagen no carga */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-200 to-gray-400 dark:from-gray-600 dark:to-gray-800 flex items-center justify-center transition-colors duration-300 -z-10">
+            <span className="text-gray-500 dark:text-gray-400 text-6xl">
+              👤
             </span>
           </div>
+          {/* Imagen principal - se muestra encima */}
+          <Image
+            src={aboutData.image.placeholder}
+            alt={aboutData.image.alt}
+            fill
+            className="object-cover z-10"
+            unoptimized
+          />
         </figure>
 
         <article className="w-full max-w-4xl flex flex-col md:flex-row items-start justify-between gap-8 md:gap-12">
