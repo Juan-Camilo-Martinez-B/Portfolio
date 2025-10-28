@@ -42,7 +42,16 @@ export default function Home() {
   }, [activeSection]);
 
   const handleOpenModal = () => {
-    setIsModalOpen(true);
+    // Cerrar el modal de proyecto si está abierto
+    if (selectedProject) {
+      setSelectedProject(null);
+      // Esperar a que termine la animación de cierre (500ms) antes de abrir el nuevo modal
+      setTimeout(() => {
+        setIsModalOpen(true);
+      }, 500);
+    } else {
+      setIsModalOpen(true);
+    }
   };
 
   const handleCloseModal = () => {
@@ -54,7 +63,16 @@ export default function Home() {
   };
 
   const handleProjectSelect = (project: Project) => {
-    setSelectedProject(project);
+    // Cerrar el modal "Entra en mi mundo" si está abierto
+    if (isModalOpen) {
+      setIsModalOpen(false);
+      // Esperar a que termine la animación de cierre (500ms) antes de abrir el nuevo modal
+      setTimeout(() => {
+        setSelectedProject(project);
+      }, 500);
+    } else {
+      setSelectedProject(project);
+    }
   };
 
   const handleCloseProjectModal = () => {
