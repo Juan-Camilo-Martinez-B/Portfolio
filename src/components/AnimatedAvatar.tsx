@@ -22,10 +22,10 @@ const AnimatedAvatar: React.FC<AnimatedAvatarProps> = ({
   return (
     <div className={`${sizeClasses[size]} ${className} relative`}>
       {/* Anillo de resplandor animado */}
-      <div className="absolute inset-0 rounded-full bg-orange-500/20 blur-xl animate-pulse" />
+      <div className="absolute inset-0 rounded-full bg-blue-500/20 dark:bg-orange-500/20 blur-xl animate-pulse" />
       
       {/* Borde circular con gradiente - Más grueso y notorio */}
-      <div className="absolute inset-0 rounded-full border-2 border-orange-500 shadow-glow" />
+      <div className="absolute inset-0 rounded-full border-2 border-blue-500 dark:border-orange-500 shadow-glow" />
       
       {/* Avatar Lottie - Con padding interno para que no cubra el borde */}
       <div className="absolute inset-[2px] rounded-full overflow-hidden bg-gray-500/50 dark:bg-gray-900/50 backdrop-blur-sm transition-colors duration-300">

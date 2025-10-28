@@ -21,7 +21,7 @@ const Sidebar: React.FC<SidebarProps> = ({ active }) => {
         </div>
 
         {/* Línea separadora vertical */}
-        <div className="w-[2px] h-[80%] bg-orange-500" />
+        <div className="w-[2px] h-[80%] bg-blue-500 dark:bg-orange-500" />
 
         {/* Avatar animado */}
         <div className="flex items-center justify-center">
@@ -37,7 +37,7 @@ const Sidebar: React.FC<SidebarProps> = ({ active }) => {
         </div>
 
         {/* Línea separadora horizontal */}
-        <div className="w-full h-[2px] bg-orange-500 mb-6" />
+        <div className="w-full h-[2px] bg-blue-500 dark:bg-orange-500 mb-6" />
 
         {/* Texto */}
         <div className="flex-1 flex items-center">

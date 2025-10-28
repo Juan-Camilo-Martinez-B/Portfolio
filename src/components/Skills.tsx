@@ -103,23 +103,23 @@ const Skills: React.FC = () => {
               {/* Icono circular animado con efectos futuristas */}
               <div className="relative w-20 h-20">
                 {/* Anillo exterior que gira */}
-                <div className="absolute inset-0 rounded-full border-[3px] border-orange-500/40 animate-spin-slow" />
+                <div className="absolute inset-0 rounded-full border-[3px] border-blue-500/40 dark:border-orange-500/40 animate-spin-slow" />
                 
                 {/* Icono principal */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-500/50 to-gray-500/50 dark:from-gray-800 dark:to-gray-900 border-[3px] border-orange-500 flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-[360deg] group-hover:border-orange-400 group-hover:shadow-xl group-hover:shadow-orange-500/60 group-hover:from-orange-200/30 dark:group-hover:from-orange-900/20 group-hover:to-gray-500/50 dark:group-hover:to-gray-900">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-500/50 to-gray-500/50 dark:from-gray-800 dark:to-gray-900 border-[3px] border-blue-500 dark:border-orange-500 flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-[360deg] group-hover:border-blue-400 dark:group-hover:border-orange-400 group-hover:shadow-xl group-hover:shadow-blue-500/60 dark:group-hover:shadow-orange-500/60 group-hover:from-blue-200/30 dark:group-hover:from-orange-200/30 group-hover:to-gray-500/50 dark:group-hover:to-gray-900">
                   {IconComponent ? (
-                    <IconComponent className="text-4xl text-orange-500 filter group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500" />
+                    <IconComponent className="text-4xl text-blue-500 dark:text-orange-500 filter group-hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.8)] dark:group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500" />
                   ) : (
-                    <span className="text-4xl filter group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500">{skill.icon}</span>
+                    <span className="text-4xl filter group-hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.8)] dark:group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500">{skill.icon}</span>
                   )}
                 </div>
                 
                 {/* Pulso de energía */}
-                <div className="absolute inset-0 rounded-full bg-orange-500/20 blur-md opacity-0 group-hover:opacity-100 group-hover:animate-pulse" />
+                <div className="absolute inset-0 rounded-full bg-blue-500/20 dark:bg-orange-500/20 blur-md opacity-0 group-hover:opacity-100 group-hover:animate-pulse" />
               </div>
               
               {/* Nombre de la skill con efecto neón */}
-              <span className="text-gray-700 dark:text-white font-audiowide text-xs text-center w-24 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
+              <span className="text-gray-700 dark:text-white font-audiowide text-xs text-center w-24 truncate group-hover:text-blue-500 dark:group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.6)] dark:group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
                 {skill.name}
               </span>
             </li>
@@ -131,14 +131,14 @@ const Skills: React.FC = () => {
 
   return (
     <section className="space-y-8">
-      <h2 className="text-3xl font-semibold text-orange-500 font-orbitron text-center">
+      <h2 className="text-3xl font-semibold text-blue-500 dark:text-orange-500 font-orbitron text-center">
         Skills
       </h2>
       
       <div className="space-y-8">
         {/* Frontend - Izquierda */}
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-orange-500 font-orbitron text-center">
+          <h3 className="text-xl font-semibold text-blue-500 dark:text-orange-500 font-orbitron text-center">
             {categoryLabels.frontend}
           </h3>
           {renderSkillCarousel(
@@ -151,7 +151,7 @@ const Skills: React.FC = () => {
 
         {/* Backend - Derecha */}
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-orange-500 font-orbitron text-center">
+          <h3 className="text-xl font-semibold text-blue-500 dark:text-orange-500 font-orbitron text-center">
             {categoryLabels.backend}
           </h3>
           {renderSkillCarousel(
@@ -164,7 +164,7 @@ const Skills: React.FC = () => {
 
         {/* Languages - Izquierda */}
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-orange-500 font-orbitron text-center">
+          <h3 className="text-xl font-semibold text-blue-500 dark:text-orange-500 font-orbitron text-center">
             {categoryLabels.languages}
           </h3>
           {renderSkillCarousel(
@@ -177,7 +177,7 @@ const Skills: React.FC = () => {
 
         {/* Tools - Derecha */}
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-orange-500 font-orbitron text-center">
+          <h3 className="text-xl font-semibold text-blue-500 dark:text-orange-500 font-orbitron text-center">
             {categoryLabels.tools}
           </h3>
           {renderSkillCarousel(

@@ -19,7 +19,7 @@ const Section: React.FC<SectionProps> = ({
       id={id}
       ref={ref}
       className={cn(
-        'p-4 sm:p-6 md:p-8 border-b border-orange-500 last:border-b-0',
+        'p-4 sm:p-6 md:p-8 border-b border-blue-500 dark:border-orange-500 last:border-b-0',
         'w-full',
         'relative z-10',
         'overflow-visible',

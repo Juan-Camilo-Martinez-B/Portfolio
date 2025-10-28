@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
 
   return (
     <section className="flex flex-col items-center justify-center min-h-[calc(100vh-200px)] md:min-h-[calc(100vh-300px)] space-y-6 md:space-y-8 px-4 py-8">
-      <figure className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-orange-500 shadow-lg shadow-orange-500/50 bg-gray-300 dark:bg-gray-700 transition-colors duration-300">
+      <figure className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-blue-500 dark:border-orange-500 shadow-lg shadow-blue-500/50 dark:shadow-orange-500/50 bg-gray-300 dark:bg-gray-700 transition-colors duration-300">
         {/* Fallback placeholder */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-400 dark:from-gray-700 dark:to-gray-900 flex items-center justify-center transition-colors duration-300 -z-10">
           <span className="text-6xl md:text-8xl text-gray-400 dark:text-gray-500">👤</span>

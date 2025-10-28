@@ -18,8 +18,8 @@ const Card: React.FC<CardProps> = ({
 }) => {
   const variants = {
     default: 'bg-white dark:bg-gray-800 rounded-xl shadow-lg transition-colors duration-300',
-    bordered: 'bg-white dark:bg-gray-800 border border-orange-500 rounded-xl shadow-lg transition-colors duration-300',
-    elevated: 'bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-orange-500/50 transition-colors duration-300',
+    bordered: 'bg-white dark:bg-gray-800 border border-blue-500 dark:border-orange-500 rounded-xl shadow-lg transition-colors duration-300',
+    elevated: 'bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-blue-500/50 dark:border-orange-500/50 transition-colors duration-300',
   };
 
   return (

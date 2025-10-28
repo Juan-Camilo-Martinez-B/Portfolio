@@ -130,16 +130,16 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
         />
         
         <article 
-          className="relative w-full max-w-2xl max-h-full bg-white dark:bg-gray-800 border-2 border-orange-500 rounded-xl shadow-2xl overflow-y-auto no-scrollbar transition-colors duration-300"
+          className="relative w-full max-w-2xl max-h-full bg-white dark:bg-gray-800 border-2 border-blue-500 dark:border-orange-500 rounded-xl shadow-2xl overflow-y-auto no-scrollbar transition-colors duration-300"
           style={{ zIndex: 101 }}
         >
-          <header className="sticky top-0 flex justify-between items-center p-5 border-b border-orange-500 bg-gray-50 dark:bg-gray-900 z-10 transition-colors duration-300">
-            <h2 className="text-xl font-orbitron text-orange-500">
+          <header className="sticky top-0 flex justify-between items-center p-5 border-b border-blue-500 dark:border-orange-500 bg-gray-50 dark:bg-gray-900 z-10 transition-colors duration-300">
+            <h2 className="text-xl font-orbitron text-blue-500 dark:text-orange-500">
               {project.title}
             </h2>
             <button
               onClick={onClose}
-              className="text-gray-900 dark:text-white hover:text-orange-500 transition-colors text-3xl font-bold"
+              className="text-gray-900 dark:text-white hover:text-blue-500 dark:hover:text-orange-500 transition-colors text-3xl font-bold"
             >
               ×
             </button>
@@ -148,7 +148,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
           <section className="p-6 space-y-8">
             {/* Descripción */}
             <div>
-              <h3 className="text-lg font-orbitron text-orange-500 mb-4">
+              <h3 className="text-lg font-orbitron text-blue-500 dark:text-orange-500 mb-4">
                 Descripción
               </h3>
               <p className="text-gray-900 dark:text-white font-audiowide text-base leading-relaxed transition-colors duration-300">
@@ -156,11 +156,11 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
               </p>
             </div>
 
-            <hr className="w-full h-[2px] bg-orange-500 border-0" />
+            <hr className="w-full h-[2px] bg-blue-500 dark:bg-orange-500 border-0" />
 
             {/* Stack */}
             <div>
-              <h3 className="text-lg font-orbitron text-orange-500 mb-6 text-center">
+              <h3 className="text-lg font-orbitron text-blue-500 dark:text-orange-500 mb-6 text-center">
                 Stack
               </h3>
               <div className="flex justify-center gap-6 flex-wrap">
@@ -174,23 +174,23 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
                       {/* Icono circular animado con efectos futuristas */}
                       <div className="relative w-16 h-16">
                         {/* Anillo exterior que gira */}
-                        <div className="absolute inset-0 rounded-full border-[2px] border-orange-500/40 animate-spin-slow" />
+                        <div className="absolute inset-0 rounded-full border-[2px] border-blue-500 dark:border-orange-500/40 animate-spin-slow" />
                         
                         {/* Icono principal */}
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-500/50 to-gray-500/50 dark:from-gray-800 dark:to-gray-900 border-[2px] border-orange-500 flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-[360deg] group-hover:border-orange-400 group-hover:shadow-xl group-hover:shadow-orange-500/60 group-hover:from-orange-200/30 dark:group-hover:from-orange-900/20 group-hover:to-gray-500/50 dark:group-hover:to-gray-900">
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-500/50 to-gray-500/50 dark:from-gray-800 dark:to-gray-900 border-[2px] border-blue-500 dark:border-orange-500 flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-[360deg] group-hover:border-blue-400 dark:group-hover:border-orange-400 group-hover:shadow-xl group-hover:shadow-blue-500/60 dark:group-hover:shadow-orange-500/60 group-hover:from-blue-200/30 dark:group-hover:from-orange-900/20 group-hover:to-gray-500/50 dark:group-hover:to-gray-900">
                           {IconComponent ? (
-                            <IconComponent className="text-3xl text-orange-500 filter group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500" />
+                            <IconComponent className="text-3xl text-blue-500 dark:text-orange-500 filter group-hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.8)] dark:group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500" />
                           ) : (
-                            <span className="text-3xl filter group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500">{tech.icon}</span>
+                            <span className="text-3xl filter group-hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.8)] dark:group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500">{tech.icon}</span>
                           )}
                         </div>
                         
                         {/* Pulso de energía */}
-                        <div className="absolute inset-0 rounded-full bg-orange-500/20 blur-md opacity-0 group-hover:opacity-100 group-hover:animate-pulse" />
+                        <div className="absolute inset-0 rounded-full bg-blue-500 dark:bg-orange-500/20 blur-md opacity-0 group-hover:opacity-100 group-hover:animate-pulse" />
                       </div>
                       
                       {/* Nombre de la tecnología con efecto neón */}
-                      <span className="text-gray-900 dark:text-white font-audiowide text-xs text-center w-20 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
+                      <span className="text-gray-900 dark:text-white font-audiowide text-xs text-center w-20 truncate group-hover:text-blue-500 dark:hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.6)] dark:group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
                         {tech.name}
                       </span>
                     </div>
@@ -207,7 +207,7 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
   // Renderizado para desktop (sidebar)
   return (
     <aside 
-      className="fixed bg-white dark:bg-gray-800 border-2 border-orange-500 rounded-xl shadow-2xl transform transition-all duration-500 ease-in-out overflow-y-auto no-scrollbar"
+      className="fixed bg-white dark:bg-gray-800 border-2 border-blue-500 dark:border-orange-500 rounded-xl shadow-2xl transform transition-all duration-500 ease-in-out overflow-y-auto no-scrollbar"
       role="dialog"
       aria-modal="true"
       style={{ 
@@ -222,14 +222,14 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
       <header className="sticky top-0 flex justify-end p-4 bg-white dark:bg-gray-800 z-10 transition-colors duration-300">
         <button
           onClick={onClose}
-          className="text-gray-900 dark:text-white hover:text-orange-500 transition-colors text-xl font-bold"
+          className="text-gray-900 dark:text-white hover:text-blue-500 dark:hover:text-orange-500 transition-colors text-xl font-bold"
         >
           ×
         </button>
       </header>
 
       <section className="px-6 pb-6 space-y-4">
-        <figure className="w-full h-80 bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden border-2 border-orange-500 relative flex items-center justify-center transition-colors duration-300">
+        <figure className="w-full h-80 bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden border-2 border-blue-500 dark:border-orange-500 relative flex items-center justify-center transition-colors duration-300">
           {project.imageUrl === 'icon:lock' ? (
             <div className="relative">
               {/* Icono principal con gradiente azul a blanco */}
@@ -251,10 +251,10 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
           ) : project.imageUrl === 'icon:fitness' ? (
             <div className="relative">
               {/* Icono principal con gradiente naranja/rojo */}
-              <IoFitness className="text-9xl text-orange-500 drop-shadow-[0_0_40px_rgba(249,115,22,1)]" />
+              <IoFitness className="text-9xl text-blue-500 dark:text-orange-500 drop-shadow-[0_0_40px_rgba(59,130,246,1)] dark:drop-shadow-[0_0_40px_rgba(249,115,22,1)]" />
               {/* Resplandor naranja */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-40 h-40 bg-orange-400/20 rounded-full blur-3xl"></div>
+                <div className="w-40 h-40 bg-blue-400/20 dark:bg-orange-400/20 rounded-full blur-3xl"></div>
               </div>
               {/* Resplandor rojo */}
               <div className="absolute inset-0 flex items-center justify-center">
@@ -288,15 +288,15 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
           )}
         </figure>
 
-        <h2 className="text-lg font-orbitron text-orange-500 text-center">
+        <h2 className="text-lg font-orbitron text-blue-500 dark:text-orange-500 text-center">
           {project.title}
         </h2>
 
-        <hr className="h-[2px] bg-orange-500 border-0" />
+        <hr className="h-[2px] bg-blue-500 dark:bg-orange-500 border-0" />
 
         {/* Descripción */}
         <div>
-          <h3 className="text-base font-orbitron text-orange-500 mb-3">
+          <h3 className="text-base font-orbitron text-blue-500 dark:text-orange-500 mb-3">
             Descripción
           </h3>
           <p className="text-gray-900 dark:text-white font-audiowide text-sm leading-relaxed transition-colors duration-300">
@@ -304,11 +304,11 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
           </p>
         </div>
 
-        <hr className="w-full h-[1px] bg-orange-500 border-0" />
+        <hr className="w-full h-[1px] bg-blue-500 dark:bg-orange-500 border-0" />
 
         {/* Stack */}
         <div>
-          <h3 className="text-base font-orbitron text-orange-500 mb-4 text-center">
+          <h3 className="text-base font-orbitron text-blue-500 dark:text-orange-500 mb-4 text-center">
             Stack
           </h3>
           <div className="flex justify-center gap-4 flex-wrap">
@@ -322,23 +322,23 @@ const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
                   {/* Icono circular animado con efectos futuristas */}
                   <div className="relative w-12 h-12">
                     {/* Anillo exterior que gira */}
-                    <div className="absolute inset-0 rounded-full border-[2px] border-orange-500/40 animate-spin-slow" />
+                    <div className="absolute inset-0 rounded-full border-[2px] border-blue-500 dark:border-orange-500/40 animate-spin-slow" />
                     
                     {/* Icono principal */}
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-500/50 to-gray-500/50 dark:from-gray-800 dark:to-gray-900 border-[2px] border-orange-500 flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-[360deg] group-hover:border-orange-400 group-hover:shadow-xl group-hover:shadow-orange-500/60 group-hover:from-orange-200/30 dark:group-hover:from-orange-900/20 group-hover:to-gray-500/50 dark:group-hover:to-gray-900">
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-500/50 to-gray-500/50 dark:from-gray-800 dark:to-gray-900 border-[2px] border-blue-500 dark:border-orange-500 flex items-center justify-center transform transition-all duration-500 group-hover:scale-125 group-hover:rotate-[360deg] group-hover:border-blue-400 dark:group-hover:border-orange-400 group-hover:shadow-xl group-hover:shadow-blue-500/60 dark:group-hover:shadow-orange-500/60 group-hover:from-blue-200/30 dark:group-hover:from-orange-900/20 group-hover:to-gray-500/50 dark:group-hover:to-gray-900">
                       {IconComponent ? (
-                        <IconComponent className="text-xl text-orange-500 filter group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500" />
+                        <IconComponent className="text-xl text-blue-500 dark:text-orange-500 filter group-hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.8)] dark:group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500" />
                       ) : (
-                        <span className="text-xl filter group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500">{tech.icon}</span>
+                        <span className="text-xl filter group-hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.8)] dark:group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] transition-all duration-500">{tech.icon}</span>
                       )}
                     </div>
                     
                     {/* Pulso de energía */}
-                    <div className="absolute inset-0 rounded-full bg-orange-500/20 blur-md opacity-0 group-hover:opacity-100 group-hover:animate-pulse" />
+                    <div className="absolute inset-0 rounded-full bg-blue-500 dark:bg-orange-500/20 blur-md opacity-0 group-hover:opacity-100 group-hover:animate-pulse" />
                   </div>
                   
                   {/* Nombre de la tecnología con efecto neón */}
-                  <span className="text-gray-900 dark:text-white font-audiowide text-[10px] text-center w-16 truncate group-hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
+                  <span className="text-gray-900 dark:text-white font-audiowide text-[10px] text-center w-16 truncate group-hover:text-blue-500 dark:hover:text-orange-500 group-hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.6)] dark:group-hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300">
                     {tech.name}
                   </span>
                 </div>

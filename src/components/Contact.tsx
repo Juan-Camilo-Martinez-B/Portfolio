@@ -147,7 +147,7 @@ const Contact: React.FC = () => {
                 href={personalInfo.social.instagram || '#'}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-600 to-pink-500 border-2 border-orange-500 flex items-center justify-center hover:scale-110 transition-transform"
+                className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-600 to-pink-500 border-2 border-blue-500 dark:border-orange-500 flex items-center justify-center hover:scale-110 transition-transform"
               >
                 <FaInstagram className="text-white text-xl" />
               </a>
@@ -157,7 +157,7 @@ const Contact: React.FC = () => {
                 href={personalInfo.social.facebook || '#'}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-blue-600 border-2 border-orange-500 flex items-center justify-center hover:scale-110 transition-transform"
+                className="w-10 h-10 rounded-full bg-blue-600 border-2 border-blue-500 dark:border-orange-500 flex items-center justify-center hover:scale-110 transition-transform"
               >
                 <FaFacebook className="text-white text-xl" />
               </a>
@@ -167,7 +167,7 @@ const Contact: React.FC = () => {
                 href={personalInfo.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-blue-700 border-2 border-orange-500 flex items-center justify-center hover:scale-110 transition-transform"
+                className="w-10 h-10 rounded-full bg-blue-700 border-2 border-blue-500 dark:border-orange-500 flex items-center justify-center hover:scale-110 transition-transform"
               >
                 <FaLinkedin className="text-white text-xl" />
               </a>
@@ -177,7 +177,7 @@ const Contact: React.FC = () => {
                 href={personalInfo.social.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-300 dark:bg-gray-800 border-2 border-orange-500 flex items-center justify-center hover:scale-110 transition-all duration-300"
+                className="w-10 h-10 rounded-full bg-gray-300 dark:bg-gray-800 border-2 border-blue-500 dark:border-orange-500 flex items-center justify-center hover:scale-110 transition-all duration-300"
               >
                 <FaGithub className="text-gray-800 dark:text-white text-xl" />
               </a>
@@ -185,8 +185,8 @@ const Contact: React.FC = () => {
           </div>
         </article>
 
-        <article className="bg-white dark:bg-black border-2 border-orange-500 rounded-xl p-6 transition-colors duration-300">
-          <h2 className="text-xl font-orbitron text-center mb-6 bg-orange-500 text-white py-2 rounded-lg">
+        <article className="bg-white dark:bg-black border-2 border-blue-500 dark:border-orange-500 rounded-xl p-6 transition-colors duration-300">
+          <h2 className="text-xl font-orbitron text-center mb-6 bg-blue-500 dark:bg-orange-500 text-white py-2 rounded-lg">
             {contactData.form.title}
           </h2>
 
@@ -202,7 +202,7 @@ const Contact: React.FC = () => {
                   name={contactData.form.fields[0].name}
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300"
+                  className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-orange-500 transition-colors duration-300"
                   required={contactData.form.fields[0].required}
                 />
               </div>
@@ -216,7 +216,7 @@ const Contact: React.FC = () => {
                   name={contactData.form.fields[1].name}
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300"
+                  className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-orange-500 transition-colors duration-300"
                   required={contactData.form.fields[1].required}
                 />
               </div>
@@ -232,7 +232,7 @@ const Contact: React.FC = () => {
                 name={contactData.form.fields[2].name}
                 value={formData.projectType}
                 onChange={handleInputChange}
-                className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300"
+                className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-orange-500 transition-colors duration-300"
                 required={contactData.form.fields[2].required}
               />
             </div>
@@ -247,7 +247,7 @@ const Contact: React.FC = () => {
                 value={formData.message}
                 onChange={handleInputChange}
                 rows={4}
-                className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none transition-colors duration-300"
+                className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg px-4 py-3 font-audiowide text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-orange-500 resize-none transition-colors duration-300"
                 required={contactData.form.fields[3].required}
               />
             </div>

@@ -36,7 +36,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
 
   return (
     <section className="space-y-6">
-      <h2 className="text-3xl font-semibold text-orange-500 font-orbitron text-center">
+      <h2 className="text-3xl font-semibold text-blue-500 dark:text-orange-500 font-orbitron text-center">
         {projectsSection.title}
       </h2>
       
@@ -44,7 +44,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
         {projects.map((project) => (
           <article
             key={project.id}
-            className="bg-white dark:bg-gray-800 border-2 border-orange-500 rounded-xl overflow-hidden transition-colors duration-300"
+            className="bg-white dark:bg-gray-800 border-2 border-blue-500 dark:border-orange-500 rounded-xl overflow-hidden transition-colors duration-300"
           >
             <figure 
               className="w-full h-48 bg-gray-500/50 dark:bg-gray-700 flex items-center justify-center overflow-hidden relative group transition-colors duration-300"
@@ -86,15 +86,15 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                   hoveredProject === project.id ? 'opacity-0 scale-110' : 'opacity-100 group-hover:scale-105'
                 }`}>
                   <div className="relative">
-                    {/* Icono principal con gradiente naranja/rojo */}
-                    <IoFitness className="text-9xl text-orange-500 drop-shadow-[0_0_30px_rgba(249,115,22,0.8)]" />
+                    {/* Icono principal con gradiente */}
+                    <IoFitness className="text-9xl text-blue-500 dark:text-orange-500 drop-shadow-[0_0_30px_rgba(59,130,246,0.8)] dark:drop-shadow-[0_0_30px_rgba(249,115,22,0.8)]" />
                     {/* Resplandor adicional */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-32 h-32 bg-orange-400/20 rounded-full blur-2xl animate-pulse"></div>
+                      <div className="w-32 h-32 bg-blue-400/20 dark:bg-orange-400/20 rounded-full blur-2xl animate-pulse"></div>
                     </div>
-                    {/* Resplandor secundario rojo */}
+                    {/* Resplandor secundario */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-36 h-36 bg-red-400/10 rounded-full blur-3xl"></div>
+                      <div className="w-36 h-36 bg-blue-400/10 dark:bg-red-400/10 rounded-full blur-3xl"></div>
                     </div>
                   </div>
                 </div>
@@ -146,7 +146,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
                   
                   {/* Indicador de vista previa */}
-                  <div className="absolute top-2 right-2 bg-orange-500 text-white text-xs font-orbitron px-2 py-1 rounded-md shadow-lg">
+                  <div className="absolute top-2 right-2 bg-blue-500 dark:bg-orange-500 text-white text-xs font-orbitron px-2 py-1 rounded-md shadow-lg">
                     Vista Previa
                   </div>
                 </div>
@@ -160,7 +160,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
 
             <div className="p-5 space-y-4">
               <div className="flex items-center justify-between gap-2">
-                <h3 className="text-xl font-semibold text-orange-500 font-orbitron">
+                <h3 className="text-xl font-semibold text-blue-500 dark:text-orange-500 font-orbitron">
                   {project.title}
                 </h3>
                 {project.githubUrl && (
@@ -168,7 +168,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-orange-500 hover:text-orange-400 transition-all duration-300 hover:scale-110 flex-shrink-0"
+                    className="text-blue-500 dark:text-orange-500 hover:text-blue-400 dark:hover:text-orange-400 transition-all duration-300 hover:scale-110 flex-shrink-0"
                     title="Ver repositorio en GitHub"
                   >
                     <FaGithub className="text-2xl" />
