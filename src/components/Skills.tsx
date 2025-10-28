@@ -62,13 +62,6 @@ const Skills: React.FC = () => {
   const [isScrollingLanguages, setIsScrollingLanguages] = useState(true);
   const [isScrollingTools, setIsScrollingTools] = useState(true);
 
-  const categoryLabels = {
-    frontend: 'Frontend',
-    backend: 'Backend',
-    languages: 'Lenguajes',
-    tools: 'Herramientas',
-  };
-
   const renderSkillCarousel = (
     skills: Skill[], 
     isScrolling: boolean, 
@@ -132,14 +125,14 @@ const Skills: React.FC = () => {
   return (
     <section className="space-y-8">
       <h2 className="text-3xl font-semibold text-blue-500 dark:text-orange-500 font-orbitron text-center">
-        Skills
+        {skillsData.title}
       </h2>
       
       <div className="space-y-8">
         {/* Frontend - Izquierda */}
         <div className="space-y-4">
           <h3 className="text-xl font-semibold text-blue-500 dark:text-orange-500 font-orbitron text-center">
-            {categoryLabels.frontend}
+            {skillsData.categories.frontend}
           </h3>
           {renderSkillCarousel(
             skillsData.frontend as Skill[], 
@@ -152,7 +145,7 @@ const Skills: React.FC = () => {
         {/* Backend - Derecha */}
         <div className="space-y-4">
           <h3 className="text-xl font-semibold text-blue-500 dark:text-orange-500 font-orbitron text-center">
-            {categoryLabels.backend}
+            {skillsData.categories.backend}
           </h3>
           {renderSkillCarousel(
             skillsData.backend as Skill[], 
@@ -165,7 +158,7 @@ const Skills: React.FC = () => {
         {/* Languages - Izquierda */}
         <div className="space-y-4">
           <h3 className="text-xl font-semibold text-blue-500 dark:text-orange-500 font-orbitron text-center">
-            {categoryLabels.languages}
+            {skillsData.categories.languages}
           </h3>
           {renderSkillCarousel(
             skillsData.languages as Skill[], 
@@ -178,7 +171,7 @@ const Skills: React.FC = () => {
         {/* Tools - Derecha */}
         <div className="space-y-4">
           <h3 className="text-xl font-semibold text-blue-500 dark:text-orange-500 font-orbitron text-center">
-            {categoryLabels.tools}
+            {skillsData.categories.tools}
           </h3>
           {renderSkillCarousel(
             skillsData.tools as Skill[], 

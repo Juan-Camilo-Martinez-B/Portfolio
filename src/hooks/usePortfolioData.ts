@@ -78,6 +78,13 @@ export interface PortfolioData {
     liveUrl?: string;
   }>;
   skills: {
+    title: string;
+    categories: {
+      frontend: string;
+      backend: string;
+      languages: string;
+      tools: string;
+    };
     frontend: Array<{
       name: string;
       icon: string;

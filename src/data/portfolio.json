@@ -176,6 +176,13 @@
     }
   ],
   "skills": {
+    "title": "Habilidades",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "languages": "Lenguajes",
+      "tools": "Herramientas"
+    },
     "frontend": [
       { "name": "React", "icon": "⚛️" },
       { "name": "Next.js", "icon": "▲" },
