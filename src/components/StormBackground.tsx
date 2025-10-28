@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
+import React, { useEffect, useRef } from 'react';
 
 interface LightningProps {
   hue?: number;
@@ -11,14 +11,20 @@ interface LightningProps {
 }
 
 const Lightning: React.FC<LightningProps> = ({
-  hue = 24, // Naranja #f97316 (~24°)
+  hue, // Se calculará dinámicamente según el tema
   speed = 1.5,
   intensity = 1.2,
-  size = 1.2,
+  size = 1.4,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { theme } = useTheme();
   const animationFrameRef = useRef<number | undefined>(undefined);
+  const { theme } = useTheme();
+
+  // Determinar el color de los rayos según el tema
+  const isDark = theme === 'dark' || (theme === 'system' && typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  const lightningHue = hue ?? (isDark ? 24 : 210); // Naranja para dark, azul para light
+  const adjustedIntensity = isDark ? intensity : intensity * 1.8; // Aumentar intensidad en modo light para que se vean claramente
+  const saturation = isDark ? 0.91 : 0.95; // Mayor saturación para azul en modo light
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -37,7 +43,7 @@ const Lightning: React.FC<LightningProps> = ({
     window.addEventListener('resize', resizeCanvas);
 
     const gl = canvas.getContext('webgl', { 
-      alpha: true, // Habilitar transparencia
+      alpha: true, // Habilitar transparencia para que los rayos se dibujen sobre el fondo
       premultipliedAlpha: false 
     });
     if (!gl) {
@@ -60,6 +66,7 @@ const Lightning: React.FC<LightningProps> = ({
       uniform float uSpeed;
       uniform float uIntensity;
       uniform float uSize;
+      uniform float uSaturation;
 
       #define OCTAVE_COUNT 8
 
@@ -109,7 +116,7 @@ const Lightning: React.FC<LightningProps> = ({
           uv.x *= iResolution.x / iResolution.y;
 
           vec3 finalColor = vec3(0.0);
-          vec3 baseColor = hsv2rgb(vec3(uHue / 360.0, 0.91, 0.98));
+          vec3 baseColor = hsv2rgb(vec3(uHue / 360.0, uSaturation, 0.98));
 
           // Tres rayos con diferentes patrones de animación
           
@@ -138,7 +145,11 @@ const Lightning: React.FC<LightningProps> = ({
           float brightness3 = pow(0.03 / (dist3 + 0.02), 1.5) * uIntensity * pulse;
           finalColor += baseColor * brightness3;
 
-          fragColor = vec4(finalColor, 1.0);
+          // Calcular alpha basado en la intensidad total de los rayos
+          float totalBrightness = brightness1 + brightness2 + brightness3;
+          float alpha = min(totalBrightness, 1.0);
+          
+          fragColor = vec4(finalColor, alpha);
       }
 
       void main() {
@@ -196,6 +207,11 @@ const Lightning: React.FC<LightningProps> = ({
     const uSpeedLocation = gl.getUniformLocation(program, 'uSpeed');
     const uIntensityLocation = gl.getUniformLocation(program, 'uIntensity');
     const uSizeLocation = gl.getUniformLocation(program, 'uSize');
+    const uSaturationLocation = gl.getUniformLocation(program, 'uSaturation');
+    
+    // Habilitar blending normal para que los rayos se dibujen sobre el fondo
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
     const startTime = performance.now();
 
@@ -203,22 +219,19 @@ const Lightning: React.FC<LightningProps> = ({
       resizeCanvas();
       gl.viewport(0, 0, canvas.width, canvas.height);
       
-      // Cambiar color de fondo según el tema
-      const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-      if (isDark) {
-        gl.clearColor(0.0, 0.0, 0.0, 1.0); // Fondo negro para modo oscuro
-      } else {
-        gl.clearColor(0.95, 0.95, 0.95, 1.0); // Fondo gris claro para modo light
-      }
+      // Limpiar con transparencia total - el fondo lo maneja el div wrapper
+      gl.clearColor(0.0, 0.0, 0.0, 0.0);
       gl.clear(gl.COLOR_BUFFER_BIT);
 
       const currentTime = performance.now();
+      
       gl.uniform2f(iResolutionLocation, canvas.width, canvas.height);
       gl.uniform1f(iTimeLocation, (currentTime - startTime) / 1000.0);
-      gl.uniform1f(uHueLocation, hue);
+      gl.uniform1f(uHueLocation, lightningHue);
       gl.uniform1f(uSpeedLocation, speed);
-      gl.uniform1f(uIntensityLocation, intensity);
+      gl.uniform1f(uIntensityLocation, adjustedIntensity);
       gl.uniform1f(uSizeLocation, size);
+      gl.uniform1f(uSaturationLocation, saturation);
 
       gl.drawArrays(gl.TRIANGLES, 0, 6);
       animationFrameRef.current = requestAnimationFrame(render);
@@ -231,14 +244,15 @@ const Lightning: React.FC<LightningProps> = ({
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [hue, speed, intensity, size, theme]);
+  }, [lightningHue, speed, adjustedIntensity, size, saturation, theme, isDark]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed top-0 left-0 w-screen h-screen block opacity-70 dark:opacity-100 transition-opacity duration-300"
-      style={{ width: '100%', height: '100%' }}
-    />
+    <div className="fixed top-0 left-0 w-screen h-screen bg-gray-100 dark:bg-black transition-colors duration-300">
+      <canvas
+        ref={canvasRef}
+        className="w-full h-full block"
+      />
+    </div>
   );
 };
 
