@@ -44,14 +44,14 @@ const Navbar: React.FC<NavbarProps> = ({ active, setActive }) => {
   };
 
   return (
-    <nav className="flex flex-wrap justify-center gap-1.5 sm:gap-3 px-1 sm:px-4 py-1 sm:py-2">
+    <nav className="flex flex-wrap justify-center gap-1.5 sm:gap-2 lg:gap-3 px-1 sm:px-4 py-1 sm:py-2">
       {navigationItems.map((item) => (
         <Button
           key={item.id}
           variant={active === item.id ? 'primary' : 'outline'}
           size="sm"
           onClick={() => handleClick(item.id)}
-          className="text-sm sm:text-base"
+          className="text-xs sm:text-sm lg:text-base"
         >
           {item.label}
         </Button>
@@ -61,21 +61,21 @@ const Navbar: React.FC<NavbarProps> = ({ active, setActive }) => {
       <Button 
         variant="outline" 
         size="sm" 
-        className="text-sm sm:text-base font-bold"
+        className="text-xs sm:text-sm lg:text-base font-bold"
         onClick={toggleLanguage}
         title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
       >
         {language === 'es' ? 'EN' : 'ES'}
       </Button>
-          <Button 
-            variant="outline" 
-            size="sm" 
-            className="text-sm sm:text-base"
-            onClick={cycleTheme}
-            title={getThemeLabel()}
-          >
-            {getThemeIcon()}
-          </Button>
+      <Button 
+        variant="outline" 
+        size="sm" 
+        className="text-xs sm:text-sm lg:text-base"
+        onClick={cycleTheme}
+        title={getThemeLabel()}
+      >
+        {getThemeIcon()}
+      </Button>
     </nav>
   );
 };

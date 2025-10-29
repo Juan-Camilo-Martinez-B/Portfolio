@@ -212,6 +212,56 @@
       { "name": "Visual Paradigm", "icon": "📐" }
     ]
   },
+  "education": {
+    "title": "Formación y Crecimiento",
+    "sections": {
+      "academic": {
+        "title": "Formación Académica",
+        "items": [
+          {
+            "degree": "Ingeniería de Software",
+            "institution": "Universidad Cooperativa de Colombia (UCC)",
+            "period": "2023 – Actualidad",
+            "status": "En curso",
+            "description": "Enfoque en desarrollo de sistemas, inteligencia artificial y soluciones tecnológicas innovadoras.",
+            "highlights": [
+              {
+                "title": "ControlPlus",
+                "description": "Sistema integral para gestión de ventas e inventario diseñado específicamente para pequeñas y medianas empresas.",
+                "status": null
+              },
+              {
+                "title": "Biblioteca Virtual",
+                "description": "Sistema de reservas implementando estructuras de datos complejas y algoritmos de optimización.",
+                "status": "En desarrollo"
+              }
+            ]
+          }
+        ]
+      },
+      "learning": {
+        "title": "Aprendizaje Continuo",
+        "current": [
+          {
+            "title": "Angular & Patrones de Diseño",
+            "description": "Explorando arquitecturas avanzadas con patrones Decorator y Observer para aplicaciones escalables."
+          },
+          {
+            "title": "Autenticación & Seguridad",
+            "description": "Implementación de sistemas de autenticación con tokens JWT en arquitecturas Java + MongoDB."
+          },
+          {
+            "title": "Desarrollo de Videojuegos",
+            "description": "Creación de videojuegos estilo cartoon utilizando Unity y diseño de mecánicas de juego innovadoras."
+          }
+        ],
+        "goal": {
+          "title": "Objetivo a Corto Plazo",
+          "description": "Consolidar mis bases académicas y aplicarlas en entornos profesionales de alto impacto, contribuyendo a proyectos que generen valor real."
+        }
+      }
+    }
+  },
   "contact": {
     "title": "Contacto",
     "description": "¿Tienes un proyecto en mente? Me encantaría escuchar sobre él. Estoy siempre abierto a nuevas oportunidades y colaboraciones.",
@@ -256,6 +306,7 @@
     { "id": "about", "label": "Sobre mí" },
     { "id": "projects", "label": "Proyectos" },
     { "id": "skills", "label": "Habilidades" },
+    { "id": "education", "label": "Formación" },
     { "id": "contact", "label": "Contacto" }
   ],
   "sidebar": {
@@ -264,6 +315,7 @@
       "about": "Disfruto vivir experiencias que me den otras perspectivas de mis metas",
       "projects": "Creo soluciones prácticas para problemas cotidianos, transformando ideas en experiencias útiles para los usuarios.",
       "skills": "Siempre aprendiendo, siempre mejorando",
+      "education": "Me proyecto al futuro construyendo cada día nuevos objetivos.",
       "contact": "Contáctame, tu proyecto puede ser mi próxima obsesión. Las buenas ideas inician con un mensaje."
     }
   },

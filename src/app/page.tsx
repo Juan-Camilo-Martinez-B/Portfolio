@@ -4,6 +4,7 @@ import AboutMe from "@/components/AboutMe";
 import Contact from "@/components/Contact";
 import CursorEffect from "@/components/CursorEffect";
 import DynamicModal from "@/components/DynamicModal";
+import Education from "@/components/Education";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import ProjectDetailsModal from "@/components/ProjectDetailsModal";
@@ -154,6 +155,13 @@ export default function Home() {
             </Section>
 
             <Section
+              id="education"
+              ref={setSectionRef("education")}
+            >
+              <Education />
+            </Section>
+
+            <Section
               id="contact"
               ref={setSectionRef("contact")}
               className="border-b-0"
@@ -165,7 +173,7 @@ export default function Home() {
       </div>
 
       {/* Navbar */}
-      <div className="fixed bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-20 w-full max-w-[850px] px-3 sm:px-4">
+      <div className="fixed bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-20 w-full max-w-[850px] lg:max-w-[1100px] px-3 sm:px-4">
         <Card className="py-2 sm:py-2 overflow-x-auto no-scrollbar">
           <Navbar active={activeSection} setActive={setActiveSection} />
         </Card>

@@ -1,8 +1,8 @@
 'use client';
 
-import portfolioDataEs from '@/data/portfolio.json';
-import portfolioDataEn from '@/data/portfolio.en.json';
 import { useLanguage } from '@/contexts/LanguageContext';
+import portfolioDataEn from '@/data/portfolio.en.json';
+import portfolioDataEs from '@/data/portfolio.json';
 import { useEffect, useState } from 'react';
 
 export interface PortfolioData {
@@ -102,6 +102,37 @@ export interface PortfolioData {
       icon: string;
     }>;
   };
+  education: {
+    title: string;
+    sections: {
+      academic: {
+        title: string;
+        items: Array<{
+          degree: string;
+          institution: string;
+          period: string;
+          status: string;
+          description: string;
+          highlights: Array<{
+            title: string;
+            description: string;
+            status?: string | null;
+          }>;
+        }>;
+      };
+      learning: {
+        title: string;
+        current: Array<{
+          title: string;
+          description: string;
+        }>;
+        goal: {
+          title: string;
+          description: string;
+        };
+      };
+    };
+  };
   contact: {
     title: string;
     description: string;
@@ -198,6 +229,11 @@ export const useProjectsData = () => {
 export const useSkillsData = () => {
   const data = usePortfolioData();
   return data.skills;
+};
+
+export const useEducationData = () => {
+  const data = usePortfolioData();
+  return data.education;
 };
 
 export const useContactData = () => {

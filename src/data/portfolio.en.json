@@ -212,6 +212,56 @@
       { "name": "Visual Paradigm", "icon": "📐" }
     ]
   },
+  "education": {
+    "title": "Education & Growth",
+    "sections": {
+      "academic": {
+        "title": "Academic Background",
+        "items": [
+          {
+            "degree": "Software Engineering",
+            "institution": "Universidad Cooperativa de Colombia (UCC)",
+            "period": "2023 – Present",
+            "status": "In progress",
+            "description": "Focus on systems development, artificial intelligence, and innovative technological solutions.",
+            "highlights": [
+              {
+                "title": "ControlPlus",
+                "description": "Comprehensive system for sales and inventory management specifically designed for small and medium businesses.",
+                "status": null
+              },
+              {
+                "title": "Virtual Library",
+                "description": "Reservation system implementing complex data structures and optimization algorithms.",
+                "status": "In development"
+              }
+            ]
+          }
+        ]
+      },
+      "learning": {
+        "title": "Continuous Learning",
+        "current": [
+          {
+            "title": "Angular & Design Patterns",
+            "description": "Exploring advanced architectures with Decorator and Observer patterns for scalable applications."
+          },
+          {
+            "title": "Authentication & Security",
+            "description": "Implementation of JWT token authentication systems in Java + MongoDB architectures."
+          },
+          {
+            "title": "Game Development",
+            "description": "Creating cartoon-style video games using Unity and designing innovative game mechanics."
+          }
+        ],
+        "goal": {
+          "title": "Short-term Goal",
+          "description": "Consolidate my academic foundation and apply it in high-impact professional environments, contributing to projects that generate real value."
+        }
+      }
+    }
+  },
   "contact": {
     "title": "Contact",
     "description": "Do you have a project in mind? I'd love to hear about it. I'm always open to new opportunities and collaborations.",
@@ -256,6 +306,7 @@
     { "id": "about", "label": "About" },
     { "id": "projects", "label": "Projects" },
     { "id": "skills", "label": "Skills" },
+    { "id": "education", "label": "Education" },
     { "id": "contact", "label": "Contact" }
   ],
   "sidebar": {
@@ -264,6 +315,7 @@
       "about": "I enjoy living experiences that give me other perspectives on my goals",
       "projects": "I create practical solutions to everyday problems, transforming ideas into useful experiences for users.",
       "skills": "Always learning, always improving",
+      "education": "I project myself into the future by building new goals every day.",
       "contact": "Contact me, your project could be my next obsession. Good ideas start with a message."
     }
   },
