@@ -30,8 +30,8 @@ export const useResponsiveIntersectionObserver = ({
   // Función para obtener el threshold basado en el tamaño de pantalla
   const getThreshold = useCallback(() => {
     if (isMobile) {
-      // En móvil: thresholds más bajos y múltiples para mejor detección
-      return [0.1, 0.25, 0.4, 0.6, 0.8];
+      // En móvil: thresholds muy sensibles para detección instantánea
+      return [0, 0.1, 0.2, 0.3, 0.5, 0.7, 0.9, 1.0];
     } else {
       // En desktop: thresholds más sensibles para detectar cambios durante scroll
       return [0.1, 0.3, 0.5, 0.7, 0.9];
@@ -41,8 +41,8 @@ export const useResponsiveIntersectionObserver = ({
   // Función para obtener el rootMargin basado en el tamaño de pantalla
   const getRootMargin = useCallback(() => {
     if (isMobile) {
-      // En móvil: margen negativo más conservador para secciones de tamaño variable
-      return '-10% 0px -10% 0px';
+      // En móvil: margen más amplio para detección temprana
+      return '-5% 0px -40% 0px';
     } else {
       // En desktop: margen para detectar secciones en el centro de la pantalla
       return '-20% 0px -20% 0px';
