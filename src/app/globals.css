@@ -226,3 +226,11 @@ body {
   }
 }
 
+/* Eliminar hover en dispositivos táctiles */
+@media (hover: none) and (pointer: coarse) {
+  button:hover {
+    /* Mantener el estado normal, no el hover */
+    background-color: inherit !important;
+  }
+}
+

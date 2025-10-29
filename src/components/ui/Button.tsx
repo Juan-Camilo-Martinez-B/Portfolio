@@ -15,13 +15,13 @@ const Button: React.FC<ButtonProps> = ({
   disabled,
   ...props
 }) => {
-  const baseClasses = 'font-orbitron rounded transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-black';
+  const baseClasses = 'font-orbitron rounded transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-black active:scale-95';
   
   const variants = {
-    primary: 'bg-blue-500 dark:bg-orange-500 text-white hover:bg-blue-600 dark:hover:bg-orange-600',
-    secondary: 'bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700',
-    outline: 'bg-transparent border border-blue-500 dark:border-orange-500 text-blue-500 dark:text-orange-500 hover:bg-blue-500 dark:hover:bg-orange-500 hover:text-white',
-    ghost: 'bg-transparent text-blue-500 dark:text-orange-500 hover:bg-blue-500/10 dark:hover:bg-orange-500/10',
+    primary: 'bg-blue-500 dark:bg-orange-500 text-white hover:bg-blue-600 dark:hover:bg-orange-600 active:bg-blue-700 dark:active:bg-orange-700',
+    secondary: 'bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700 active:bg-gray-400 dark:active:bg-gray-600',
+    outline: 'bg-transparent border border-blue-500 dark:border-orange-500 text-blue-500 dark:text-orange-500 hover:bg-blue-500 dark:hover:bg-orange-500 hover:text-white active:bg-blue-600 dark:active:bg-orange-600 active:text-white',
+    ghost: 'bg-transparent text-blue-500 dark:text-orange-500 hover:bg-blue-500/10 dark:hover:bg-orange-500/10 active:bg-blue-500/20 dark:active:bg-orange-500/20',
   };
 
   const sizes = {
