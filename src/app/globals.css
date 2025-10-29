@@ -226,18 +226,31 @@ body {
   }
 }
 
-/* Eliminar hover en dispositivos táctiles */
+/* Desactivar hover completamente en dispositivos táctiles */
 @media (hover: none) and (pointer: coarse) {
-  button:hover {
-    /* Mantener el estado normal, no el hover */
-    background-color: inherit !important;
-    color: inherit !important;
-    border-color: inherit !important;
+  /* Eliminar todos los estilos hover en botones para dispositivos táctiles */
+  button {
+    /* Desactivar transiciones de hover */
+    -webkit-tap-highlight-color: transparent;
   }
   
-  /* Resetear específicamente los botones outline en navbar */
-  nav button:hover {
+  /* Forzar que los botones del navbar NO cambien en hover */
+  nav button[class*="outline"]:hover,
+  nav button:hover:not([class*="primary"]) {
     background-color: transparent !important;
+    color: inherit !important;
+  }
+  
+  /* En modo claro - botones outline del navbar */
+  html:not(.dark) nav button[class*="outline"]:hover {
+    background-color: transparent !important;
+    color: rgb(59 130 246) !important; /* text-blue-500 */
+  }
+  
+  /* En modo oscuro - botones outline del navbar */
+  html.dark nav button[class*="outline"]:hover {
+    background-color: transparent !important;
+    color: rgb(249 115 22) !important; /* text-orange-500 */
   }
 }
 
