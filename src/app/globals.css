@@ -91,17 +91,7 @@ body {
 }
 
 /* Utilidades personalizadas */
-.text-glow {
-  text-shadow: var(--shadow-glow);
-}
-
-.border-glow {
-  box-shadow: var(--shadow-glow);
-}
-
-.transition-smooth {
-  transition: var(--transition);
-}
+/* Utilidades disponibles (se reducen a solo las necesarias) */
 
 /* Scrollbar personalizada */
 .no-scrollbar::-webkit-scrollbar {
@@ -114,29 +104,10 @@ body {
 }
 
 /* Efectos de hover mejorados */
-.hover-lift {
-  transition: transform 0.2s ease-in-out;
-}
-
-.hover-lift:hover {
-  transform: translateY(-2px);
-}
+/* (eliminado hover-lift por no usarse) */
 
 /* Animaciones */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
-}
+/* (eliminadas animaciones fadeInUp por no usarse) */
 
 /* Animación de scroll infinito hacia la izquierda */
 @keyframes scrollLeft {
@@ -173,12 +144,7 @@ body {
 }
 
 /* Responsive utilities */
-@media (max-width: 640px) {
-  .mobile-padding {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-}
+/* (eliminada utilidad mobile-padding por no usarse) */
 
 /* Focus states para accesibilidad */
 .focus-visible:focus {
@@ -187,9 +153,7 @@ body {
 }
 
 /* Mejoras de contraste */
-.text-high-contrast {
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-}
+/* (eliminada utilidad text-high-contrast por no usarse) */
 
 /* Animación personalizada para View Transitions API */
 @supports (view-transition-name: root) {

@@ -52,6 +52,11 @@ const Navbar: React.FC<NavbarProps> = ({ active, setActive }) => {
         variant="outline" 
         size="sm" 
         className="text-xs sm:text-sm lg:text-base sm:order-last"
+        onTouchStart={(e) => {
+          const target = e.currentTarget;
+          target.blur();
+          setTimeout(() => target.blur(), 0);
+        }}
         onClick={cycleTheme}
         title={getThemeLabel()}
       >
@@ -63,6 +68,11 @@ const Navbar: React.FC<NavbarProps> = ({ active, setActive }) => {
           key={item.id}
           variant="outline"
           size="sm"
+          onTouchStart={(e) => {
+            const target = e.currentTarget;
+            target.blur();
+            setTimeout(() => target.blur(), 0);
+          }}
           onClick={(e) => handleClick(item.id, e)}
           className="text-xs sm:text-sm lg:text-base"
         >
@@ -75,6 +85,11 @@ const Navbar: React.FC<NavbarProps> = ({ active, setActive }) => {
         variant="outline" 
         size="sm" 
         className="text-xs sm:text-sm lg:text-base font-bold"
+        onTouchStart={(e) => {
+          const target = e.currentTarget;
+          target.blur();
+          setTimeout(() => target.blur(), 0);
+        }}
         onClick={toggleLanguage}
         title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
       >
