@@ -40,17 +40,6 @@ const techIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   // 'OpenStreetMap': usa 🌍
 };
 
-interface Project {
-  id: string;
-  title: string;
-  shortDescription: string;
-  fullDescription: string;
-  imageUrl: string;
-  technologies: Technology[];
-  githubUrl?: string;
-  liveUrl?: string;
-}
-
 interface ProjectDetailsModalProps {
   isOpen: boolean;
   projectId: string | null;

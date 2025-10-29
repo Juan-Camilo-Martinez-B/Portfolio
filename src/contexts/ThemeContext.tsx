@@ -39,7 +39,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     const applyTheme = (shouldBeDark: boolean) => {
       // Verificar si el navegador soporta View Transitions API
       if ('startViewTransition' in document) {
-        // @ts-ignore - View Transitions API aún no está en tipos de TypeScript
+        // @ts-expect-error - View Transitions API aún no está en tipos de TypeScript
         document.startViewTransition(() => {
           if (shouldBeDark) {
             root.classList.add('dark');

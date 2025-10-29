@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 
 export default function CursorEffect() {
@@ -8,9 +8,12 @@ export default function CursorEffect() {
   const trail = useRef<{ x: number; y: number }[]>([]);
   const { theme } = useTheme();
   
-  // Determinar el color según el tema
+  // Determinar el color según el tema usando useMemo para evitar recrear el objeto en cada render
   const isDark = theme === 'dark' || (theme === 'system' && typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  const cursorColor = isDark ? { r: 249, g: 115, b: 22, hex: '#f97316' } : { r: 59, g: 130, b: 246, hex: '#3b82f6' };
+  const cursorColor = useMemo(
+    () => isDark ? { r: 249, g: 115, b: 22, hex: '#f97316' } : { r: 59, g: 130, b: 246, hex: '#3b82f6' },
+    [isDark]
+  );
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -61,7 +64,7 @@ export default function CursorEffect() {
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [theme, isDark, cursorColor]);
+  }, [cursorColor]);
 
   return (
     <canvas
