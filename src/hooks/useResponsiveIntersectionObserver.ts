@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useMobileScrollDetection } from './useMobileScrollDetection';
 
 interface UseResponsiveIntersectionObserverProps {
@@ -33,8 +33,8 @@ export const useResponsiveIntersectionObserver = ({
       // En móvil: thresholds más bajos y múltiples para mejor detección
       return [0.1, 0.25, 0.4, 0.6, 0.8];
     } else {
-      // En desktop: thresholds más altos
-      return [0.3, 0.5, 0.7, 0.9];
+      // En desktop: thresholds más sensibles para detectar cambios durante scroll
+      return [0.1, 0.3, 0.5, 0.7, 0.9];
     }
   }, [isMobile]);
 
@@ -44,9 +44,10 @@ export const useResponsiveIntersectionObserver = ({
       // En móvil: margen negativo más conservador para secciones de tamaño variable
       return '-10% 0px -10% 0px';
     } else {
-      return rootMargin;
+      // En desktop: margen para detectar secciones en el centro de la pantalla
+      return '-20% 0px -20% 0px';
     }
-  }, [isMobile, rootMargin]);
+  }, [isMobile]);
 
   // Función para determinar la sección más visible
   const getMostVisibleSection = useCallback((entries: IntersectionObserverEntry[]) => {
@@ -61,8 +62,8 @@ export const useResponsiveIntersectionObserver = ({
       }
     });
     
-    return mostVisible.id || activeSection;
-  }, [activeSection]);
+    return mostVisible.id;
+  }, []);
 
   // Crear y configurar el observer
   const createObserver = useCallback(() => {
@@ -80,7 +81,7 @@ export const useResponsiveIntersectionObserver = ({
         
         if (visibleEntries.length > 0) {
           const newActiveSection = getMostVisibleSection(visibleEntries);
-          if (newActiveSection && newActiveSection !== activeSection) {
+          if (newActiveSection) {
             setActiveSection(newActiveSection);
           }
         }
@@ -98,7 +99,7 @@ export const useResponsiveIntersectionObserver = ({
         observerRef.current.observe(section);
       }
     });
-  }, [root, getThreshold, getRootMargin, getMostVisibleSection, activeSection]);
+  }, [root, getThreshold, getRootMargin, getMostVisibleSection]);
 
   // Recrear observer cuando cambie el tamaño de pantalla
   useEffect(() => {
@@ -111,11 +112,11 @@ export const useResponsiveIntersectionObserver = ({
     };
   }, [createObserver]);
 
-  // Usar detección de scroll móvil como respaldo
+  // Usar detección de scroll móvil como respaldo solo en mobile
   const sections = Object.keys(sectionsRef.current);
   useMobileScrollDetection({
     onSectionChange: setActiveSection,
-    sections: sections.length > 0 ? sections : ['hero', 'about', 'projects', 'skills', 'contact']
+    sections: sections.length > 0 ? sections : ['hero', 'about', 'projects', 'skills', 'education', 'contact']
   });
 
   // Función para establecer referencia de sección
