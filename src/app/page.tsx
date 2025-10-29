@@ -42,6 +42,15 @@ export default function Home() {
   }, [activeSection]);
 
   const handleOpenModal = () => {
+    // En desktop, hacer toggle del modal
+    const isDesktop = window.innerWidth >= 1024;
+    
+    if (isDesktop && isModalOpen) {
+      // Si el modal ya está abierto en desktop, cerrarlo
+      setIsModalOpen(false);
+      return;
+    }
+    
     // Cerrar el modal de proyecto si está abierto
     if (selectedProjectId) {
       setSelectedProjectId(null);
@@ -63,6 +72,15 @@ export default function Home() {
   };
 
   const handleProjectSelect = (project: Project) => {
+    // En desktop, hacer toggle del modal si es el mismo proyecto
+    const isDesktop = window.innerWidth >= 1024;
+    
+    if (isDesktop && selectedProjectId === project.id) {
+      // Si el mismo proyecto ya está abierto en desktop, cerrarlo
+      setSelectedProjectId(null);
+      return;
+    }
+    
     // Cerrar el modal "Entra en mi mundo" si está abierto
     if (isModalOpen) {
       setIsModalOpen(false);

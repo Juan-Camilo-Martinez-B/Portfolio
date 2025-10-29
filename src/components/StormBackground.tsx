@@ -11,7 +11,7 @@ interface LightningProps {
 }
 
 const Lightning: React.FC<LightningProps> = ({
-  hue, // Se calculará dinámicamente según el tema
+  hue,
   speed = 1.5,
   intensity = 1.2,
   size = 1.4,
@@ -20,20 +20,52 @@ const Lightning: React.FC<LightningProps> = ({
   const animationFrameRef = useRef<number | undefined>(undefined);
   const { theme } = useTheme();
 
+  // Referencias para interpolación suave de colores
+  const currentHueRef = useRef<number>(24); // Valor inicial
+  const targetHueRef = useRef<number>(24);
+  const startHueRef = useRef<number>(24); // Valor al inicio de la transición
+  
+  const currentIntensityRef = useRef<number>(intensity);
+  const targetIntensityRef = useRef<number>(intensity);
+  const startIntensityRef = useRef<number>(intensity);
+  
+  const currentSaturationRef = useRef<number>(0.91);
+  const targetSaturationRef = useRef<number>(0.91);
+  const startSaturationRef = useRef<number>(0.91);
+  
+  const transitionProgressRef = useRef<number>(1); // 1 = transición completa
+
   // Determinar el color de los rayos según el tema
   const isDark = theme === 'dark' || (theme === 'system' && typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  const lightningHue = hue ?? (isDark ? 24 : 210); // Naranja para dark, azul para light
-  const adjustedIntensity = isDark ? intensity : intensity * 1.8; // Aumentar intensidad en modo light para que se vean claramente
-  const saturation = isDark ? 0.91 : 0.95; // Mayor saturación para azul en modo light
+  const targetLightningHue = hue ?? (isDark ? 24 : 210); // Naranja para dark, azul para light
+  const targetAdjustedIntensity = isDark ? intensity : intensity * 1.8; // Aumentar intensidad en modo light
+  const targetSaturation = isDark ? 0.91 : 0.95; // Mayor saturación para azul en modo light
 
+  // Actualizar los valores objetivo cuando cambie el tema
+  useEffect(() => {
+    // Guardar valores actuales como inicio de la transición
+    startHueRef.current = currentHueRef.current;
+    startIntensityRef.current = currentIntensityRef.current;
+    startSaturationRef.current = currentSaturationRef.current;
+    
+    // Establecer nuevos objetivos
+    targetHueRef.current = targetLightningHue;
+    targetIntensityRef.current = targetAdjustedIntensity;
+    targetSaturationRef.current = targetSaturation;
+    
+    // Iniciar transición
+    transitionProgressRef.current = 0;
+  }, [targetLightningHue, targetAdjustedIntensity, targetSaturation]);
+
+  // Inicializar WebGL solo una vez
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     
-    // Cancelar animación anterior si existe
-    if (animationFrameRef.current) {
-      cancelAnimationFrame(animationFrameRef.current);
-    }
+    // Inicializar valores actuales con los valores objetivo
+    currentHueRef.current = targetHueRef.current;
+    currentIntensityRef.current = targetIntensityRef.current;
+    currentSaturationRef.current = targetSaturationRef.current;
 
     const resizeCanvas = () => {
       canvas.width = canvas.clientWidth * window.devicePixelRatio;
@@ -214,28 +246,49 @@ const Lightning: React.FC<LightningProps> = ({
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
     const startTime = performance.now();
+    let lastFrameTime = performance.now();
+    
+    // Función de interpolación suave (definir una sola vez fuera del render loop)
+    const lerp = (start: number, end: number, t: number) => start + (end - start) * t;
+    const easeInOutCubic = (t: number) => t < 0.5 
+      ? 4 * t * t * t 
+      : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
     const render = () => {
-      resizeCanvas();
       gl.viewport(0, 0, canvas.width, canvas.height);
-      
-      // Limpiar con transparencia total - el fondo lo maneja el div wrapper
       gl.clearColor(0.0, 0.0, 0.0, 0.0);
       gl.clear(gl.COLOR_BUFFER_BIT);
 
       const currentTime = performance.now();
+      const deltaTime = (currentTime - lastFrameTime) / 1000.0;
+      lastFrameTime = currentTime;
+      
+      // Interpolar suavemente entre valores iniciales y objetivo (solo si hay transición activa)
+      if (transitionProgressRef.current < 1) {
+        const transitionSpeed = 2.0; // Duración de ~0.5 segundos
+        transitionProgressRef.current = Math.min(1, transitionProgressRef.current + deltaTime * transitionSpeed);
+        
+        // Aplicar ease-in-out al progreso para suavidad
+        const easedT = easeInOutCubic(transitionProgressRef.current);
+        
+        // Interpolar desde valor inicial al objetivo usando el progreso suavizado
+        currentHueRef.current = lerp(startHueRef.current, targetHueRef.current, easedT);
+        currentIntensityRef.current = lerp(startIntensityRef.current, targetIntensityRef.current, easedT);
+        currentSaturationRef.current = lerp(startSaturationRef.current, targetSaturationRef.current, easedT);
+      }
       
       gl.uniform2f(iResolutionLocation, canvas.width, canvas.height);
       gl.uniform1f(iTimeLocation, (currentTime - startTime) / 1000.0);
-      gl.uniform1f(uHueLocation, lightningHue);
+      gl.uniform1f(uHueLocation, currentHueRef.current);
       gl.uniform1f(uSpeedLocation, speed);
-      gl.uniform1f(uIntensityLocation, adjustedIntensity);
+      gl.uniform1f(uIntensityLocation, currentIntensityRef.current);
       gl.uniform1f(uSizeLocation, size);
-      gl.uniform1f(uSaturationLocation, saturation);
+      gl.uniform1f(uSaturationLocation, currentSaturationRef.current);
 
       gl.drawArrays(gl.TRIANGLES, 0, 6);
       animationFrameRef.current = requestAnimationFrame(render);
     };
+    
     animationFrameRef.current = requestAnimationFrame(render);
 
     return () => {
@@ -244,10 +297,10 @@ const Lightning: React.FC<LightningProps> = ({
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [lightningHue, speed, adjustedIntensity, size, saturation, theme, isDark]);
+  }, [speed, size]); // Solo reiniciar si cambian speed o size, NO el tema
 
   return (
-    <div className="fixed top-0 left-0 w-screen h-screen bg-gray-100 dark:bg-black transition-colors duration-300">
+    <div className="fixed top-0 left-0 w-screen h-screen bg-gray-100 dark:bg-black transition-colors duration-500 ease-in-out">
       <canvas
         ref={canvasRef}
         className="w-full h-full block"
