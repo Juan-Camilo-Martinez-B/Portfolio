@@ -10,6 +10,11 @@ interface ThemeContextType {
   cycleTheme: () => void;
 }
 
+// Interfaz para View Transitions API
+interface DocumentWithTransition extends Document {
+  startViewTransition?: (callback: () => void) => void;
+}
+
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
@@ -38,8 +43,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     // Función para aplicar el cambio de tema con transición
     const applyTheme = (shouldBeDark: boolean) => {
       // Verificar si el navegador soporta View Transitions API
-      if ('startViewTransition' in document) {
-        (document as any).startViewTransition(() => {
+      const doc = document as DocumentWithTransition;
+      if (doc.startViewTransition) {
+        doc.startViewTransition(() => {
           if (shouldBeDark) {
             root.classList.add('dark');
           } else {
