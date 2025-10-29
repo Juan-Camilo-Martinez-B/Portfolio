@@ -7,11 +7,6 @@ import { IoFitness } from 'react-icons/io5';
 import { SiApachemaven, SiCloudinary, SiDjango, SiJavascript, SiMongodb, SiNextdotjs, SiPostgresql, SiRailway, SiSass, SiSpring, SiTailwindcss, SiTypescript, SiVercel } from 'react-icons/si';
 import { useProjectsSectionData, useProjectsData } from '@/hooks/usePortfolioData';
 
-interface Technology {
-  name: string;
-  icon: string;
-}
-
 // Mapeo de nombres de tecnologías a componentes de iconos
 const techIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   'Django': SiDjango,
