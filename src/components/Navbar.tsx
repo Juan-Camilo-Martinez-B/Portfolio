@@ -61,7 +61,7 @@ const Navbar: React.FC<NavbarProps> = ({ active, setActive }) => {
       {navigationItems.map((item) => (
         <Button
           key={item.id}
-          variant={active === item.id ? 'primary' : 'outline'}
+          variant="outline"
           size="sm"
           onClick={(e) => handleClick(item.id, e)}
           className="text-xs sm:text-sm lg:text-base"
