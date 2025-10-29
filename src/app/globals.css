@@ -231,6 +231,13 @@ body {
   button:hover {
     /* Mantener el estado normal, no el hover */
     background-color: inherit !important;
+    color: inherit !important;
+    border-color: inherit !important;
+  }
+  
+  /* Resetear específicamente los botones outline en navbar */
+  nav button:hover {
+    background-color: transparent !important;
   }
 }
 
