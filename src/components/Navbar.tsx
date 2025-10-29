@@ -23,9 +23,11 @@ const Navbar: React.FC<NavbarProps> = ({ active, setActive }) => {
     setMounted(true);
   }, []);
 
-  const handleClick = (id: string) => {
-    setActive(id);
+  const handleClick = (id: string, event: React.MouseEvent<HTMLButtonElement>) => {
+    // Solo hacer scroll, el IntersectionObserver marcará el botón automáticamente
     scrollToSection(id);
+    // Quitar el foco del botón para eliminar el efecto visual
+    event.currentTarget.blur();
   };
 
   // Obtener el icono según el tema
@@ -61,7 +63,7 @@ const Navbar: React.FC<NavbarProps> = ({ active, setActive }) => {
           key={item.id}
           variant={active === item.id ? 'primary' : 'outline'}
           size="sm"
-          onClick={() => handleClick(item.id)}
+          onClick={(e) => handleClick(item.id, e)}
           className="text-xs sm:text-sm lg:text-base"
         >
           {item.label}
