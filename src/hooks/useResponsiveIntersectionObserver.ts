@@ -112,10 +112,13 @@ export const useResponsiveIntersectionObserver = ({
     };
   }, [createObserver]);
 
-  // Usar detección de scroll móvil como respaldo solo en mobile
+  // Usar detección de scroll móvil como respaldo y para forzar actualización
   const sections = Object.keys(sectionsRef.current);
   useMobileScrollDetection({
-    onSectionChange: setActiveSection,
+    onSectionChange: (newSection) => {
+      // Forzar actualización del estado, incluso si es la misma sección
+      setActiveSection(newSection);
+    },
     sections: sections.length > 0 ? sections : ['hero', 'about', 'projects', 'skills', 'education', 'contact']
   });
 

@@ -65,7 +65,7 @@ export const useMobileScrollDetection = ({
       if (currentSection) {
         onSectionChange(currentSection);
       }
-    }, 150);
+    }, 100); // Reducido de 150ms a 100ms para respuesta más rápida
   }, [isScrolling, detectCurrentSection, onSectionChange]);
 
   // Función para manejar scroll táctil en móvil
@@ -75,7 +75,7 @@ export const useMobileScrollDetection = ({
       if (currentSection) {
         onSectionChange(currentSection);
       }
-    }, 100);
+    }, 50); // Reducido para respuesta inmediata
   }, [detectCurrentSection, onSectionChange]);
 
   useEffect(() => {
