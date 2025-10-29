@@ -1,167 +1,135 @@
-# Portfolio Personal - Juan Camilo Martínez
+# Portafolio – Juan Camilo Martínez
 
-Un portfolio moderno y profesional construido con Next.js 15, TypeScript y Tailwind CSS, con efectos visuales avanzados y una arquitectura escalable.
+Un portafolio moderno, accesible y de alto rendimiento construido con Next.js 15, TypeScript y Tailwind CSS. Incluye animaciones WebGL, dark/light/system theme con transiciones suaves, i18n (ES/EN), y una arquitectura limpia basada en componentes y datos centralizados.
 
-## 🚀 Características
+## ✨ Lo más destacado
 
-- **Diseño Responsive**: Optimizado para todos los dispositivos
-- **Efectos Visuales**: Rayos animados con WebGL y efectos de cursor personalizados
-- **Arquitectura Modular**: Componentes reutilizables y hooks personalizados
-- **TypeScript**: Tipado fuerte para mejor desarrollo
-- **Performance**: Optimizado con lazy loading y memoización
-- **Accesibilidad**: Cumple estándares de accesibilidad web
+- UI responsiva con diseño Mobile-first
+- Animaciones: fondo de rayos con WebGL y efecto de cursor en Canvas
+- Cambio de tema con transiciones (View Transitions API si está disponible; fallback CSS)
+- i18n completo (ES/EN) desde archivos JSON
+- Navegación suave por secciones y Sidebar contextual
+- Modales con comportamiento diferenciado para desktop/mobile
+- Código estabilizado para mobile (sin hover “pegado” en navbar)
 
-## 🛠️ Tecnologías
-
-- **Framework**: Next.js 15 con App Router
-- **Lenguaje**: TypeScript
-- **Estilos**: Tailwind CSS 4
-- **Efectos**: WebGL Shaders, Canvas API
-- **Fuentes**: Audiowide, Orbitron (Google Fonts)
-- **Linting**: ESLint
-
-## 📁 Estructura del Proyecto
+## 🧱 Arquitectura y secciones
 
 ```
 src/
-├── app/                    # App Router de Next.js
-│   ├── globals.css        # Estilos globales y variables CSS
-│   ├── layout.tsx         # Layout principal
-│   └── page.tsx           # Página principal
-├── components/            # Componentes React
-│   ├── ui/               # Componentes base reutilizables
-│   │   ├── Button.tsx    # Botón con variantes
-│   │   ├── Card.tsx      # Tarjeta contenedora
-│   │   └── Section.tsx   # Sección con estilos
-│   ├── AboutMe.tsx       # Sección sobre mí
-│   ├── Contact.tsx       # Sección de contacto
-│   ├── Hero.tsx          # Sección principal
-│   ├── Navbar.tsx        # Navegación
-│   ├── Projects.tsx      # Proyectos
-│   ├── Sidebar.tsx       # Barra lateral
-│   ├── Skills.tsx        # Habilidades
-│   ├── CursorEffect.tsx  # Efecto de cursor
-│   └── StormBackground.tsx # Fondo animado
-├── data/                 # Datos centralizados
-│   ├── portfolio.json    # Información completa del portfolio
-│   └── README.md         # Documentación del sistema de datos
-├── hooks/                # Hooks personalizados
-│   ├── useIntersectionObserver.ts
-│   ├── useScrollToSection.ts
-│   └── usePortfolioData.ts # Hook para datos del portfolio
-├── lib/                  # Utilidades
-│   └── utils.ts          # Funciones helper
-├── types/                # Definiciones TypeScript
-│   └── index.ts          # Interfaces y tipos
-└── constants/            # Constantes y configuración
-    └── index.ts          # Configuraciones del sistema
+├── app/
+│   ├── globals.css         # Estilos globales, variables y reglas táctiles
+│   ├── layout.tsx          # Layout principal
+│   └── page.tsx            # Página principal y orquestación de secciones
+├── components/
+│   ├── ui/                 # Componentes base (Button, Card, Section)
+│   ├── Hero.tsx            # Presentación inicial (avatar + CTA CV)
+│   ├── AboutMe.tsx         # Sobre mí (texto + botón “Entra en mi mundo”)
+│   ├── Projects.tsx        # Proyectos con previsualizaciones e iconos
+│   ├── Skills.tsx          # Carruseles de skills con animación continua
+│   ├── Education.tsx       # Formación y crecimiento (académico/aprendizaje)
+│   ├── Contact.tsx         # Contacto con EmailJS
+│   ├── Navbar.tsx          # Barra inferior (sin estado activo por scroll)
+│   ├── Sidebar.tsx         # Mensajes contextuales por sección
+│   ├── DynamicModal.tsx    # Modal “Entra en mi mundo”
+│   ├── ProjectDetailsModal.tsx # Detalles de proyecto (sidebar en desktop)
+│   ├── CursorEffect.tsx    # Estela del cursor (Canvas)
+│   └── StormBackground.tsx # Fondo de rayos (WebGL)
+├── contexts/
+│   ├── ThemeContext.tsx    # Tema: light/dark/system con transiciones
+│   └── LanguageContext.tsx # Idioma: es/en
+├── data/
+│   ├── portfolio.json      # Contenido ES (navegación, textos, educación, etc.)
+│   └── portfolio.en.json   # Contenido EN
+├── hooks/
+│   ├── usePortfolioData.ts # Capa de acceso a datos centralizados
+│   ├── useResponsiveIntersectionObserver.ts # Detección de sección visible
+│   ├── useMobileScrollDetection.ts # Respaldo para móviles
+│   └── useScrollToSection.ts / useIntersectionObserver.ts (helpers)
+├── lib/
+│   └── utils.ts            # utilidades (scroll suave, helpers)
+└── constants/
+    └── index.ts            # Constantes del sistema
 ```
 
-## 🎨 Sistema de Diseño
+## 🧭 Comportamiento de navegación
 
-### Colores
-- **Primario**: Naranja (#f97316) - Para acentos y elementos interactivos
-- **Secundario**: Gris oscuro (#1f2937) - Para superficies
-- **Fondo**: Negro (#000000) - Fondo principal
-- **Texto**: Blanco (#ffffff) - Texto principal
+- El Sidebar se actualiza automáticamente según la sección visible (IntersectionObserver + respaldo en móviles).
+- El Navbar NO cambia su estado activo automáticamente (se acordó dejarlo solo como navegación directa). En desktop conserva hover; en mobile no deja hover “pegado”.
+- En mobile, los toques sobre botones quitan inmediatamente el foco/hover (handlers con `blur()` seguros).
 
-### Tipografías
-- **Audiowide**: Títulos y elementos destacados
-- **Orbitron**: Texto de cuerpo y descripciones
+## 🌙 Temas (light/dark/system)
 
-### Componentes Base
-- **Button**: Botón con variantes (primary, secondary, outline, ghost)
-- **Card**: Contenedor con bordes y sombras
-- **Section**: Sección con padding y bordes consistentes
+- Se usa `ThemeContext`. El modo “system” respeta `prefers-color-scheme`.
+- Transición suave al cambiar de tema: View Transitions API si el navegador la soporta; fallback CSS con `html.theme-transition`.
 
-## 🚀 Instalación y Desarrollo
+## 🌐 i18n – Contenido centralizado (ES/EN)
 
-1. **Clonar el repositorio**
+- El contenido vive en `src/data/portfolio.json` y `portfolio.en.json`.
+- `usePortfolioData` expone hooks por sección: `useHeroData`, `useAboutData`, `useProjectsSectionData`, `useProjectsData`, `useSkillsData`, `useEducationData`, `useContactData`, `useNavigationData`, `useSidebarData`.
+- Para traducir, refleja la estructura y claves entre ambos JSON.
+
+## 📚 Sección “Formación y crecimiento”
+
+- Académico: Ingeniería de Software (UCC), periodo, estado, descripción.
+- Proyectos académicos destacados (con etiquetas de estado como “En desarrollo”).
+- Aprendizaje continuo: temas actuales y objetivo a corto plazo.
+- Solo informativa: sin botones ni redirecciones.
+
+## 🖼️ Animaciones y efectos
+
+- Fondo de rayos en WebGL (StormBackground) sin reiniciar la animación al cambiar de tema; se interpolan parámetros para transiciones suaves.
+- CursorEffect con estela en Canvas, sincronizado con el tema.
+- Animación `.animate-fadeIn` para elementos de `Projects`.
+
+## 🛠️ Instalación
+
 ```bash
 git clone <repository-url>
 cd portfolio
-```
-
-2. **Instalar dependencias**
-```bash
 npm install
-```
-
-3. **Ejecutar en desarrollo**
-```bash
 npm run dev
+# http://localhost:3000
 ```
 
-4. **Abrir en el navegador**
-```
-http://localhost:3000
-```
+## 🔧 Configuración y variables de entorno
 
-## 📦 Scripts Disponibles
+Crear `.env.local` si se usa el formulario de contacto (EmailJS):
 
-- `npm run dev` - Servidor de desarrollo con Turbopack
-- `npm run build` - Construcción para producción
-- `npm run start` - Servidor de producción
-- `npm run lint` - Linting con ESLint
-
-## 🎯 Características Técnicas
-
-### Performance
-- **Lazy Loading**: Componentes cargados bajo demanda
-- **Memoización**: Hooks optimizados con useCallback
-- **Intersection Observer**: Navegación automática basada en scroll
-- **WebGL**: Efectos visuales optimizados con GPU
-
-### Responsive Design
-- **Mobile First**: Diseño optimizado para móviles
-- **Breakpoints**: sm (640px), md (768px), lg (1024px), xl (1280px)
-- **Flexible Layout**: Grid y Flexbox para layouts adaptativos
-
-### Accesibilidad
-- **ARIA Labels**: Etiquetas semánticas
-- **Focus Management**: Navegación por teclado
-- **Color Contrast**: Cumple estándares WCAG
-- **Screen Reader**: Compatible con lectores de pantalla
-
-## 🔧 Configuración
-
-### Variables de Entorno
-Crear archivo `.env.local`:
 ```env
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=...
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=...
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=...
 ```
 
-### Personalización
-- **Contenido**: Actualizar datos en `src/data/portfolio.json`
-- **Colores**: Modificar variables CSS en `globals.css` o en `portfolio.json`
-- **Efectos**: Ajustar parámetros en `StormBackground.tsx`
-- **Configuración**: Modificar constantes en `src/constants/index.ts`
+Notas:
+- Los logs del envío de correo solo aparecen en desarrollo.
+- Ver `src/components/Contact.tsx` para el uso de EmailJS.
 
-### Sistema de Datos Centralizado
-Todo el contenido del portfolio está centralizado en `src/data/portfolio.json`. Para actualizar:
+## 🧪 Calidad y rendimiento
 
-1. **Información personal**: Editar `personalInfo`
-2. **Proyectos**: Modificar array `projects`
-3. **Habilidades**: Actualizar objeto `skills`
-4. **SEO**: Cambiar metadatos en `seo`
+- ESLint configurado; build con Next.js 15 (Turbopack).
+- Limpieza de CSS global: solo utilidades en uso.
+- Sin “hover pegado” en mobile (reglas CSS + blur programático).
+- Observer de secciones afinado para desktop y mobile.
 
-Ver `src/data/README.md` para documentación completa del sistema de datos.
+## 🧩 Scripts
 
-## 📱 Compatibilidad
+- `npm run dev` – Desarrollo
+- `npm run build` – Producción
+- `npm run start` – Servidor de producción
+- `npm run lint` – ESLint
 
-- **Navegadores**: Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
-- **Dispositivos**: Desktop, Tablet, Mobile
-- **Resoluciones**: 320px - 4K
+## 📦 Despliegue
 
-## 🚀 Despliegue
+### Vercel (recomendado)
 
-### Vercel (Recomendado)
 ```bash
 npm run build
-# Desplegar en Vercel
+# Conectar y desplegar con Vercel
 ```
 
-### Docker
+### Docker (opcional)
+
 ```dockerfile
 FROM node:18-alpine
 WORKDIR /app
@@ -173,17 +141,16 @@ EXPOSE 3000
 CMD ["npm", "start"]
 ```
 
-## 📄 Licencia
+## 🔍 Cómo extender el contenido
 
-Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
+1) Agregar/editar secciones en `src/data/portfolio.json` y `portfolio.en.json`.
+2) Leer datos con los hooks de `usePortfolioData`.
+3) Mantener las claves y la estructura entre idiomas.
 
-## 👨‍💻 Autor
+## 👤 Autor
 
 **Juan Camilo Martínez**
-- Email: correo@ejemplo.com
-- GitHub: [@username](https://github.com/username)
-- LinkedIn: [Juan Camilo Martínez](https://linkedin.com/in/username)
 
 ---
 
-⭐ Si te gusta este proyecto, ¡dale una estrella!
+Si este proyecto te resultó útil, ¡una estrella siempre se agradece!
