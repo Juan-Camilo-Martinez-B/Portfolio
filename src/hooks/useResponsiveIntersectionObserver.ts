@@ -118,6 +118,16 @@ export const useResponsiveIntersectionObserver = ({
     onSectionChange: (newSection) => {
       // Forzar actualización del estado, incluso si es la misma sección
       setActiveSection(newSection);
+      
+      // Forzar blur de todos los botones para eliminar estado hover en mobile
+      if (typeof document !== 'undefined') {
+        const buttons = document.querySelectorAll('nav button');
+        buttons.forEach((button) => {
+          if (button instanceof HTMLElement) {
+            button.blur();
+          }
+        });
+      }
     },
     sections: sections.length > 0 ? sections : ['hero', 'about', 'projects', 'skills', 'education', 'contact']
   });
