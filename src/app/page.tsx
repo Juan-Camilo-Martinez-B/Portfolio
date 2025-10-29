@@ -175,7 +175,7 @@ export default function Home() {
       {/* Navbar */}
       <div className="fixed bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-20 w-full max-w-[850px] lg:max-w-[1100px] px-3 sm:px-4">
         <Card className="py-2 sm:py-2 overflow-x-auto no-scrollbar">
-          <Navbar active={activeSection} setActive={setActiveSection} />
+          <Navbar />
         </Card>
       </div>
 

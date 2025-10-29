@@ -190,6 +190,15 @@ body {
   }
 }
 
+/* Animación genérica de aparición usada en Projects */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.35s ease-out both;
+}
+
 /* Desactivar hover completamente en dispositivos táctiles */
 @media (hover: none) and (pointer: coarse) {
   /* Eliminar todos los estilos hover en botones para dispositivos táctiles */

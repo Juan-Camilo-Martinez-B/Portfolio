@@ -37,10 +37,12 @@ const Contact: React.FC = () => {
       const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-      console.log('🔍 Debug - Credenciales:');
-      console.log('Service ID:', serviceId);
-      console.log('Template ID:', templateId);
-      console.log('Public Key:', publicKey ? publicKey.substring(0, 5) + '...' : 'undefined');
+      if (process.env.NODE_ENV === 'development') {
+        console.log('🔍 Debug - Credenciales:');
+        console.log('Service ID:', serviceId);
+        console.log('Template ID:', templateId);
+        console.log('Public Key:', publicKey ? publicKey.substring(0, 5) + '...' : 'undefined');
+      }
 
       // Validar que las variables de entorno existan
       if (!serviceId || !templateId || !publicKey) {
@@ -58,7 +60,9 @@ const Contact: React.FC = () => {
         message: formData.message,
       };
 
-      console.log('📧 Enviando email con params:', templateParams);
+      if (process.env.NODE_ENV === 'development') {
+        console.log('📧 Enviando email con params:', templateParams);
+      }
 
       // Enviar el email
       const response = await emailjs.send(
@@ -67,7 +71,9 @@ const Contact: React.FC = () => {
         templateParams
       );
 
-      console.log('✅ Email enviado exitosamente:', response);
+      if (process.env.NODE_ENV === 'development') {
+        console.log('✅ Email enviado exitosamente:', response);
+      }
 
       // Éxito
       setSubmitStatus('success');
@@ -85,11 +91,13 @@ const Contact: React.FC = () => {
 
     } catch (error: unknown) {
       const emailError = error as { message?: string; text?: string; status?: number };
-      console.error('❌ Error al enviar el email:', error);
-      console.error('Error completo:', JSON.stringify(error, null, 2));
-      console.error('Error message:', emailError?.message);
-      console.error('Error text:', emailError?.text);
-      console.error('Error status:', emailError?.status);
+      if (process.env.NODE_ENV === 'development') {
+        console.error('❌ Error al enviar el email:', error);
+        console.error('Error completo:', JSON.stringify(error, null, 2));
+        console.error('Error message:', emailError?.message);
+        console.error('Error text:', emailError?.text);
+        console.error('Error status:', emailError?.status);
+      }
       setSubmitStatus('error');
 
       // Limpiar mensaje de error después de 5 segundos

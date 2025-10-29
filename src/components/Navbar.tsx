@@ -7,12 +7,7 @@ import { useNavigationData } from '@/hooks/usePortfolioData';
 import { scrollToSection } from '@/lib/utils';
 import React from 'react';
 
-interface NavbarProps {
-  active: string;
-  setActive: (id: string) => void;
-}
-
-const Navbar: React.FC<NavbarProps> = ({ active, setActive }) => {
+const Navbar: React.FC = () => {
   const navigationItems = useNavigationData();
   const { language, toggleLanguage } = useLanguage();
   const { theme, cycleTheme } = useTheme();
