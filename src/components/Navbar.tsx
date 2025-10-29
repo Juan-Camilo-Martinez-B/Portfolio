@@ -1,11 +1,11 @@
 "use client";
 
-import React from 'react';
-import { useNavigationData } from '@/hooks/usePortfolioData';
-import { scrollToSection } from '@/lib/utils';
 import Button from '@/components/ui/Button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useNavigationData } from '@/hooks/usePortfolioData';
+import { scrollToSection } from '@/lib/utils';
+import React from 'react';
 
 interface NavbarProps {
   active: string;
@@ -45,6 +45,17 @@ const Navbar: React.FC<NavbarProps> = ({ active, setActive }) => {
 
   return (
     <nav className="flex flex-wrap justify-center gap-1.5 sm:gap-2 lg:gap-3 px-1 sm:px-4 py-1 sm:py-2">
+      {/* Botón de tema - Primero en mobile, último en desktop */}
+      <Button 
+        variant="outline" 
+        size="sm" 
+        className="text-xs sm:text-sm lg:text-base sm:order-last"
+        onClick={cycleTheme}
+        title={getThemeLabel()}
+      >
+        {getThemeIcon()}
+      </Button>
+
       {navigationItems.map((item) => (
         <Button
           key={item.id}
@@ -57,7 +68,7 @@ const Navbar: React.FC<NavbarProps> = ({ active, setActive }) => {
         </Button>
       ))}
 
-      {/* Botones de utilidad */}
+      {/* Botón de idioma */}
       <Button 
         variant="outline" 
         size="sm" 
@@ -66,15 +77,6 @@ const Navbar: React.FC<NavbarProps> = ({ active, setActive }) => {
         title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
       >
         {language === 'es' ? 'EN' : 'ES'}
-      </Button>
-      <Button 
-        variant="outline" 
-        size="sm" 
-        className="text-xs sm:text-sm lg:text-base"
-        onClick={cycleTheme}
-        title={getThemeLabel()}
-      >
-        {getThemeIcon()}
       </Button>
     </nav>
   );
